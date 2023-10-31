@@ -29,7 +29,7 @@
   Date     Status    Goal
   ~ 10/17     O      Project planning, idea discussion, selection of stack to use - All member
   ~ 10/24     O      Extract main scope
-  ~ 10/31     -      Collect resources related the project
+  ~ 10/31     O      Collect resources related the project
   ~ 11/07     -      System Design(Component Modeling and Detail Design - All member / Develop Front-end
   ~ 11/14     -      Database Design(by 2_3_1_3. E-R Diagram) and Prepare the mid-term presentation
   ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Scheme Design)
@@ -42,8 +42,9 @@
 ## 2. Design
 - ### 2_1. System Design
   - #### 2_1_1. Usecase Diagram
-      <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb">
+    <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb">
   - #### 2_1_2. Detail Design
+    <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
 - ### 2_2. UI/UX Design
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
