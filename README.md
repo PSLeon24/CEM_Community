@@ -22,15 +22,13 @@
 ## 1. Requirements Analysis
 - ### 1_1. Objective Setting
   - Our goal is activating communication between same major's students through our project.
-- ### 1_2. Project Scope
-  - To be added.
-- ### 1_3. Schedule Setting
+- ### 1_2. Schedule Setting
   <pre>
   Date     Status    Goal
   ~ 10/17     O      Project planning, idea discussion, selection of stack to use - All member
   ~ 10/24     O      Extract main scope
-  ~ 10/31     O      Collect resources related the project
-  ~ 11/07     -      System Design(Component Modeling and Detail Design - All member / Develop Front-end
+  ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram
+  ~ 11/07     -      System Design(Archtecture Design and Detail Design & UI/UX
   ~ 11/14     -      Database Design(by 2_3_1_3. E-R Diagram) and Prepare the mid-term presentation
   ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Scheme Design)
   ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
