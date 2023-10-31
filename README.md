@@ -42,7 +42,8 @@
 ## 2. Design
 - ### 2_1. System Design
   - #### 2_1_1. Usecase Diagram
-    <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb">
+    <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb"><br>
+    - <a href="https://cool-mantis-03f.notion.site/Requirements-Analysis-d2eb768d403841d89a4ab4a276dc068d?pvs=4">read more</a>
   - #### 2_1_2. Detail Design
     - Decide categories and components: <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
 - ### 2_2. UI/UX Design
