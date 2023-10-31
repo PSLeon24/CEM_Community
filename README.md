@@ -94,13 +94,6 @@
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
 
-|Idx|Question|
-|:--:|:--:|
-|1|본인이 속한 학과를 선택해주세요.|
-|2|학과 생활에 대한 전반적인 만족도는?|
-|2-1|학과 생활에 대한 불만이 있다면 어떤 점인가?|
-|2-2|학과 생활에 전반적으로 만족한다면 그 이유는?|
-
 ---
 #### References
 1) To be added.
