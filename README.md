@@ -86,6 +86,21 @@
 |2-1|학과 생활에 대한 불만이 있다면 어떤 점인가?|
 |2-2|학과 생활에 전반적으로 만족한다면 그 이유는?|
 
+- 2023/10/31: Essential features and features to consider: <a href="https://support.daouoffice.com:8443/cloud_help#communities"> web site link</a>
+- 2023/10/31: Coummnity demo: <a href="https://kanari1569.tistory.com/35"> 1</a>
+<a href="https://kanari1569.tistory.com/36"> 2</a>
+<a href="https://kanari1569.tistory.com/37"> 3</a>
+<a href="https://kanari1569.tistory.com/38"> 4</a>
+<a href="https://kanari1569.tistory.com/39"> 5</a>
+<a href="https://kanari1569.tistory.com/40"> 6</a>
+
+|Idx|Question|
+|:--:|:--:|
+|1|본인이 속한 학과를 선택해주세요.|
+|2|학과 생활에 대한 전반적인 만족도는?|
+|2-1|학과 생활에 대한 불만이 있다면 어떤 점인가?|
+|2-2|학과 생활에 전반적으로 만족한다면 그 이유는?|
+
 ---
 #### References
 1) To be added.
