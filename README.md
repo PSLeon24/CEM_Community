@@ -44,7 +44,8 @@
   - #### 2_1_1. Usecase Diagram
     <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb">
   - #### 2_1_2. Detail Design
-    <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
+    - Decide categories and components
+    - <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
 - ### 2_2. UI/UX Design
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
