@@ -67,6 +67,7 @@
 
 ## Meeting records
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
+- 2023/10/31 : We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
 
 ## Work records for each members
 #### Yeong-Min Ko
