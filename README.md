@@ -68,7 +68,7 @@
 ## Meeting records
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
 - 2023/10/31: We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
-- 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We will implement frontend using UI design.
+- 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We plan to implement the frontend based on the UI design document.
 
 ## Work records for each members
 #### Yeong-Min Ko
