@@ -45,6 +45,7 @@
   - #### 2_1_2. Detail Design
     - Decide categories and components: <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
 - ### 2_2. UI/UX Design
+- 2023/11/07: UI design  <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508"> UI Design link</a>
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
     - ##### 1) Extract entities and attributes
