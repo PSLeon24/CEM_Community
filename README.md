@@ -28,7 +28,7 @@
   ~ 10/17     O      Project planning, idea discussion, selection of stack to use - All member
   ~ 10/24     O      Extract main scope
   ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram
-  ~ 11/07     -      System Design(Architecture Design and Detail Design) & UI/UX
+  ~ 11/07     O      System Design(Architecture Design and Detail Design) & UI/UX
   ~ 11/14     -      Database Design(by 2_3_1_3. E-R Diagram) and Prepare the mid-term presentation
   ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Scheme Design)
   ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
@@ -48,9 +48,9 @@
   - 2023/11/07: UI design  <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508"> UI Design link</a>
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
-    - ##### 1) Extract entities and attributes
-    - ##### 2) Extract relationship
-    - ##### 3) E-R Diagram
+    - ##### 1) Extract entities, attributes and relationship
+      <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
+    - ##### 2) E-R Diagram
   - #### 2_3_2. Logical Design
     - ##### Scheme Design
   - #### 2_3_3. Physical Design using SQL Server
@@ -66,7 +66,8 @@
 
 ## Meeting records
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
-- 2023/10/31 : We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
+- 2023/10/31: We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
+- 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We will implement frontend using UI design.
 
 ## Work records for each members
 #### Yeong-Min Ko
@@ -75,8 +76,12 @@
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
 |<img width="1440" alt="스크린샷 2023-10-29 오전 1 33 23" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/7ae07c2d-b352-4b02-8ac5-d114919730d4">|<img width="1439" alt="스크린샷 2023-10-29 오전 1 33 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c9e57801-f764-4fd6-8c1a-d858244c1a37">|<img width="1438" alt="스크린샷 2023-10-29 오전 1 35 20" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/e39ffbf0-07d3-4867-83c4-32aab3b5a837">|
+
+- 2023/11/07: Database Design(Extract entities, attributes and relationship) and Draw a ER-Diagram with Hyun-Soo Choi
+
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
+- 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
@@ -95,7 +100,7 @@
 <a href="https://kanari1569.tistory.com/38"> 4</a>
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
-- 2023/11/07: UI design  <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508"> UI Design link</a>
+- 2023/11/07: Draw UI design <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508">UI Design link</a>
 
 ---
 #### References
