@@ -101,7 +101,7 @@
 <a href="https://kanari1569.tistory.com/38"> 4</a>
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
-- 2023/11/07: Draw UI design <a href="[https://www.notion.so/9ef98f2f12114555ad16b62896fdf508](https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4)">UI Design link</a>
+- 2023/11/07: Draw UI design: <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
 
 ---
 #### References
