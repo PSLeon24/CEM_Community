@@ -94,7 +94,7 @@
 <a href="https://kanari1569.tistory.com/38"> 4</a>
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
-- 2023/11/07: UI design  <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508">
+- 2023/11/07: UI design  <a href="https://www.notion.so/9ef98f2f12114555ad16b62896fdf508"> UI Design link</a>
 
 ---
 #### References
