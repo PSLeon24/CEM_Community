@@ -51,6 +51,7 @@
     - ##### 1) Extract entities, attributes and relationship
       <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
     - ##### 2) E-R Diagram
+      ![erdiagram-white](https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e)
   - #### 2_3_2. Logical Design
     - ##### Scheme Design
   - #### 2_3_3. Physical Design using SQL Server
