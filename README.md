@@ -30,7 +30,7 @@
   ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram
   ~ 11/07     O      System Design(Architecture Design and Detail Design) & UI/UX
   ~ 11/14     -      Database Design(by 2_3_1_3. E-R Diagram) and Prepare the mid-term presentation
-  ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Scheme Design)
+  ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Schema Design)
   ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/12     -      Final check and Prepare Final-term presentation
@@ -53,7 +53,7 @@
     - ##### 2) E-R Diagram
       <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e">
   - #### 2_3_2. Logical Design
-    - ##### Scheme Design
+    - ##### Schema Design
   - #### 2_3_3. Physical Design using SQL Server
 
 ## 3. Implementation
