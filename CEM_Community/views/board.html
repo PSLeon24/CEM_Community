@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>학과 소식</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        .pagination {
+          display: inline-block;
+        }
+        
+        .pagination a {
+          color: black;
+          float: left;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        .pagination a.active {
+          background-color: #f98fa1;
+          color: rgb(248, 216, 216);
+        }
+        
+        .pagination a:hover:not(.active) {background-color: #ddd;}
+        </style>
+
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+          <div class="text-center w-100">
+            <a class="navbar-brand" href="#" style="font-size: 24px; font-weight: bold; color: #000000;">
+              <h2>멋쟁이 <span style="color: #f98fa1;">돼지</span>들의 익명 커뮤니티</h2>
+            </a>
+          </div>
+          <!-- <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              더보기
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">더보기 1</a>
+              <a class="dropdown-item" href="#">더보기 2</a>
+              <a class="dropdown-item" href="#">더보기 3</a>
+            </div>
+          </div> -->
+    
+        </nav>
+         <!-- '멋쟁이 돼지들의 익명 커뮤니티' end-->
+        <div class="text-center">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-search d-flex justify-content-between align-items-center" style="width: 100%;">
+              <div class="d-flex align-items-center" style="width: 100%;">
+                <img src="#" style="width: 40px; height: 40px;"><!-- 돼지코 이미지 경로로 수정하기 -->
+                <input class="form-control mx-2" type="search" style="width: 100%;" placeholder="검색어를 입력하세요">
+              </div>
+              <div class="navbar-nav">
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+                <a class="nav-link" style="width: 100px;" data-toggle="modal" data-target="#signupModal" href="#">Sign up</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+    </div>
+
+    <br>
+
+    <div>
+        <h4 style="text-align: center;">
+            학과 소식
+        </h4>
+    </div>
+
+    <br>
+    
+    <div style="margin: 0 10%;">
+        <div style="width: 10%;"></div>
+        <table class="table table-striped-columns">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" style="width: 60%;">제목</th>
+                    <th scope="col">날짜</th>
+                    <th scope="col">게시자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>조교 모집 안내</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>컴공인의 날 안내</td>
+                    <td>2023.11.07</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>학과 시설 안내</td>
+                    <td>2023.11.07</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>참사람 인재 장학금 안내</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>랩 신청 안내</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>멋쟁이 돼지들아</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>환영한다</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>빨리 안 들어오고 머하냐</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>주글래</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>살 좀 빼라 고영민</td>
+                    <td>2023.01.01</td>
+                    <td>관리자</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    
+    <br>
+
+    <div class="text-center">
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a class="active" href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">&raquo;</a>
+          </div>
+    </div>
+    
+    <div>
+        <br>
+    </div>
+    
+
+
+    <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

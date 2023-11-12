@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+          <div class="text-center w-100">
+            <a class="navbar-brand" href="#" style="font-size: 24px; font-weight: bold; color: #000000;">
+              <h2>멋쟁이 <span style="color: #f98fa1;">돼지</span>들의 익명 커뮤니티</h2>
+            </a>
+          </div>
+          <!-- <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              더보기
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">더보기 1</a>
+              <a class="dropdown-item" href="#">더보기 2</a>
+              <a class="dropdown-item" href="#">더보기 3</a>
+            </div>
+          </div> -->
+    
+        </nav>
+         <!-- '멋쟁이 돼지들의 익명 커뮤니티' end-->
+        <div class="text-center">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-search d-flex justify-content-between align-items-center" style="width: 100%;">
+              <div class="d-flex align-items-center" style="width: 100%;">
+                <img src="#" style="width: 40px; height: 40px;"><!-- 돼지코 이미지 경로로 수정하기 -->
+                <input class="form-control mx-2" type="search" style="width: 100%;" placeholder="검색어를 입력하세요">
+              </div>
+              <div class="navbar-nav" style="margin: 0 3%;">
+                <a class="nav-link" data-toggle="modal" data-target="#" href="#" style="white-space: nowrap;">MY PAGE</a>
+            </div>
+            
+            </div>
+          </nav>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container mt-4">
+        <h3 style="text-align: center;">게시글 작성</h3>
+        <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);" >
+            <div class="form-group" style="width: 90%;">
+                <label for="title" style="margin: 0 5%;">제목</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요." required style="margin: 0 5%;">
+            </div>
+            
+            <br>
+
+            <div class="form-group" style="width: 90%;">
+                <label for="content" style="margin: 0 5%;">내용</label>
+                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요." required style="margin: 0 5%;"></textarea>
+            </div>
+
+            <div class="form-group" style="width: 90%;">
+                <label for="attachment" style="margin: 0 5%;">첨부 파일</label>
+                <input type="file" class="form-control-file" id="attachment" name="attachment" style="margin: 0 5%;">
+            </div>
+
+            <br>
+
+            <div class="text-center">
+                <button type="submit" class="btn" style="background-color: pink;">
+                    게시글 작성</button>
+                <a href="/" class="btn" style="background-color: rgb(200, 200, 200);">취소</a>
+            </div>
+            <div>
+                <br>
+            </div>
+        </form>
+    </div>
+
+    <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
