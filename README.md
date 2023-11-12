@@ -27,10 +27,10 @@
   Date     Status    Goal
   ~ 10/17     O      Project planning, idea discussion, selection of stack to use - All member
   ~ 10/24     O      Extract main scope
-  ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram
-  ~ 11/07     O      System Design(Architecture Design and Detail Design) & UI/UX
-  ~ 11/14     -      Database Design(by 2_3_1_3. E-R Diagram) and Prepare the mid-term presentation
-  ~ 11/21     -      Mid-term presentation / Develop Front-end / Logical Design(Schema Design)
+  ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram & UI/UX
+  ~ 11/07     O      System Design(Architecture Design and Detail Design) & Develop Front-end
+  ~ 11/14     O      Database Design(by 2_3_2. E-R Diagram) and Prepare the mid-term presentation
+  ~ 11/21     -      Mid-term presentation / Physical Design using SQL Server
   ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/12     -      Final check and Prepare Final-term presentation
@@ -48,12 +48,11 @@
   - 2023/11/07: UI design: <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
-    - ##### 1) Extract entities, attributes and relationship
+    - ##### Extract entities, attributes and relationship
       <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
-    - ##### 2) E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e">
   - #### 2_3_2. Logical Design
-    - ##### Schema Design
+    - ##### Schema Design & E-R Diagram
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e">
   - #### 2_3_3. Physical Design using SQL Server
 
 ## 3. Implementation
@@ -79,10 +78,18 @@
 |<img width="1440" alt="스크린샷 2023-10-29 오전 1 33 23" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/7ae07c2d-b352-4b02-8ac5-d114919730d4">|<img width="1439" alt="스크린샷 2023-10-29 오전 1 33 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c9e57801-f764-4fd6-8c1a-d858244c1a37">|<img width="1438" alt="스크린샷 2023-10-29 오전 1 35 20" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/e39ffbf0-07d3-4867-83c4-32aab3b5a837">|
 
 - 2023/11/07: Database Design(Extract entities, attributes and relationship) and Draw a ER-Diagram with Hyun-Soo Choi / Make Midterm PPT
+- 2023/11/12: Manage routers between pages.
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
+- 2023/11/12: Develop front-end
+
+|Main|Sign in|Sign up|
+|:--:|:--:|:--:|
+|<img width="1440" alt="스크린샷 2023-11-12 오후 10 52 54" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/2e27e71a-d465-4c2f-9d01-80770fb1532a">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 58 20" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/015788c2-e6cc-4b79-8b03-8bb3d35b3976">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 58 29" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/f0d41aaa-4b6b-4651-b11c-0f790778a916">|
+|Board|Write|Modify|
+|<img width="1440" alt="스크린샷 2023-11-12 오후 10 52 22" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/0c3610fe-0425-45b9-a117-34070d6f3af0">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 52 40" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/6631aa0f-b99f-4f78-a3fe-66ad44119d8f">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 52 40" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/683b6a66-04df-4e9a-b617-b04a6ddd5dc0">|
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
