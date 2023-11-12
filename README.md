@@ -112,7 +112,7 @@
 
 ---
 #### References
-1) To be added.
+1) Bootstrap v5.3, docs, https://getbootstrap.kr/docs/5.3/getting-started/introduction/
 2) To be added.
 3) To be added.
 
