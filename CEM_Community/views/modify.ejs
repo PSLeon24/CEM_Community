@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>게시글 작성</title>
+    <title>게시글 수정</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
@@ -40,10 +40,10 @@
                 <img src="#" style="width: 40px; height: 40px;"><!-- 돼지코 이미지 경로로 수정하기 -->
                 <input class="form-control mx-2" type="search" style="width: 100%;" placeholder="검색어를 입력하세요">
               </div>
-              <div class="navbar-nav" style="margin: 0 3%;">
-                <a class="nav-link" data-toggle="modal" data-target="#" href="#" style="white-space: nowrap;">MY PAGE</a>
-            </div>
-            
+              <div class="navbar-nav">
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+                <a class="nav-link" style="width: 100px;" data-toggle="modal" data-target="#signupModal" href="#">Sign up</a>
+              </div>
             </div>
           </nav>
         </div>
@@ -52,7 +52,7 @@
     <br>
 
     <div class="container mt-4">
-        <h3 style="text-align: center;">게시글 작성</h3>
+        <h3 style="text-align: center;">게시글 수정</h3>
         <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);" >
             <div class="form-group" style="width: 90%;">
                 <label for="title" style="margin: 0 5%;">제목</label>
@@ -75,7 +75,7 @@
 
             <div class="text-center">
                 <button type="submit" class="btn" style="background-color: pink;">
-                    게시글 작성</button>
+                    수정하기</button>
                 <a href="/" class="btn" style="background-color: rgb(200, 200, 200);">취소</a>
             </div>
             <div>
