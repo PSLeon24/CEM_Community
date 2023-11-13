@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.use(express.static('public'));
 // SQL Server 연결 설정
 // const config = {
 //   user: 'sa',

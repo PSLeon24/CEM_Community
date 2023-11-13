@@ -4,32 +4,34 @@
 <head>
     <title>게시글 작성</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+
     <style>
-        
-        
+
+
     </style>
 
 </head>
 
 <body>
-  <div id="loginheader"></div>
+    <div id="loginheader"></div>
 
     <br>
 
     <div class="container mt-4">
         <h3 style="text-align: center;">게시글 작성</h3>
-        <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);" >
+        <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);">
             <div class="form-group" style="width: 90%;">
                 <label for="title" style="margin: 0 5%;">제목</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요." required style="margin: 0 5%;">
+                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요." required
+                    style="margin: 0 5%;">
             </div>
-            
+
             <br>
 
             <div class="form-group" style="width: 90%;">
                 <label for="content" style="margin: 0 5%;">내용</label>
-                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요." required style="margin: 0 5%;"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요." required
+                    style="margin: 0 5%;"></textarea>
             </div>
 
             <div class="form-group" style="width: 90%;">
@@ -51,14 +53,14 @@
     </div>
 
     <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    $(function (){
-      $("#header").load("header.html");
-    });
-  </script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#loginheader").load("./loginheader.html");
+        });
+    </script>
 </body>
 
 </html>
