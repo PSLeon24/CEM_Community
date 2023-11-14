@@ -87,9 +87,9 @@
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
-|<img width="1437" alt="스크린샷 2023-11-14 오전 8 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9560884e-2916-4c8a-afc6-a271cc762031">|<img width="1440" alt="스크린샷 2023-11-14 오전 8 56 00" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/598e5a1f-8fa4-4b0d-adc3-458606021a14">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 58 29" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/f0d41aaa-4b6b-4651-b11c-0f790778a916">|
+|<img width="1437" alt="스크린샷 2023-11-14 오전 8 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9560884e-2916-4c8a-afc6-a271cc762031">|<img width="1439" alt="스크린샷 2023-11-14 오후 3 55 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c214d56c-7bc8-4759-a5e8-bce222ee4d83">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 57 45" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/52ca4d57-8de8-4208-aecc-bc00beeb60db">|
 |Board|Write|Modify|
-|<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-12 오후 10 52 40" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/683b6a66-04df-4e9a-b617-b04a6ddd5dc0">|
+|<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/fa151efa-79e6-426f-8d80-72765076fe6b">|
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
