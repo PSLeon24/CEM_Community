@@ -88,7 +88,7 @@
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
 |<img width="1437" alt="스크린샷 2023-11-14 오전 8 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9560884e-2916-4c8a-afc6-a271cc762031">|<img width="1439" alt="스크린샷 2023-11-14 오후 3 55 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c214d56c-7bc8-4759-a5e8-bce222ee4d83">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 57 45" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/52ca4d57-8de8-4208-aecc-bc00beeb60db">|
-|Board|Write|Modify|
+|<b>Board</b>|<b>Write</b>|<b>Modify</b>|
 |<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/fa151efa-79e6-426f-8d80-72765076fe6b">|
 
 #### Han-Gyul Choi
