@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>게시글 수정</title>
+  <title>게시글 작성</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <style>
@@ -19,8 +19,7 @@
 
   <div class="container mt-4">
     <h3 style="text-align: center;">게시글 수정</h3>
-    <form action="/submit_post" method="POST" style="background-color: rgb(199, 199, 199); border-radius: 10px;">
-      <br>
+    <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);">
       <div class="form-group" style="width: 90%;">
         <label for="title" style="margin: 0 5%;">제목</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요." required
@@ -44,13 +43,14 @@
 
       <div class="text-center">
         <button type="submit" class="btn" style="background-color: pink;">
-          수정하기</button>
-        <a href="/" class="btn btn-outline-secondary" ;">취소</a>
+          게시글 수정</button>
+        <a href="/" class="btn" style="background-color: rgb(200, 200, 200);">취소</a>
       </div>
       <div>
         <br>
       </div>
     </form>
+  </div>
   </div>
 
   <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
@@ -59,7 +59,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
     $(function () {
-      $("#loginheader").load("loginheader.html");
+      $("#loginheader").load("./loginheader.html");
     });
   </script>
 </body>
