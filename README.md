@@ -108,8 +108,11 @@
 <a href="https://kanari1569.tistory.com/38"> 4</a>
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
-- 2023/11/07: Draw UI design: <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
+- UI Design & Back-end <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
+- 2023/11/07: Draw UI design
 - 2023/11/14: Update UI icon & Back-end status in Notion
+- 2023/11/16: Update Back-end Code
+
 ---
 #### References
 1) Bootstrap v5.3, docs, https://getbootstrap.kr/docs/5.3/getting-started/introduction/
