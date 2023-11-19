@@ -13,7 +13,7 @@ var app = express();
 app.use(express.static('public'));
 const config = {
   user: 'sa',
-  password: 'password',
+  password: 'dustkd12#',
   server: 'localhost',
   database: 'CEM_Community',
   options: {
@@ -31,37 +31,37 @@ mssql.connect(config, (err) => {
   console.log('SQL Server에 연결되었습니다.');
 });
 
-// app.use(express.json());
+app.use(express.json());
 
 // 가입하기 (회원가입) 라우트 추가
-// app.post('/signup', (req, res) => {
-//   const { id, password, name, std_no, grade, nickname, role } = req.body;
+app.post('/signup', (req, res) => {
+  const { id, password, name, std_no, grade, nickname, role } = req.body;
 
-//   const query = `
-//       INSERT INTO Users (id, password, name, std_no, grade, nickname, role)
-//       VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
-//   `;
+  const query = `
+      INSERT INTO Users (id, password, name, std_no, grade, nickname, role)
+      VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
+  `;
 
-//   const request = new mssql.Request();
+  const request = new mssql.Request();
 
-//   request.input('id', mssql.NVarChar, id);
-//   request.input('password', mssql.NVarChar, password);
-//   request.input('name', mssql.NVarChar, name);
-//   request.input('std_no', mssql.NVarChar, std_no);
-//   request.input('grade', mssql.NVarChar, grade);
-//   request.input('nickname', mssql.NVarChar, nickname);
-//   request.input('role', mssql.NVarChar, role);
+  request.input('id', mssql.NVarChar, id);
+  request.input('password', mssql.NVarChar, password);
+  request.input('name', mssql.NVarChar, name);
+  request.input('std_no', mssql.NVarChar, std_no);
+  request.input('grade', mssql.NVarChar, grade);
+  request.input('nickname', mssql.NVarChar, nickname);
+  request.input('role', mssql.NVarChar, role);
 
-//   request.query(query, (err) => {
-//       if (err) {
-//           console.error('회원가입 오류:', err);
-//           res.status(500).send('회원가입 중 오류가 발생했습니다.');
-//       } else {
-//           console.log('회원가입 성공');
-//           res.status(200).send('회원가입이 성공적으로 완료되었습니다.');
-//       }
-//   });
-// });
+  request.query(query, (err) => {
+      if (err) {
+          console.error('회원가입 오류:', err);
+          res.status(500).send('회원가입 중 오류가 발생했습니다.');
+      } else {
+          console.log('회원가입 성공');
+          res.status(200).send('회원가입이 성공적으로 완료되었습니다.');
+      }
+  });
+});
 
 // 로그인 요청 처리
 // app.post('/login', (req, res) => {
