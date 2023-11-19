@@ -4,16 +4,26 @@ var mssql = require('mssql');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+// 세션 설정
+app.use(session({
+  secret: 'cempig', // 세션을 암호화하는 데 사용되는 비밀 키
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false } // HTTPS가 아닌 환경에서도 세션을 사용하려면 false로 설정
+}));
+
 app.use(express.static('public'));
 const config = {
   user: 'sa',
-  password: 'password',
+  password: 'dustkd12#',
   server: 'localhost',
   database: 'CEM_Community',
   options: {
@@ -36,68 +46,87 @@ app.use(express.urlencoded({ extended: false }));
 
 // 가입하기 (회원가입) 라우트 추가
 app.post('/signup', (req, res) => {
-  var id = req.body.id || req.query.id;
-  var password = req.body.password || req.query.password;
-  var name = req.body.name || req.query.name;
-  var std_no = req.body.std_no || req.query.std_no;
-  var grade = req.body.grade || req.query.grade;
-  var nickname = req.body.nickname || req.query.nickname;
+  const { id, password, name, std_no, grade, nickname } = req.body;
   const role = 0;
+
+  // Check if the ID already exists
+  const checkDuplicateQuery = `
+    SELECT COUNT(*) AS count FROM Member WHERE id = @id;
+  `;
+
+  const checkDuplicateRequest = new mssql.Request();
+  checkDuplicateRequest.input('id', mssql.NVarChar, id);
+
+  checkDuplicateRequest.query(checkDuplicateQuery, (checkErr, checkResult) => {
+    if (checkErr) {
+      console.error('중복 검사 오류:', checkErr);
+      res.send('<script>alert("id 중복 검사 중에 오류가 발생했습니다."); window.location.href="/";</script>');
+    } else {
+      const isDuplicate = checkResult.recordset[0].count > 0;
+
+      if (isDuplicate) {
+        res.send('<script>alert("id가 이미 존재합니다. 새로운 id를 입력하세요!"); window.location.href="/";</script>');
+      } else {
+        // No duplicate ID, proceed with sign up
+        const signUpQuery = `
+          INSERT INTO Member (id, password, name, std_no, grade, nickname, role)
+          VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
+        `;
+
+        const signUpRequest = new mssql.Request();
+
+        signUpRequest.input('id', mssql.NVarChar, id);
+        signUpRequest.input('password', mssql.NVarChar, password);
+        signUpRequest.input('name', mssql.NVarChar, name);
+        signUpRequest.input('std_no', mssql.Int, std_no);
+        signUpRequest.input('grade', mssql.Int, grade);
+        signUpRequest.input('nickname', mssql.NVarChar, nickname);
+        signUpRequest.input('role', mssql.Int, role);
+
+        signUpRequest.query(signUpQuery, (signUpErr) => {
+          if (signUpErr) {
+            console.error('Sign up error:', signUpErr);
+            res.send('<script>alert("회원가입에 오류가 발생했습니다!"); window.location.href="/";</script>');
+          } else {
+            console.log(id, '님 회원가입 성공');
+            res.send('<script>alert("회원가입을 성공적으로 완료했습니다!"); window.location.href="/";</script>');
+          }
+        });
+      }
+    }
+  });
+});
+
+// 로그인 요청 처리
+app.post('/login', (req, res) => {
+  const { id, password } = req.body;
+
   const query = `
-      INSERT INTO Member (id, password, name, std_no, grade, nickname, role)
-      VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
+      SELECT * FROM Member
+      WHERE id = @id AND password = @password;
   `;
 
   const request = new mssql.Request();
 
   request.input('id', mssql.NVarChar, id);
   request.input('password', mssql.NVarChar, password);
-  request.input('name', mssql.NVarChar, name);
-  request.input('std_no', mssql.Int, std_no);
-  request.input('grade', mssql.Int, grade);
-  request.input('nickname', mssql.NVarChar, nickname);
-  request.input('role', mssql.Int, role);
 
-  request.query(query, (err) => {
-      if (err) {
-          console.error('회원가입 오류:', err);
-          res.status(500).send('회원가입 중 오류가 발생했습니다.');
+  request.query(query, (err, result) => {
+    if (err) {
+      console.error('로그인 오류:', err);
+      res.status(500).send('로그인 중 오류가 발생했습니다.');
+    } else {
+      if (result.recordset.length > 0) {
+        // 로그인 성공 & 세션에 사용자 정보 저장
+        req.session.user = result.recordset[0];
+        res.send('<script>alert("로그인 성공!"); window.location.href="/";</script>');
       } else {
-          console.log('회원가입 성공');
-          res.status(200).send('회원가입이 성공적으로 완료되었습니다.');
+        // 로그인 실패
+        res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다."); window.location.href="/";</script>');
       }
+    }
   });
 });
-
-// 로그인 요청 처리
-// app.post('/login', (req, res) => {
-//   const { id, password } = req.body;
-
-//   const query = `
-//       SELECT * FROM Users
-//       WHERE Username = @id AND Password = @password;
-//   `;
-
-//   const request = new mssql.Request();
-
-//   request.input('id', mssql.NVarChar, username);
-//   request.input('password', mssql.NVarChar, password);
-
-//   request.query(query, (err, result) => {
-//       if (err) {
-//           console.error('로그인 오류:', err);
-//           res.status(500).send('로그인 중 오류가 발생했습니다.');
-//       } else {
-//           if (result.recordset.length > 0) {
-//               // 로그인 성공
-//               res.status(200).send('로그인 성공');
-//           } else {
-//               // 로그인 실패
-//               res.status(401).send('아이디 또는 비밀번호가 잘못되었습니다.');
-//           }
-//       }
-//   });
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -7,8 +7,6 @@
 </style>
 <!-- 홈페이지 header -->
 
-
-
 <div class="header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="text-center w-100">
@@ -55,7 +53,7 @@
           <div class="form-group row">
             <label for="username" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" required>
+              <input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" required>
             </div>
           </div>
           <div class="form-group row">
@@ -67,18 +65,13 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-            <button type="submit" class="btn btn-primary">로그인</button> <!-- 유형(type)을 "submit"으로 변경합니다 -->
+            <button type="submit" class="btn btn-primary">로그인</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <!-- 회원가입 모달 -->
 
@@ -94,7 +87,7 @@
       </div>
       <div class="modal-body">
         <form action="/signup" method="POST"> <!-- 회원가입 요청을 /signup 경로로 보냅니다 -->
-          <div class="form-group">
+          <div class=" form-group">
             <label for="id">아이디</label>
             <input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" required>
           </div>
@@ -123,7 +116,7 @@
           </div>
           <div class="form-group">
             <label for="std_no">학번</label>
-            <input type="text" class="form-control" id="std_no" name="std_no" placeholder="학번을 입력하세요" required>
+            <input type="text" class="form-control" id="std_no" name="std_no" placeholder="(예: 2019212978)" required>
           </div>
           <div class="form-group">
             <label for="nickname">닉네임</label>
@@ -131,7 +124,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-            <button type="submit" class="btn btn-primary">가입하기</button>
+            <button type="submit" class="btn btn-primary">회원가입</button>
           </div>
         </form>
       </div>
