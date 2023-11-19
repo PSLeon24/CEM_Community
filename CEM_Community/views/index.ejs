@@ -43,14 +43,67 @@
                     <h5 style="text-align: center;">학년별 게시판</h5>
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title"><a href="#" style="color: hotpink; text-align: center;">1학년</a></h5>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <h5 class="card-title"><a href="#" style="color: hotpink; text-align: center;">2학년</a></h5>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <h5 class="card-title"><a href="#" style="color: hotpink; text-align: center;">3학년</a></h5>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <h5 class="card-title"><a href="#" style="color: hotpink; text-align: center;">4학년</a></h5>
-                        <p class="card-text">최근 게시글 가져오기</p>
+                        <h5 class="card-title"><a href="./board?g_no=1"
+                            style="color: hotpink; text-align: center;">1학년</a>
+                        </h5>
+                        <% if (top3Titles_g1 && top3Titles_g1.length> 0) { %>
+
+                          <% for (let i=0; i < top3Titles_g1.length; i++) { %>
+                            <p class="card-text" style="height: 15px;">
+                              <%= top3Titles_g1[i].b_title %>
+                            </p>
+                            <% } %>
+
+                              <% } else { %>
+                                <!-- top3Titles_g1의 값이 없을 때의 처리 -->
+                                <p class="card-text">게시글이 없습니다.</p>
+                                <% } %>
+
+                                  <h5 class="card-title"><a href="./board?g_no=2"
+                                      style="color: hotpink; text-align: center;">2학년</a></h5>
+                                  <% if (top3Titles_g2 && top3Titles_g2.length> 0) { %>
+
+                                    <% for (let i=0; i < top3Titles_g2.length; i++) { %>
+                                      <p class="card-text" style="height: 15px;">
+                                        <%= top3Titles_g2[i].b_title %>
+                                      </p>
+                                      <% } %>
+
+                                        <% } else { %>
+                                          <!-- top3Titles_g5가 정의되지 않았을 때의 처리 -->
+                                          <p class="card-text">게시글이 없습니다.</p>
+                                          <% } %>
+
+
+                                            <h5 class="card-title"><a href="./board?g_no=3"
+                                                style="color: hotpink; text-align: center;">3학년</a></h5>
+                                            <% if (top3Titles_g3 && top3Titles_g3.length> 0) { %>
+
+                                              <% for (let i=0; i < top3Titles_g3.length; i++) { %>
+                                                <p class="card-text" style="height: 15px;">
+                                                  <%= top3Titles_g3[i].b_title %>
+                                                </p>
+                                                <% } %>
+
+                                                  <% } else { %>
+
+                                                    <p class="card-text">게시글이 없습니다.</p>
+                                                    <% } %>
+
+                                                      <h5 class="card-title"><a href="./board?g_no=4"
+                                                          style="color: hotpink; text-align: center;">4학년</a></h5>
+                                                      <% if (top3Titles_g4 && top3Titles_g4.length> 0) { %>
+
+                                                        <% for (let i=0; i < top3Titles_g4.length; i++) { %>
+                                                          <p class="card-text" style="height: 15px;">
+                                                            <%= top3Titles_g4[i].b_title %>
+                                                          </p>
+                                                          <% } %>
+
+                                                            <% } else { %>
+                                                              <p class="card-text">게시글이 없습니다.</p>
+                                                              <% } %>
+
                       </div>
                       <!-- 다른 학과 소식 항목 추가 -->
                     </div>
@@ -79,38 +132,66 @@
 
               <!-- 우측 그룹: 게시판 -->
               <div style="width: 30%;">
-                <h5 style="text-align: center;">랩 소개 게시판</h5>
+                <h5 style="text-align: center;"><a href="./board?g_no=5"
+                    style="text-decoration: none; color: inherit;">랩
+                    소개 게시판</a></h5>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">게시판 1</h5>
-                        <p class="card-text" style="height: 38px;">게시판 1에 대한 설명</p>
-                      </div>
+                      <% if (top3Titles_g5 && top3Titles_g5.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g5.length; i++) { %>
+                            <p class="card-text" style="height: 15px;">
+                              <%= top3Titles_g5[i].b_title %>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <!-- top3Titles_g5가 정의되지 않았을 때의 처리 -->
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
                     </div>
                   </div>
                 </div>
                 <br>
-                <h5 style="text-align: center;">졸업 논문 게시판</h5>
+                <h5 style="text-align: center;"><a href="./board?g_no=6"
+                    style="text-decoration: none; color: inherit;">졸업
+                    논문 게시판</a></h5>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">게시판 2</h5>
-                        <p class="card-text" style="height: 38px;">게시판 2에 대한 설명</p>
-                      </div>
+                      <% if (top3Titles_g6 && top3Titles_g6.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g6.length; i++) { %>
+                            <p class="card-text" style="height: 15px;">
+                              <%= top3Titles_g6[i].b_title %>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
                     </div>
                   </div>
                 </div>
                 <br>
-                <h5 style="text-align: center;">과목 소개 게시판</h5>
+                <h5 style="text-align: center;"><a href="./board?g_no=7"
+                    style="text-decoration: none; color: inherit;">과목
+                    소개 게시판</a></h5>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">게시판 3</h5>
-                        <p class="card-text" style="height: 38px;">게시판 3에 대한 설명</p>
-                      </div>
+                      <% if (top3Titles_g7 && top3Titles_g7.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g7.length; i++) { %>
+                            <p class="card-text" style="height: 15px;">
+                              <%= top3Titles_g7[i].b_title %>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
                     </div>
                   </div>
                 </div>
