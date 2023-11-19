@@ -52,11 +52,14 @@
       <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
   - #### 2_3_2. Logical Design
     - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/d3ad4c26-6b9b-4657-a872-e83ac9668433">
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/60b2e4d5-3710-4c25-b01f-9e69c56a72b4">
+
   - #### 2_3_3. Physical Design using SQL Server
       - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
-- To be added.
+- Create Database and Tables
+- Develop sign up, login
+- Develop Board List and Board Write
 
 ## 4. Testing
 - To be added.
@@ -68,17 +71,19 @@
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
 - 2023/10/31: We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
 - 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We plan to implement the frontend based on the UI design document.
+- 2023/11/19: We developed back-end using express. And We designed database schema again. implement progress: 60% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 
 ## Work records for each members
 #### Yeong-Min Ko
 - 2023/10/29: Develop a prototype page with Node.js
 
-|Main|Sign in|Sign up|
+|Main|Login|Sign up|
 |:--:|:--:|:--:|
 |<img width="1440" alt="스크린샷 2023-10-29 오전 1 33 23" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/7ae07c2d-b352-4b02-8ac5-d114919730d4">|<img width="1439" alt="스크린샷 2023-10-29 오전 1 33 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c9e57801-f764-4fd6-8c1a-d858244c1a37">|<img width="1438" alt="스크린샷 2023-10-29 오전 1 35 20" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/e39ffbf0-07d3-4867-83c4-32aab3b5a837">|
 
 - 2023/11/07: Database Design(Extract entities, attributes and relationship) and Draw a ER-Diagram with Hyun-Soo Choi / Make Midterm PPT
 - 2023/11/12: Manage routers between pages.
+- 2023/11/19: Develop Back-End (main, sign up, login)
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
@@ -90,6 +95,7 @@
 |<img width="1437" alt="스크린샷 2023-11-14 오전 8 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9560884e-2916-4c8a-afc6-a271cc762031">|<img width="1439" alt="스크린샷 2023-11-14 오후 3 55 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c214d56c-7bc8-4759-a5e8-bce222ee4d83">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 57 45" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/52ca4d57-8de8-4208-aecc-bc00beeb60db">|
 |<b>Board</b>|<b>Write</b>|<b>Modify</b>|
 |<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/fa151efa-79e6-426f-8d80-72765076fe6b">|
+- 2023/11/19: Develop Back-End (in progress: read board, comment)
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
@@ -112,6 +118,7 @@
 - 2023/11/07: Draw UI design
 - 2023/11/14: Update UI icon & Back-end status in Notion
 - 2023/11/16: Update Back-end Code
+- 2023/11/19: Develop Back-End (in progress: read board, comment)
 
 ---
 #### References
