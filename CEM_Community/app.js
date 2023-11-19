@@ -24,7 +24,7 @@ app.use(session({
 app.use(express.static('public'));
 const config = {
   user: 'sa',
-  password: 'dustkd12#',
+  password: 'password',
   server: 'localhost',
   database: 'CEM_Community',
   options: {

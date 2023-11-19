@@ -20,7 +20,8 @@ router.get('/board', function(req, res, next) {
 
 /* write 페이지 라우팅 */
 router.get('/write', function(req, res, next) {
-  res.render('write'); // write.ejs 템플릿을 렌더링
+  const user = req.session.user;
+  res.render('write', { user }); // write.ejs 템플릿을 렌더링
 });
 
 /* modify 페이지 라우팅 */
