@@ -13,7 +13,7 @@ var app = express();
 app.use(express.static('public'));
 const config = {
   user: 'sa',
-  password: 'dustkd12#',
+  password: 'Threepig3@',
   server: 'localhost',
   database: 'CEM_Community',
   options: {
@@ -47,10 +47,10 @@ app.post('/signup', (req, res) => {
   request.input('id', mssql.NVarChar, id);
   request.input('password', mssql.NVarChar, password);
   request.input('name', mssql.NVarChar, name);
-  request.input('std_no', mssql.NVarChar, std_no);
+  request.input('std_no', mssql.Int, std_no);
   request.input('grade', mssql.NVarChar, grade);
   request.input('nickname', mssql.NVarChar, nickname);
-  request.input('role', mssql.NVarChar, role);
+  request.input('role', mssql.Int, roleId);
 
   request.query(query, (err) => {
       if (err) {
