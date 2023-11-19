@@ -58,7 +58,7 @@
       - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
 - Create Database and Tables
-- Develop sign up,https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4 login
+- Develop sign up, login
 - Develop Board List and Board Write
 
 ## 4. Testing
