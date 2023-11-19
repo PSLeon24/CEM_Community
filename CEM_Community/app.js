@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var cookieParser = require('cookie-parser');
 
 // 세션 설정
 app.use(session({
@@ -126,6 +127,12 @@ app.post('/login', (req, res) => {
       }
     }
   });
+});
+
+// 미들웨어를 추가하여 세션을 템플릿에 전달
+app.use((req, res, next) => {
+  res.locals.user = req.session.user; // 세션에 저장된 사용자 정보를 템플릿 변수에 전달
+  next();
 });
 
 // view engine setup

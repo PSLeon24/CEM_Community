@@ -10,123 +10,124 @@
 
 
 <body>
-  <div id="header"></div>
+  <% if (user) { %>
+    <!-- 세션이 있는 경우 -->
+    <%- include('loginheader.ejs') %>
+      <% } else { %>
+        <!-- 세션이 없는 경우 -->
+        <%- include('header.ejs') %>
+          <% } %>
+            <div id="header"></div>
 
-  <!-- 커뮤니티 메뉴 -->
-  <!-- 큰 그룹 1: 학과 소식과 게시판 -->
-  <div class="container mt-4 d-flex">
+            <!-- 커뮤니티 메뉴 -->
+            <!-- 큰 그룹 1: 학과 소식과 게시판 -->
+            <div class="container mt-4 d-flex">
 
-    <!-- 좌우 여백 5% -->
-    <div style="width: 5%;"></div>
+              <!-- 좌우 여백 5% -->
+              <div style="width: 5%;"></div>
 
-    <!-- 좌측 그룹: 학과 소식 -->
-    <div style="width: 60%;">
+              <!-- 좌측 그룹: 학과 소식 -->
+              <div style="width: 60%;">
 
-      <h5 style="text-align: center;">학과 소식</h5>
-      <div class="list-group list-group-horizontal">
-        <a href="#" class="list-group-item list-group-item-action">조교 모집 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">시설 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">시험 일정 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">참사람</a>
-        <!-- 다른 학과 소식 항목 추가 -->
-      </div>
-      <br>
-      <div class="d-flex" style="align-items: stretch;">
-        <div style="width: 300px; height: 400px; margin-right: 30px;">
-          <h5 style="text-align: center;">학년별 게시판</h5>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a href="#" style="color: pink;">1학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">2학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">3학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">4학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
+                <h5 style="text-align: center;">학과 소식</h5>
+                <div class="list-group list-group-horizontal">
+                  <a href="#" class="list-group-item list-group-item-action">조교 모집 안내</a>
+                  <a href="#" class="list-group-item list-group-item-action">시설 안내</a>
+                  <a href="#" class="list-group-item list-group-item-action">시험 일정 안내</a>
+                  <a href="#" class="list-group-item list-group-item-action">참사람</a>
+                  <!-- 다른 학과 소식 항목 추가 -->
+                </div>
+                <br>
+                <div class="d-flex" style="align-items: stretch;">
+                  <div style="width: 300px; height: 400px; margin-right: 30px;">
+                    <h5 style="text-align: center;">학년별 게시판</h5>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="#" style="color: pink;">1학년</a></h5>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <h5 class="card-title"><a href="#" style="color: pink;">2학년</a></h5>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <h5 class="card-title"><a href="#" style="color: pink;">3학년</a></h5>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <h5 class="card-title"><a href="#" style="color: pink;">4학년</a></h5>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                      </div>
+                      <!-- 다른 학과 소식 항목 추가 -->
+                    </div>
+                  </div>
+
+                  <div style="width: 300px; height: 400px;">
+                    <h5 style="text-align: center;">인기 게시판</h5>
+                    <div class="card">
+                      <div class="card-body" style="height: 328px;">
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                        <p class="card-text">최근 게시글 가져오기</p>
+                      </div>
+                      <!-- 다른 학과 소식 항목 추가 -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 가운데 여백 10% -->
+              <div style="width: 5%;"></div>
+
+              <!-- 우측 그룹: 게시판 -->
+              <div style="width: 30%;">
+                <h5 style="text-align: center;">랩 소개 게시판</h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">게시판 1</h5>
+                        <p class="card-text" style="height: 38px;">게시판 1에 대한 설명</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <h5 style="text-align: center;">졸업 논문 게시판</h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">게시판 2</h5>
+                        <p class="card-text" style="height: 38px;">게시판 2에 대한 설명</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <h5 style="text-align: center;">과목 소개 게시판</h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">게시판 3</h5>
+                        <p class="card-text" style="height: 38px;">게시판 3에 대한 설명</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div style="width: 5%;"></div>
             </div>
-            <!-- 다른 학과 소식 항목 추가 -->
-          </div>
-        </div>
 
-        <div style="width: 300px; height: 400px;">
-          <h5 style="text-align: center;">인기 게시판</h5>
-          <div class="card">
-            <div class="card-body" style="height: 328px;">
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-            </div>
-            <!-- 다른 학과 소식 항목 추가 -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 가운데 여백 10% -->
-    <div style="width: 5%;"></div>
-
-    <!-- 우측 그룹: 게시판 -->
-    <div style="width: 30%;">
-      <h5 style="text-align: center;">랩 소개 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 1</h5>
-              <p class="card-text" style="height: 38px;">게시판 1에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <h5 style="text-align: center;">졸업 논문 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 2</h5>
-              <p class="card-text" style="height: 38px;">게시판 2에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <h5 style="text-align: center;">과목 소개 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 3</h5>
-              <p class="card-text" style="height: 38px;">게시판 3에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-— 좌우 여백 5% —->
-      <div style="width: 5%;"></div>
-  </div>
-
-
-
-
-
-  <!—- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      $(function () {
-        $("#header").load("header.html");
-      });
-    </script>
+            <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script>
+              $(function () {
+                $("#header").load("header.html");
+              });
+            </script>
 </body>
 
 </html>

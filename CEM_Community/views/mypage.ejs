@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+
+    <% if (user) { %>
+        <!-- 세션이 있는 경우 -->
+        <%- include('loginheader.ejs') %>
+            <% } else { %>
+                <!-- 세션이 없는 경우 -->
+                <%- include('header.ejs') %>
+                    <% } %>
+                        <br>
+                        <div class="container">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 style="text-align: center;">내 정보</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>ID:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <%= user.id %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>이름:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <%= user.name %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>학번:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <%= user.std_no %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>학년:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <%= user.grade %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>닉네임:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <%= user.nickname %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <p><strong>역할:</strong></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>
+                                                <% if (user.role===0) { %>
+                                                    학생
+                                                    <% } else { %>
+                                                        관리자
+                                                        <% } %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" style="text-align: center;">
+                                <div class="col-md-12">
+                                    <a href="/" class="btn btn-primary"
+                                        style="background-color: pink; color: black;">돌아가기</a>
+                                </div>
+                            </div>
+                        </div>
+</body>
+
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#loginheader").load("loginheader.html");
+    });
+</script>
+
+</body>
+
+</html>
