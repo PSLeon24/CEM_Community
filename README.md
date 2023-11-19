@@ -3,7 +3,7 @@
 ## Introduction of Our Team
 |Selfie|Name|Position|Grade|Major|
 |:--:|:--:|:--:|:--:|:--:|
-|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA|3|Computer Egineering|
+|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA & Back-End Developer|3|Computer Egineering|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|Back-End Developer & ER-Diagram|3|Computer Egineering|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/b5e13f86-dbd8-4b1a-8395-fad3cd06ed0f">|Han-Gyul Choi|Back-End Developer & UI|3|Computer Egineering|
 
@@ -52,7 +52,7 @@
       <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
   - #### 2_3_2. Logical Design
     - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/5a4ee08e-63c8-4257-a8de-b0d6672a3627">
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/d3ad4c26-6b9b-4657-a872-e83ac9668433">
   - #### 2_3_3. Physical Design using SQL Server
       - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
