@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-// var mssql = require('mssql');
+var mssql = require('mssql');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -11,44 +11,46 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 app.use(express.static('public'));
-// SQL Server 연결 설정
-// const config = {
-//   user: 'sa',
-//   password: 'cemcommunity',
-//   server: 'localhost',
-//   database: 'cem',
-//   options: {
-//       encrypt: true, // SSL을 사용하려면 true로 설정
-//   },
-// };
+const config = {
+  user: 'sa',
+  password: 'password',
+  server: 'localhost',
+  database: 'CEM_Community',
+  options: {
+    encrypt: true,
+    trustServerCertificate: true, // SSL 인증서 검증 무시
+  },
+};
 
 // SQL Server 연결
-// mssql.connect(config, (err) => {
-//   if (err) {
-//       console.error('SQL Server 연결 오류:', err);
-//       return;
-//   }
-//   console.log('SQL Server에 연결되었습니다.');
-// });
+mssql.connect(config, (err) => {
+  if (err) {
+      console.error('SQL Server 연결 오류:', err);
+      return;
+  }
+  console.log('SQL Server에 연결되었습니다.');
+});
 
 // app.use(express.json());
 
 // 가입하기 (회원가입) 라우트 추가
 // app.post('/signup', (req, res) => {
-//   const { newUsername, newPassword, fullName, studentID, nickname } = req.body;
+//   const { id, password, name, std_no, grade, nickname, role } = req.body;
 
 //   const query = `
-//       INSERT INTO Users (Username, Password, FullName, StudentID, Nickname)
-//       VALUES (@newUsername, @newPassword, @fullName, @studentID, @nickname);
+//       INSERT INTO Users (id, password, name, std_no, grade, nickname, role)
+//       VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
 //   `;
 
 //   const request = new mssql.Request();
 
-//   request.input('newUsername', mssql.NVarChar, newUsername);
-//   request.input('newPassword', mssql.NVarChar, newPassword);
-//   request.input('fullName', mssql.NVarChar, fullName);
-//   request.input('studentID', mssql.NVarChar, studentID);
+//   request.input('id', mssql.NVarChar, id);
+//   request.input('password', mssql.NVarChar, password);
+//   request.input('name', mssql.NVarChar, name);
+//   request.input('std_no', mssql.NVarChar, std_no);
+//   request.input('grade', mssql.NVarChar, grade);
 //   request.input('nickname', mssql.NVarChar, nickname);
+//   request.input('role', mssql.NVarChar, role);
 
 //   request.query(query, (err) => {
 //       if (err) {
@@ -63,16 +65,16 @@ app.use(express.static('public'));
 
 // 로그인 요청 처리
 // app.post('/login', (req, res) => {
-//   const { username, password } = req.body;
+//   const { id, password } = req.body;
 
 //   const query = `
 //       SELECT * FROM Users
-//       WHERE Username = @username AND Password = @password;
+//       WHERE Username = @id AND Password = @password;
 //   `;
 
 //   const request = new mssql.Request();
 
-//   request.input('username', mssql.NVarChar, username);
+//   request.input('id', mssql.NVarChar, username);
 //   request.input('password', mssql.NVarChar, password);
 
 //   request.query(query, (err, result) => {
