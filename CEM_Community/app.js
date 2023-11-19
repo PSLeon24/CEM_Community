@@ -13,7 +13,7 @@ var app = express();
 app.use(express.static('public'));
 const config = {
   user: 'sa',
-  password: 'Threepig3@',
+  password: 'password',
   server: 'localhost',
   database: 'CEM_Community',
   options: {
@@ -32,13 +32,19 @@ mssql.connect(config, (err) => {
 });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // 가입하기 (회원가입) 라우트 추가
 app.post('/signup', (req, res) => {
-  const { id, password, name, std_no, grade, nickname, role } = req.body;
-
+  var id = req.body.id || req.query.id;
+  var password = req.body.password || req.query.password;
+  var name = req.body.name || req.query.name;
+  var std_no = req.body.std_no || req.query.std_no;
+  var grade = req.body.grade || req.query.grade;
+  var nickname = req.body.nickname || req.query.nickname;
+  const role = 0;
   const query = `
-      INSERT INTO Users (id, password, name, std_no, grade, nickname, role)
+      INSERT INTO Member (id, password, name, std_no, grade, nickname, role)
       VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
   `;
 
@@ -48,9 +54,9 @@ app.post('/signup', (req, res) => {
   request.input('password', mssql.NVarChar, password);
   request.input('name', mssql.NVarChar, name);
   request.input('std_no', mssql.Int, std_no);
-  request.input('grade', mssql.NVarChar, grade);
+  request.input('grade', mssql.Int, grade);
   request.input('nickname', mssql.NVarChar, nickname);
-  request.input('role', mssql.Int, roleId);
+  request.input('role', mssql.Int, role);
 
   request.query(query, (err) => {
       if (err) {
