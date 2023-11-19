@@ -58,7 +58,7 @@
                                 <!-- top3Titles_g1의 값이 없을 때의 처리 -->
                                 <p class="card-text">게시글이 없습니다.</p>
                                 <% } %>
-
+                                  <hr>
                                   <h5 class="card-title"><a href="./board?g_no=2"
                                       style="color: hotpink; text-align: center;">2학년</a></h5>
                                   <% if (top3Titles_g2 && top3Titles_g2.length> 0) { %>
@@ -74,7 +74,7 @@
                                           <p class="card-text">게시글이 없습니다.</p>
                                           <% } %>
 
-
+                                            <hr>
                                             <h5 class="card-title"><a href="./board?g_no=3"
                                                 style="color: hotpink; text-align: center;">3학년</a></h5>
                                             <% if (top3Titles_g3 && top3Titles_g3.length> 0) { %>
@@ -90,6 +90,7 @@
                                                     <p class="card-text">게시글이 없습니다.</p>
                                                     <% } %>
 
+                                                      <hr>
                                                       <h5 class="card-title"><a href="./board?g_no=4"
                                                           style="color: hotpink; text-align: center;">4학년</a></h5>
                                                       <% if (top3Titles_g4 && top3Titles_g4.length> 0) { %>
@@ -144,6 +145,7 @@
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g5[i].b_title %>
                             </p>
+                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>
@@ -166,6 +168,7 @@
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g6[i].b_title %>
                             </p>
+                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>
@@ -187,6 +190,7 @@
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g7[i].b_title %>
                             </p>
+                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>
