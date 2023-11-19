@@ -49,10 +49,10 @@
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
     - ##### Extract entities, attributes and relationship
-      <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
+      <img width="500" alt="스크린샷 2023-11-19 오후 10 25 53" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/f2a1e82c-fef8-473b-9166-7945caa23250">
   - #### 2_3_2. Logical Design
     - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/60b2e4d5-3710-4c25-b01f-9e69c56a72b4">
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/ce3a01ad-e838-48db-b35f-170255cceede">
 
   - #### 2_3_3. Physical Design using SQL Server
       - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
@@ -88,7 +88,7 @@
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
-- 2023/11/12: Develop front-end
+- 2023/11/12: Develop front-end & Re-Design ER-Diagram
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
