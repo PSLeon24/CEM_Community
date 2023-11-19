@@ -52,9 +52,9 @@
       <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
   - #### 2_3_2. Logical Design
     - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e">
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/5a4ee08e-63c8-4257-a8de-b0d6672a3627">
   - #### 2_3_3. Physical Design using SQL Server
-
+      - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
 - To be added.
 
