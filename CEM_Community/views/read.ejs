@@ -15,6 +15,11 @@
     .modal.bottom-up.show .modal-dialog {
       transform: translate(0, 0);
     }
+
+    .commentbox {
+      width: 90%;
+      /* 현재 너비의 2배로 조정, 필요에 따라 조절 가능 */
+    }
   </style>
 
 </head>
@@ -37,91 +42,132 @@
               </div>
               <div style="width: 90%; margin: 0 5%;">
                 <h3 style="width: 1150px;">
-                  제목ㅁ루언ㅁ렁니마;러아니;멀;미ㅏㅇ너라ㅣㅇ넘라ㅣ이ㅓㄴㅁ러ㅏㅇ널ㅇㅁ너암ㄹ넝라미너;ㄹㅁㄹㅇ;ㅓㅏㅁㄹ어ㅏㅣ;ㅁㄹ어ㅏ;ㅣㅁㄹ아ㅓ;ㅣㅁㄹ아ㅓㅣㅁㅇ러ㅏㅣㅁ러ㅏ아ㅓㄹ이너ㅏㅣ어;미ㅏㅇ</h3>
+                  제목 작성란이다. 제목 적어라</h3>
               </div>
               <hr>
               <div>
                 <br>
               </div>
               <div style="width: 90%; margin: 0 5%;">
-                <h5 style="width: 1150px;">내용ㅓ아ㅣㅁ널이ㅏㄴ머리ㅏ미ㅁ러ㅣㅏㅓ이남렁미러이마러얼이ㅏㄴ머라ㅣㅇㄴ머리ㅏㅇ먼리ㅏ어ㅏㅣㄹ엄니ㅏ렁니ㅏㅁ러이ㅏㄴ멀ㅏㅇㄴ머리만</h5>
+                <h5 style="width: 1150px;">내용적어봐라라아아아ㅏ아아아아아아아아아아아</h5>
               </div>
+              <br>
 
-
-              <div style="position: fixed; bottom: 50px; width:90%; padding: 10px; border-radius: 10px;">
-                <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px;"><img
-                    src="./img/like.png" height="30px" width="30px" />좋아요</button>
-                <button type="button" class="btn" data-toggle="modal" data-target="#comment" href="#"
-                  style="background-color: pink; display: inline-block; width: 150px; height: 40px;"><img
-                    src="./img/comment.png" height="30px" width="30px" /> 댓글</button>
+              <div style="margin: 20% 4%;">
                 <button type="button" class="btn"
-                  style="background-color: pink; display: inline-block; width: 150px; height: 40px;"><img
-                    src="./img/modify.png" height="30px" width="30px" /><a href="./modify" style="color: black;">
-                    수정 </a> </button>
-                <br>
+                  style="background-color: pink; width: 150px; height: 40px; margin-right: 10px;">
+                  <img src="./img/like.png" height="30px" width="30px" />
+                  좋아요
+                </button>
+                <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px;">
+                  <img src="./img/modify.png" height="30px" width="30px" />
+                  <a href="./modify" style="color: black;">수정</a>
+                </button>
               </div>
 
-            </div>
+              <div>
 
-            <div class="modal fade bottom-up" id="comment" tabindex="-1" role="dialog"
-              aria-labelledby="commentModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content"
-                  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                  <div class="modal-header" style="text-align: center;">
-                    <h3 class="modal-title" id="loginModalLabel">
-                      댓글
-                    </h3>
+
+              </div>
+            </div>
+            <br>
+
+            <div style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000;">
+              <div class="container" style="margin: 3% 4%;">
+                <form name="commentInsertForm" method="post" enctype="multipart/form-data">
+                  <div class="comtitle">
+                    <h3>댓글작성</h3>
                   </div>
-                  <br>
-                  <div style="width: 70%;">
-                    <table class="table" style="width: 100%;">
+
+                  <div class="cominput">
+                    <textarea class="commentbox" name="Com_Content" placeholder="댓글을 입력해주세요."></textarea>
+
+                    <div class="com2">
+
+                      <div class="com_btn">
+
+                        <button type="button" name="commentInsertBtn" class="button1">작성하기</button>
+
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div>
+                <div
+                  style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000; overflow-y: auto; max-height: 250px;">
+                  <div class="table-responsive">
+                    <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" style="text-align: center">#학번</th>
-                          <th scope="col" style="text-align: center">내용</th>
-
+                          <th>#</th>
+                          <th>ID</th>
+                          <th>Comment</th>
+                          <th>작성일</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row" style="text-align: center;">1</th>
-                          <td style="text-align: center;">Mark</td>
-
+                          <td>1</td>
+                          <td>user1</td>
+                          <td>첫 번째 댓글입니다.</td>
+                          <td>2022-01-01</td>
                         </tr>
                         <tr>
-                          <th scope="row" style="text-align: center;">2</th>
-                          <td style="text-align: center;">Jacob</td>
-
+                          <td>2</td>
+                          <td>user2</td>
+                          <td>두 번째 댓글입니다.</td>
+                          <td>2022-01-02</td>
                         </tr>
                         <tr>
-                          <th scope="row" style="text-align: center;">3</th>
-                          <td style="text-align: center;">Larry the Bird</td>
+                          <td>3</td>
+                          <td>user3</td>
+                          <td>세 번째 댓글입니다.</td>
+                          <td>2022-01-02</td>
                         </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>user3</td>
+                          <td>세 번째 댓글입니다.</td>
+                          <td>2022-01-02</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>user3</td>
+                          <td>세 번째 댓글입니다.</td>
+                          <td>2022-01-02</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>user3</td>
+                          <td>세 번째 댓글입니다.</td>
+                          <td>2022-01-02</td>
+                        </tr>
+                        <!-- Add more rows for additional comments -->
                       </tbody>
                     </table>
-
-                    <div class="form-group" style="width: 100%;">
-                      <textarea class="form-control" id="content" name="content" rows="5" placeholder="댓글을 입력하세요.."
-                        required style="margin: 0 5%;"></textarea>
-                    </div>
-                  </div>
-                  <div class="modal-body">
-                    <div class="text-center">
-                      <button type="submit" class="btn" style="background-color: pink;">
-                        댓글 작성</button>
-                    </div>
                   </div>
                 </div>
+
+
               </div>
+              <br>
+
+
             </div>
+            <br>
 
 
 
-            <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-            <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <!— 부트스트랩 JS 및 jQuery 스크립트 추가 —>
+              <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
