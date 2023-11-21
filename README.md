@@ -49,10 +49,10 @@
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
     - ##### Extract entities, attributes and relationship
-      <img width="500" alt="스크린샷 2023-11-19 오후 10 25 53" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/f2a1e82c-fef8-473b-9166-7945caa23250">
+      <img width="500" alt="스크린샷 2023-11-21 오전 10 07 29" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/72451589-df53-478b-ab36-425640f21a48">
   - #### 2_3_2. Logical Design
     - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/74a9aea5-d502-41a6-ba8b-265e7220593e">
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/76ae39d0-1a06-4669-a202-a0892a16a8b3">
   - #### 2_3_3. Physical Design using SQL Server
       - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
