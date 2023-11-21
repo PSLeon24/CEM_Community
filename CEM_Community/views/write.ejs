@@ -34,40 +34,52 @@
                                 <div class="form-group" style="width: 90%;">
                                     <label for="category" style="margin: 0 5%;">카테고리</label>
                                     <select class="form-control" id="g_no" name="g_no" required style="margin: 0 5%;">
-                                        <% if (user.grade===1) { %>
-                                            <option name="1" id="1" value="1" <% if (g_no==='1' ) { %>selected<% } %>
-                                                    >1학년 게시판
-                                            </option>
-                                            <% } else if (user.grade===2) { %>
-                                                <option name="2" id="2" value="2" <% if (g_no==='2' ) { %>selected<% }
-                                                        %>>2학년
-                                                        게시판
-                                                </option>
-                                                <% } else if (user.grade===3) { %>
-                                                    <option name="3" id="3" value="3" <% if (g_no==='3' ) { %>selected<%
+                                        <% if (!user) { %>
+                                            <script>
+                                                alert("로그인이 필요합니다!");
+                                                window.location.href = "./";
+                                            </script>
+                                            <% } else { %>
+                                                <% if (user.grade===1) { %>
+                                                    <option name="1" id="1" value="1" <% if (g_no==='1' ) { %>selected<%
                                                             } %>
-                                                            >3학년
-                                                            게시판</option>
-                                                    <% } else { %>
-                                                        <option name="4" id="4" value="4" <% if (g_no==='4' ) { %>
-                                                            selected<% } %>
-                                                                >4학년 게시판</option>
-                                                        <% } %>
-                                                            <option name="5" id="5" value="5" <% if (g_no==='5' ) { %>
-                                                                selected
-                                                                <% } %>>랩
-                                                                    소개 게시판
-                                                            </option>
-                                                            <option name="6" id="6" value="6" <% if (g_no==='6' ) { %>
-                                                                selected
-                                                                <% } %>>졸업
-                                                                    논문 게시판
-                                                            </option>
-                                                            <option name="7" id="7" value="7" <% if (g_no==='7' ) { %>
-                                                                selected
-                                                                <% } %>>과목
-                                                                    소개 게시판
-                                                            </option>
+                                                            >1학년 게시판
+                                                    </option>
+                                                    <% } else if (user.grade===2) { %>
+                                                        <option name="2" id="2" value="2" <% if (g_no==='2' ) { %>
+                                                            selected<% } %>>2학년
+                                                                게시판
+                                                        </option>
+                                                        <% } else if (user.grade===3) { %>
+                                                            <option name="3" id="3" value="3" <% if (g_no==='3' ) { %>
+                                                                selected<% } %>
+                                                                    >3학년
+                                                                    게시판</option>
+                                                            <% } else { %>
+                                                                <option name="4" id="4" value="4" <% if (g_no==='4' ) {
+                                                                    %>
+                                                                    selected<% } %>
+                                                                        >4학년 게시판</option>
+                                                                <% } %>
+                                                                    <option name="5" id="5" value="5" <% if (g_no==='5'
+                                                                        ) { %>
+                                                                        selected
+                                                                        <% } %>>랩
+                                                                            소개 게시판
+                                                                    </option>
+                                                                    <option name="6" id="6" value="6" <% if (g_no==='6'
+                                                                        ) { %>
+                                                                        selected
+                                                                        <% } %>>졸업
+                                                                            논문 게시판
+                                                                    </option>
+                                                                    <option name="7" id="7" value="7" <% if (g_no==='7'
+                                                                        ) { %>
+                                                                        selected
+                                                                        <% } %>>과목
+                                                                            소개 게시판
+                                                                    </option>
+                                                                    <% } %>
                                     </select>
                                 </div>
 

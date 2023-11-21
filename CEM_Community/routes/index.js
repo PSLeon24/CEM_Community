@@ -7,7 +7,7 @@ router.get(['/', '/main'], async function(req, res, next) {
   try {
     const request = new mssql.Request();
 
-    // Query to get all group names
+    // 그룹 번호와 그룹 이름 추출
     const query = `
       SELECT g_no, g_name
       FROM Board_Group;
@@ -15,43 +15,38 @@ router.get(['/', '/main'], async function(req, res, next) {
 
     const result = await request.query(query);
 
-    // Pass the imported data to the template
     const groupNames = result.recordset;
 
+    // 게시판 그룹별 최신 게시물 3개씩 가져오기
+    async function getPostsByGroup(g_no) {
+      const postQuery = `SELECT TOP 3 b_title, b_date FROM Board WHERE g_no = ${g_no} ORDER BY b_no DESC;`;
+      const postResult = await request.query(postQuery);
+      return postResult.recordset.map(post => ({
+        b_title: post.b_title,
+        b_date: post.b_date.toLocaleDateString('ko-KR'),
+      }));
+    }
+
     const g_no_1 = 1;
-    const postQuery_g1 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_1} ORDER BY b_no DESC;`;
-    const postResult_g1 = await request.query(postQuery_g1);
-    const top3Titles_g1 = postResult_g1.recordset;
+    const top3Titles_g1 = await getPostsByGroup(g_no_1);
 
     const g_no_2 = 2;
-    const postQuery_g2 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_2} ORDER BY b_no DESC;`;
-    const postResult_g2 = await request.query(postQuery_g2);
-    const top3Titles_g2 = postResult_g2.recordset;
+    const top3Titles_g2 = await getPostsByGroup(g_no_2);
 
     const g_no_3 = 3;
-    const postQuery_g3 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_3} ORDER BY b_no DESC;`;
-    const postResult_g3 = await request.query(postQuery_g3);
-    const top3Titles_g3 = postResult_g3.recordset;
+    const top3Titles_g3 = await getPostsByGroup(g_no_3);
 
     const g_no_4 = 4;
-    const postQuery_g4 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_4} ORDER BY b_no DESC;`;
-    const postResult_g4 = await request.query(postQuery_g4);
-    const top3Titles_g4 = postResult_g4.recordset;
+    const top3Titles_g4 = await getPostsByGroup(g_no_4);
 
     const g_no_5 = 5;
-    const postQuery_g5 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_5} ORDER BY b_no DESC;`;
-    const postResult_g5 = await request.query(postQuery_g5);
-    const top3Titles_g5 = postResult_g5.recordset;
-    
+    const top3Titles_g5 = await getPostsByGroup(g_no_5);
+
     const g_no_6 = 6;
-    const postQuery_g6 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_6} ORDER BY b_no DESC;`;
-    const postResult_g6 = await request.query(postQuery_g6);
-    const top3Titles_g6 = postResult_g6.recordset;
+    const top3Titles_g6 = await getPostsByGroup(g_no_6);
 
     const g_no_7 = 7;
-    const postQuery_g7 = `SELECT TOP 3 b_title FROM Board WHERE g_no = ${g_no_7} ORDER BY b_no DESC;`;
-    const postResult_g7 = await request.query(postQuery_g7);
-    const top3Titles_g7 = postResult_g7.recordset;
+    const top3Titles_g7 = await getPostsByGroup(g_no_7);
 
     res.render('index', {
       title: 'Express',

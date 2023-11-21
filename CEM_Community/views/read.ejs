@@ -17,8 +17,47 @@
     }
 
     .commentbox {
-      width: 90%;
+      width: 70%;
       /* 현재 너비의 2배로 조정, 필요에 따라 조절 가능 */
+    }
+
+    .pink_btn {
+      background-color: pink;
+    }
+
+    .table-container {
+      margin: 0 5%;
+      background-color: white;
+      border-radius: 10px;
+      margin-bottom: 2%;
+      overflow: hidden;
+    }
+
+    .table-responsive {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
     }
   </style>
 
@@ -35,44 +74,44 @@
 
             <br>
             <br>
-            <div
-              style="margin: 0 5%; background-color: white; height: 500px; border-radius: 10px; border: 1px solid #000;">
-              <div>
+            <div class="card" style="width: 90%; margin: 0 4%;">
+              <div class="card-body">
+                <h3 style="width: 90%; margin: 0 4%;">
+                  아니 오짱 수업 실화냐?? 시청각 자료만 띡 틀어주고 소감문 작성하라는거 에바지</h3>
+
+                <div style="margin: 0 4%;">
+                  <ul style="list-style: none; padding: 0; margin-top: 1%">
+                    <li style="display: inline-block; margin-right: 10px;" id="id">멋쟁이 돼지 </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="b_date">2023.11.20 </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="cnt_likes">좋아요: 11</li>
+                    <li style="display: inline-block;" id="cnt_comment">댓글: 5</li>
+                  </ul>
+
+                </div>
                 <br>
-              </div>
-              <div style="width: 90%; margin: 0 5%;">
-                <h3 style="width: 1150px;">
-                  제목 작성란이다. 제목 적어라</h3>
+                <p class="card-text" style="margin: 0 4%;">내용적어봐라라아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                </p>
+                <br>
+                <div style="margin: 0 4%;">
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
+                    <img src="./img/like.png" height="30px" width="30px" />좋아요 <b>11</b>
+                    <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
+                      <img src="./img/modify.png" height="30px" width="30px" />수정</a>
+                    <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
+                      <img src="./img/del.png" height="30px" width="30px" />&nbsp;삭제</a>
+                </div>
               </div>
               <hr>
-              <div>
-                <br>
-              </div>
-              <div style="width: 90%; margin: 0 5%;">
-                <h5 style="width: 1150px;">내용적어봐라라아아아ㅏ아아아아아아아아아아아</h5>
-              </div>
-              <br>
-
-              <div style="margin: 20% 4%;">
-                <button type="button" class="btn"
-                  style="background-color: pink; width: 150px; height: 40px; margin-right: 10px;">
-                  <img src="./img/like.png" height="30px" width="30px" />
-                  좋아요
-                </button>
-                <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px;">
-                  <img src="./img/modify.png" height="30px" width="30px" />
-                  <a href="./modify" style="color: black;">수정</a>
-                </button>
-              </div>
-
-              <div>
-
-
-              </div>
-            </div>
-            <br>
-
-            <div style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000;">
               <div class="container" style="margin: 3% 4%;">
                 <form name="commentInsertForm" method="post" enctype="multipart/form-data">
                   <div class="comtitle">
@@ -80,82 +119,80 @@
                   </div>
 
                   <div class="cominput">
-                    <textarea class="commentbox" name="Com_Content" placeholder="댓글을 입력해주세요."></textarea>
-
-                    <div class="com2">
-
-                      <div class="com_btn">
-
-                        <button type="button" name="commentInsertBtn" class="button1">작성하기</button>
-
-
+                    <div class="input-group">
+                      <input type="text" class="form-control commentbox" name="Com_Content" placeholder="댓글을 입력해주세요."
+                        style="max-width: 88%;"></ㅑ>
+                      <div class="input-group-append">
+                        <button type="button" class="btn pink_btn" name="commentInsertBtn"
+                          style="max-width: 100%;">작성</button>
                       </div>
-
-
                     </div>
                   </div>
                 </form>
               </div>
 
-              <div>
-                <div
-                  style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000; overflow-y: auto; max-height: 250px;">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>ID</th>
-                          <th>Comment</th>
-                          <th>작성일</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>user1</td>
-                          <td>첫 번째 댓글입니다.</td>
-                          <td>2022-01-01</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>user2</td>
-                          <td>두 번째 댓글입니다.</td>
-                          <td>2022-01-02</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>user3</td>
-                          <td>세 번째 댓글입니다.</td>
-                          <td>2022-01-02</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>user3</td>
-                          <td>세 번째 댓글입니다.</td>
-                          <td>2022-01-02</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>user3</td>
-                          <td>세 번째 댓글입니다.</td>
-                          <td>2022-01-02</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>user3</td>
-                          <td>세 번째 댓글입니다.</td>
-                          <td>2022-01-02</td>
-                        </tr>
-                        <!-- Add more rows for additional comments -->
-                      </tbody>
-                    </table>
-                  </div>
+
+
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Comment</th>
+                        <th>작성일</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>user1</td>
+                        <td>첫 번째 댓글입니다.</td>
+                        <td>2022-01-01</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>user2</td>
+                        <td>두 번째 댓글입니다.</td>
+                        <td>2022-01-02</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>user3</td>
+                        <td>세 번째 댓글입니다.</td>
+                        <td>2022-01-02</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>user3</td>
+                        <td>세 번째 댓글입니다.</td>
+                        <td>2022-01-02</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>user3</td>
+                        <td>세 번째 댓글입니다.</td>
+                        <td>2022-01-02</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>user3</td>
+                        <td>세 번째 댓글입니다.</td>
+                        <td>2022-01-02</td>
+                      </tr>
+                      <!-- Add more rows for additional comments -->
+                    </tbody>
+                  </table>
                 </div>
-
-
               </div>
-              <br>
+
+
+            </div>
+
+
+
+            <br>
 
 
             </div>
