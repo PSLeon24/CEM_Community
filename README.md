@@ -30,7 +30,7 @@
   ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram & UI/UX
   ~ 11/07     O      System Design(Architecture Design and Detail Design) & Develop Front-end
   ~ 11/14     O      Database Design(by 2_3_2. E-R Diagram) and Prepare the mid-term presentation
-  ~ 11/21     -      Mid-term presentation / Physical Design using SQL Server
+  ~ 11/23     O      Mid-term presentation / Physical Design using SQL Server
   ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/12     -      Final check and Prepare Final-term presentation
@@ -83,11 +83,13 @@
 - 2023/11/07: Database Design(Extract entities, attributes and relationship) and Draw a ER-Diagram with Hyun-Soo Choi / Make Midterm PPT
 - 2023/11/12: Manage routers between pages.
 - 2023/11/19: Develop Back-End (main, sign up, login)
+- 2023/11/23: Develop Back-End (board list, board write, add encryption at sign up)
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
 - 2023/11/12: Develop front-end & Re-Design ER-Diagram
+- 2023/11/21: Develop front-end(comment in a read page)
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
