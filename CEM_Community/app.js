@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+const crypto = require('crypto');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -50,7 +51,7 @@ app.post('/signup', (req, res) => {
   const { id, password, name, std_no, grade, nickname } = req.body;
   const role = 0;
 
-  // Check if the ID already exists
+  // 아이디 중복 검사
   const checkDuplicateQuery = `
     SELECT COUNT(*) AS count FROM Member WHERE id = @id;
   `;
@@ -69,28 +70,43 @@ app.post('/signup', (req, res) => {
         res.send('<script>alert("id가 이미 존재합니다. 새로운 id를 입력하세요!"); window.location.href="/";</script>');
       } else {
         // No duplicate ID, proceed with sign up
-        const signUpQuery = `
-          INSERT INTO Member (id, password, name, std_no, grade, nickname, role)
-          VALUES (@id, @password, @name, @std_no, @grade, @nickname, @role);
-        `;
+        // Generate random salt
+        const salt = crypto.randomBytes(16).toString('hex');
 
-        const signUpRequest = new mssql.Request();
-
-        signUpRequest.input('id', mssql.NVarChar, id);
-        signUpRequest.input('password', mssql.NVarChar, password);
-        signUpRequest.input('name', mssql.NVarChar, name);
-        signUpRequest.input('std_no', mssql.Int, std_no);
-        signUpRequest.input('grade', mssql.Int, grade);
-        signUpRequest.input('nickname', mssql.NVarChar, nickname);
-        signUpRequest.input('role', mssql.Int, role);
-
-        signUpRequest.query(signUpQuery, (signUpErr) => {
-          if (signUpErr) {
-            console.error('Sign up error:', signUpErr);
-            res.send('<script>alert("회원가입에 오류가 발생했습니다!"); window.location.href="/";</script>');
+        // Hash the password using pbkdf2
+        crypto.pbkdf2(password, salt, 10000, 64, 'sha512', (hashErr, key) => {
+          if (hashErr) {
+            console.error('비밀번호 해싱 오류:', hashErr);
+            res.send('<script>alert("회원가입 중 오류가 발생했습니다."); window.location.href="/";</script>');
           } else {
-            console.log(id, '님 회원가입 성공');
-            res.send('<script>alert("회원가입을 성공적으로 완료했습니다!"); window.location.href="/";</script>');
+            // Store hashed password and salt in database
+            const hashedPassword = key.toString('hex');
+            
+            const signUpQuery = `
+              INSERT INTO Member (id, password, salt, name, std_no, grade, nickname, role)
+              VALUES (@id, @password, @salt, @name, @std_no, @grade, @nickname, @role);
+            `;
+
+            const signUpRequest = new mssql.Request();
+
+            signUpRequest.input('id', mssql.NVarChar, id);
+            signUpRequest.input('password', mssql.NVarChar, hashedPassword);
+            signUpRequest.input('salt', mssql.NVarChar, salt);
+            signUpRequest.input('name', mssql.NVarChar, name);
+            signUpRequest.input('std_no', mssql.Int, std_no);
+            signUpRequest.input('grade', mssql.Int, grade);
+            signUpRequest.input('nickname', mssql.NVarChar, nickname);
+            signUpRequest.input('role', mssql.Int, role);
+
+            signUpRequest.query(signUpQuery, (signUpErr) => {
+              if (signUpErr) {
+                console.error('Sign up error:', signUpErr);
+                res.send('<script>alert("There was an error signing up!"); window.location.href="/";</script>');
+              } else {
+                console.log(id, '님 회원가입 성공');
+                res.send('<script>alert("회원가입을 성공적으로 완료했습니다!"); window.location.href="/";</script>');
+              }
+            });
           }
         });
       }
@@ -98,32 +114,48 @@ app.post('/signup', (req, res) => {
   });
 });
 
-// 로그인 요청 처리
 app.post('/login', (req, res) => {
   const { id, password } = req.body;
 
   const query = `
-      SELECT * FROM Member
-      WHERE id = @id AND password = @password;
+    SELECT * FROM Member
+    WHERE id = @id;
   `;
 
   const request = new mssql.Request();
 
   request.input('id', mssql.NVarChar, id);
-  request.input('password', mssql.NVarChar, password);
 
   request.query(query, (err, result) => {
     if (err) {
-      console.error('로그인 오류:', err);
-      res.status(500).send('로그인 중 오류가 발생했습니다.');
+      console.error('로그인 에러:', err);
+      res.status(500).send('<script>alert("로그인 중 오류가 발생했습니다."); window.location.href="/";</script>');
     } else {
       if (result.recordset.length > 0) {
-        // 로그인 성공 & 세션에 사용자 정보 저장
-        req.session.user = result.recordset[0];
-        res.send('<script>alert("로그인 성공!"); window.location.href="/";</script>');
+        // User found, verify password
+        const storedPassword = result.recordset[0].password;
+        const storedSalt = result.recordset[0].salt;
+
+        crypto.pbkdf2(password, storedSalt, 10000, 64, 'sha512', (hashErr, key) => {
+          if (hashErr) {
+            console.error('Password hashing error:', hashErr);
+            res.status(500).send('<script>alert("로그인 중 오류가 발생했습니다."); window.location.href="/";</script>');
+          } else {
+            const hashedPassword = key.toString('hex');
+
+            if (hashedPassword === storedPassword) {
+              // 로그인 성공 & 세션에 사용자 정보 저장
+              req.session.user = result.recordset[0];
+              res.send('<script>alert("로그인 성공!"); window.location.href="/";</script>');
+            } else {
+              // 로그인 실패
+              res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다."); window.location.href="/";</script>');
+            }
+          }
+        });
       } else {
-        // 로그인 실패
-        res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다."); window.location.href="/";</script>');
+        // 사용자가 없을 때 
+        res.send('<script>alert("일치하는 ID가 없습니다."); window.location.href="/";</script>');
       }
     }
   });
