@@ -84,6 +84,7 @@
 - 2023/11/12: Manage routers between pages.
 - 2023/11/19: Develop Back-End (main, sign up, login)
 - 2023/11/23: Develop Back-End (board list, board write, add encryption at sign up)
+  - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
