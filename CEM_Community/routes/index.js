@@ -69,36 +69,42 @@ router.get(['/', '/main'], async function(req, res, next) {
 /* board 페이지 라우팅 */
 router.get('/board', async function(req, res, next) {
   const g_no = req.query.g_no;
+  const page = req.query.page || 1; // 기본값은 1페이지
+
+  const postsPerPage = 10; // 한 페이지에 보여질 게시물 수
+  const startIndex = (page - 1) * postsPerPage;
+
   const query = `
-  SELECT g_name FROM Board_Group WHERE g_no = ${g_no};
-`;
+    SELECT g_name FROM Board_Group WHERE g_no = ${g_no};
+  `;
 
   const request = new mssql.Request();
   request.query(query, function(error, result) {
     if (error) {
-      console.error('게시판 데이터 가져오기 오류:', error);
-      return res.status(500).send('내부 서버 오류');
+      console.error('Error importing bulletin board data:', error);
+      return res.status(500).send('Internal Server Error');
     }
-    //console.log(result.recordset);
+
     const g_name = result.recordset[0] ? result.recordset[0].g_name : null;
     if (!g_name) {
-      console.error(`g_no ${g_no}에 해당하는 g_name이 없습니다.`);
+      console.error(`g_no에 해당하는 g_name이 없습니다: ${g_no}.`);
       return res.status(404).send('게시판을 찾을 수 없습니다.');
     }
-    // 게시물 데이터 가져오는 부분 추가
+
     const postQuery = `
-      SELECT * FROM Board WHERE g_no = ${g_no};
+      SELECT * FROM Board WHERE g_no = ${g_no}
+      ORDER BY b_date DESC
+      OFFSET ${startIndex} ROWS FETCH NEXT ${postsPerPage} ROWS ONLY;
     `;
 
     request.query(postQuery, function(postError, postResult) {
       if (postError) {
-        console.error('게시물 데이터 가져오기 오류:', postError);
-        return res.status(500).send('게시물 데이터를 가져오는 중 오류가 발생했습니다.');
+        console.error('포스트 데이터를 가져오는 중 오류 발생:', postError);
+        return res.status(500).send('포스트 데이터를 가져오는 중 오류가 발생했습니다.');
       }
 
-      // 가져온 게시물 데이터를 posts 변수에 저장
       const posts = postResult.recordset.map(post => {
-        // 날짜를 원하는 형식으로 변환
+        // 날짜 형식을 원하는 형식으로 변환
         const formattedDate = post.b_date.toLocaleDateString('ko-KR');
         return { ...post, b_date: formattedDate };
       });

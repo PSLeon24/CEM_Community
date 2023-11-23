@@ -168,12 +168,28 @@
 
 
                                 <script>
+                                    // 페이지 로드 시 실행되는 함수
+                                    window.onload = function () {
+                                        // g_no 값을 가져오기
+                                        var g_no = document.getElementById('g_no').value;
+
+                                        // 현재 URL에서 g_no 값을 가져오기
+                                        var currentURL = window.location.href;
+                                        var currentGNo = currentURL.match(/[?&]g_no=([^&]+)/);
+
+                                        // 만약 g_no 값이 존재하고 현재 URL의 g_no와 다르다면 리다이렉션
+                                        if (g_no && currentGNo && g_no !== currentGNo[1]) {
+                                            redirectToBoard(g_no);
+                                        }
+                                    };
+
+                                    // 게시판으로 리다이렉트하는 함수
                                     function redirectToBoard(selectedValue) {
                                         window.location.href = `./board?g_no=${selectedValue}`;
                                     }
+
                                     function writePost() {
-                                        // 현재 선택된 g_no 값을 가져오거나, 필요에 따라 직접 값을 설정할 수 있습니다.
-                                        var g_no = document.getElementById('g_no').value; // 예시로 g_no 값을 select 요소에서 가져오는 것입니다.
+                                        var g_no = document.getElementById('g_no').value; // g_no 값을 select 요소에서 가져오는 것
 
                                         // 페이지 이동
                                         window.location.href = `/write?g_no=${g_no}`;
