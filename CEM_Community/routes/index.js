@@ -22,9 +22,11 @@ router.get(['/', '/main'], async function(req, res, next) {
 
     // 게시판 그룹별 최신 게시물 3개씩 가져오기
     async function getPostsByGroup(g_no) {
-      const postQuery = `SELECT TOP 3 b_title, b_date FROM Board WHERE g_no = ${g_no} ORDER BY b_no DESC;`;
+      const postQuery = `SELECT TOP 3 g_no, b_no, b_title, b_date FROM Board WHERE g_no = ${g_no} ORDER BY b_no DESC;`;
       const postResult = await request.query(postQuery);
       return postResult.recordset.map(post => ({
+        g_no: post.g_no,
+        b_no: post.b_no,
         b_title: post.b_title,
         b_date: post.b_date.toLocaleDateString('ko-KR'),
       }));
@@ -51,6 +53,19 @@ router.get(['/', '/main'], async function(req, res, next) {
     const g_no_7 = 7;
     const top3Titles_g7 = await getPostsByGroup(g_no_7);
 
+    // likes 수가 많은 순으로 조회하는 쿼리
+    const popularPostsQuery = `
+    SELECT *
+    FROM Board
+    ORDER BY likes DESC;
+    `;
+    const popularPostsResult = await request.query(popularPostsQuery);
+    const popularPosts = popularPostsResult.recordset.map(post => ({
+      ...post,
+      b_date: new Date(post.b_date).toLocaleDateString('ko-KR'),
+    }));
+    
+
     res.render('index', {
       title: 'Express',
       groupNames: groupNames,
@@ -60,7 +75,8 @@ router.get(['/', '/main'], async function(req, res, next) {
       top3Titles_g4: top3Titles_g4,
       top3Titles_g5: top3Titles_g5,
       top3Titles_g6: top3Titles_g6,
-      top3Titles_g7: top3Titles_g7
+      top3Titles_g7: top3Titles_g7,
+      popularPosts: popularPosts,  // popularPosts 정보를 템플릿에 전달
     });
 
     } catch (error) {
@@ -102,8 +118,8 @@ router.get('/board', async function(req, res, next) {
 
     request.query(postQuery, function(postError, postResult) {
       if (postError) {
-        console.error('포스트 데이터를 가져오는 중 오류 발생:', postError);
-        return res.status(500).send('포스트 데이터를 가져오는 중 오류가 발생했습니다.');
+        console.error('게시물 데이터를 가져오는 중 오류 발생:', postError);
+        return res.status(500).send('게시물 데이터를 가져오는 중 오류가 발생했습니다.');
       }
 
       const posts = postResult.recordset.map(post => {
@@ -277,8 +293,9 @@ router.get('/read', async function(req, res, next) {
     const commentsQuery = `
       SELECT C.c_no, M.nickname, C.c_content, C.c_date
       FROM Board B, Comment C, Member M
-      WHERE B.b_no = C.b_no AND B.g_no = C.g_no AND B.id = M.id
-        AND B.g_no = ${g_no} AND B.b_no = ${b_no}
+      WHERE B.b_no = C.b_no
+        AND B.g_no = C.g_no
+        AND B.id = M.id
       ORDER BY b_date DESC;
     `;
     const commentsResult = await request.query(commentsQuery);

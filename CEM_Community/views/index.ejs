@@ -51,7 +51,11 @@
                           <% for (let i=0; i < top3Titles_g1.length; i++) { %>
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g1[i].b_date %>
-                                <%= top3Titles_g1[i].b_title %>
+                                <a href="./read?g_no=<%= top3Titles_g1[i].g_no %>&b_no=<%= top3Titles_g1[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <%= top3Titles_g1[i].b_title %>
+                                </a>
                             </p>
                             <% } %>
 
@@ -67,7 +71,12 @@
                                     <% for (let i=0; i < top3Titles_g2.length; i++) { %>
                                       <p class="card-text" style="height: 15px;">
                                         <%= top3Titles_g2[i].b_date %>:
-                                          <%= top3Titles_g2[i].b_title %>
+                                          <a href="./read?g_no=<%= top3Titles_g2[i].g_no %>&b_no=<%= top3Titles_g2[i].b_no %>"
+                                            style="color: black; text-decoration: none; transition: color 0.3s;"
+                                            onmouseover="this.style.color='deeppink'"
+                                            onmouseout="this.style.color='black'">
+                                            <%= top3Titles_g2[i].b_title %>
+                                          </a>
                                       </p>
                                       <% } %>
 
@@ -84,7 +93,12 @@
                                               <% for (let i=0; i < top3Titles_g3.length; i++) { %>
                                                 <p class="card-text" style="height: 15px;">
                                                   <%= top3Titles_g3[i].b_date %>
-                                                    <%= top3Titles_g3[i].b_title %>
+                                                    <a href="./read?g_no=<%= top3Titles_g3[i].g_no %>&b_no=<%= top3Titles_g3[i].b_no %>"
+                                                      style="color: black; text-decoration: none; transition: color 0.3s;"
+                                                      onmouseover="this.style.color='deeppink'"
+                                                      onmouseout="this.style.color='black'">
+                                                      <%= top3Titles_g3[i].b_title %>
+                                                    </a>
                                                 </p>
                                                 <% } %>
 
@@ -101,7 +115,12 @@
                                                         <% for (let i=0; i < top3Titles_g4.length; i++) { %>
                                                           <p class="card-text" style="height: 15px;">
                                                             <%= top3Titles_g4[i].b_date %>
-                                                              <%= top3Titles_g4[i].b_title %>
+                                                              <a href="./read?g_no=<%= top3Titles_g4[i].g_no %>&b_no=<%= top3Titles_g4[i].b_no %>"
+                                                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                                                onmouseover="this.style.color='deeppink'"
+                                                                onmouseout="this.style.color='black'">
+                                                                <%= top3Titles_g4[i].b_title %>
+                                                              </a>
                                                           </p>
                                                           <% } %>
 
@@ -117,16 +136,27 @@
                   <div style="width: 300px; height: 400px;">
                     <h5 style="text-align: center;">인기 게시판</h5>
                     <div class="card">
-                      <div class="card-body" style="height: 328px;">
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
-                        <p class="card-text">최근 게시글 가져오기</p>
+                      <div class="card-body" style="height: 420px;">
+                        <% if (popularPosts && popularPosts.length> 0) { %>
+                          <% for (let i=0; i < 10; i++) { %>
+                            <p class="card-text">
+                              <%= popularPosts[i].b_date %>
+                                <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <%= popularPosts[i].b_title %>
+
+                                    👍<span style="color: red;">
+                                      <%= popularPosts[i].likes %>
+                                    </span>
+
+                                </a>
+                            </p>
+                            <% } %>
+                              <% } else { %>
+                                <p class="card-text">게시글이 없습니다.</p>
+                                <% } %>
                       </div>
-                      <!-- 다른 학과 소식 항목 추가 -->
                     </div>
                   </div>
                 </div>
@@ -148,7 +178,11 @@
                           <% for (let i=0; i < top3Titles_g5.length; i++) { %>
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g5[i].b_date %>
-                                <%= top3Titles_g5[i].b_title %>
+                                <a href="./read?g_no=<%= top3Titles_g5[i].g_no %>&b_no=<%= top3Titles_g5[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color=' deeppink'" onmouseout="this.style.color='black'">
+                                  <%= top3Titles_g5[i].b_title %>
+                                </a>
                             </p>
                             <hr>
                             <% } %>
@@ -172,7 +206,11 @@
                           <% for (let i=0; i < top3Titles_g6.length; i++) { %>
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g6[i].b_date %>
-                                <%= top3Titles_g6[i].b_title %>
+                                <a href="./read?g_no=<%= top3Titles_g6[i].g_no %>&b_no=<%= top3Titles_g6[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <%= top3Titles_g6[i].b_title %>
+                                </a>
                             </p>
                             <hr>
                             <% } %>
@@ -195,7 +233,11 @@
                           <% for (let i=0; i < top3Titles_g7.length; i++) { %>
                             <p class="card-text" style="height: 15px;">
                               <%= top3Titles_g7[i].b_date %>
-                                <%= top3Titles_g7[i].b_title %>
+                                <a href="./read?g_no=<%= top3Titles_g7[i].g_no %>&b_no=<%= top3Titles_g7[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <%= top3Titles_g7[i].b_title %>
+                                </a>
                             </p>
                             <hr>
                             <% } %>

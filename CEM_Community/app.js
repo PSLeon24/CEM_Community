@@ -53,9 +53,8 @@ app.post('/signup', (req, res) => {
 
   // 아이디 중복 검사
   const checkDuplicateQuery = `
-    SELECT COUNT(*) AS count FROM Member WHERE id = @id;
+    SELECT COUNT(*) AS count FROM Member WHERE @id IN (SELECT id FROM Member);
   `;
-
   const checkDuplicateRequest = new mssql.Request();
   checkDuplicateRequest.input('id', mssql.NVarChar, id);
 
@@ -69,8 +68,8 @@ app.post('/signup', (req, res) => {
       if (isDuplicate) {
         res.send('<script>alert("id가 이미 존재합니다. 새로운 id를 입력하세요!"); window.location.href="/";</script>');
       } else {
-        // No duplicate ID, proceed with sign up
-        // Generate random salt
+        // 중복되지 않았을 때
+        // salt 생성
         const salt = crypto.randomBytes(16).toString('hex');
 
         // Hash the password using pbkdf2
@@ -100,8 +99,8 @@ app.post('/signup', (req, res) => {
 
             signUpRequest.query(signUpQuery, (signUpErr) => {
               if (signUpErr) {
-                console.error('Sign up error:', signUpErr);
-                res.send('<script>alert("There was an error signing up!"); window.location.href="/";</script>');
+                console.error('회원가입 오류:', signUpErr);
+                res.send('<script>alert("회원가입 중 오류가 발생했습니다!"); window.location.href="/";</script>');
               } else {
                 console.log(id, '님 회원가입 성공');
                 res.send('<script>alert("회원가입을 성공적으로 완료했습니다!"); window.location.href="/";</script>');
