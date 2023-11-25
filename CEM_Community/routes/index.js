@@ -199,6 +199,60 @@ router.post('/submit_post', async (req, res) => {
   }
 });
 
+//submit_modify 라우터
+router.post('/submit_modify', async (req, res) => {
+  const { b_title, b_content } = req.body; // 폼에서 전송된 데이터 가져오기
+  const id = req.session.user ? req.session.user.id : null;
+  const g_no = req.body.g_no || req.query.g_no;
+  const b_no = req.body.b_no || req.query.b_no;
+  const selectIDQuery = `
+      SELECT id FROM Board
+      WHERE g_no = @g_no AND b_no = @b_no
+    `;
+  const request = new mssql.Request();
+  request.input('g_no', mssql.Int, g_no);
+  request.input('b_no', mssql.Int, b_no);
+
+  // 게시물의 작성자 ID 조회
+  const result = await request.query(selectIDQuery);
+  const postAuthorId = result.recordset[0].id;
+
+  console.log(id, postAuthorId);
+
+  if (id !== postAuthorId) {
+    return res.send('<script>alert("작성자가 동일하지 않습니다!"); window.location.href=document.referrer;</script>');
+  }
+
+  try {
+
+    // SQL 쿼리를 사용하여 Board 테이블에 게시물 수정
+    const updateQuery = `
+      UPDATE Board SET b_title = @b_title, b_content = @b_content
+      WHERE g_no = @g_no AND b_no = @b_no
+    `;
+
+    const request = new mssql.Request();
+    
+    request.input('b_title', mssql.NVarChar, b_title);
+    request.input('b_content', mssql.Text, b_content);
+    request.input('g_no', mssql.Int, g_no);
+    request.input('b_no', mssql.Int, b_no);
+
+    request.query(updateQuery, (err) => {
+      if (err) {
+        console.error('게시물 수정 중 오류 발생:', err);
+        res.status(500).send('<script>alert("게시물 수정 중 오류가 발생했습니다."); window.location.href="/";</script>');
+      } else {
+        console.log('게시물이 성공적으로 수정되었습니다.');
+        res.send(`<script>alert("게시물이 성공적으로 수정되었습니다."); window.location.href="./board?g_no=${g_no}";</script>`);
+      }
+    });
+  } catch (error) {
+    console.error('게시물 수정 중 오류 발생:', error);
+    res.status(500).send('<script>alert("게시물 수정 중 오류가 발생했습니다."); window.location.href="/";</script>');
+  }
+});
+
 // submit_comment 요청 라우트 추가
 router.post('/submit_comment', async (req, res) => {
   const b_no = req.body.b_no || req.query.b_no;
@@ -226,10 +280,6 @@ router.post('/submit_comment', async (req, res) => {
     request.input('id', mssql.NVarChar, id);
     request.input('c_content', mssql.NVarChar, c_content);
     request.input('c_date', mssql.Date, currentDate);
-    
-    console.log('b_no:', b_no);
-    console.log('g_no:', g_no);
-    console.log('c_content:', c_content);
 
     request.query(insertQuery, (err) => {
       if (err) {
@@ -248,15 +298,31 @@ router.post('/submit_comment', async (req, res) => {
 
 /* modify 페이지 라우팅 */
 router.get('/modify', async function(req, res, next) {
-  const g_no = req.query.g_no;
-  const b_no = req.query.b_no;
+  const b_no = req.body.b_no || req.query.b_no;
+  const g_no = req.body.g_no || req.query.g_no;
+  const selectIDQuery = `
+  SELECT id FROM Board
+  WHERE g_no = @g_no AND b_no = @b_no
+  `;
+  const request = new mssql.Request();
+  request.input('g_no', mssql.Int, g_no);
+  request.input('b_no', mssql.Int, b_no);
+
+  // 게시물의 작성자 ID 조회
+  const result = await request.query(selectIDQuery);
+  const postAuthorId = result.recordset[0].id;
+  const id = req.session.user ? req.session.user.id : null;
+  
+  if (id !== postAuthorId) {
+  return res.send('<script>alert("작성자가 동일하지 않습니다!"); window.location.href=document.referrer;</script>');
+  }
 
   try {
     const request = new mssql.Request();
 
     // 데이터베이스 쿼리 실행
     const query = `
-      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND b_no = ${b_no} AND B.id = M.id;
+      SELECT B.b_title, B.b_no, B.g_no, B.b_content, G.g_name FROM Board_Group G, Board B, Member M WHERE B.g_no = ${g_no} AND B.b_no = ${b_no} AND B.id = M.id AND B.g_no = G.g_no;
     `;
     const result = await request.query(query);
   

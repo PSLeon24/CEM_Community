@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>게시글 작성</title>
+  <title>게시글 수정</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <style>
@@ -25,21 +25,23 @@
 
             <div class="container mt-4">
               <h3 style="text-align: center;">게시글 수정</h3>
-              <form action="/submit_post" method="POST" style="background-color: rgb(255, 255, 255);">
+              <form method="POST" action="/submit_modify" style="background-color: rgb(255, 255, 255);">
+                <input type="hidden" name="g_no" value="<%= post.g_no %>">
+                <input type="hidden" name="b_no" value="<%= post.b_no %>">
                 <div class="form-group" style="width: 90%;">
                   <label for="title" style="margin: 0 5%;">제목</label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요." required
+                  <input type="text" class="form-control" id="b_title" name="b_title" placeholder="제목을 입력하세요." required
                     style="margin: 0 5%;" value="<%= post.b_title %>">
                 </div>
                 <div class="form-group" style="width: 90%;">
                   <label for="category" style="margin: 0 5%;">카테고리</label>
                   <input type="text" class="form-control" id="category" name="category" required readonly
-                    style="margin: 0 5%;" value="<%= post.g_no %>">
+                    style="margin: 0 5%;" value="<%= post.g_name %>">
                 </div>
                 <div class="form-group" style="width: 90%;">
                   <label for="content" style="margin: 0 5%;">내용</label>
-                  <textarea class="form-control" id="content" name="content" rows="15" placeholder="내용을 입력하세요." required
-                    style="margin: 0 5%;"><%= post.b_content %></textarea>
+                  <textarea class="form-control" id="b_content" name="b_content" rows="15" placeholder="내용을 입력하세요."
+                    required style="margin: 0 5%;"><%= post.b_content %></textarea>
                 </div>
 
                 <div class="text-center">
