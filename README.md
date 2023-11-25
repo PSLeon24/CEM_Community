@@ -51,10 +51,12 @@
     - ##### Extract entities, attributes and relationship
       <img width="500" alt="스크린샷 2023-11-21 오전 10 07 29" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/72451589-df53-478b-ab36-425640f21a48">
   - #### 2_3_2. Logical Design
-    - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/620b78b7-e3a1-4080-90b5-63ea0fe8dab6">  
+    - ##### E-R Diagram
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/cf95bdce-9f9c-4ba3-8346-8798c51c9d40">
+    - ##### Schema Design
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/620b78b7-e3a1-4080-90b5-63ea0fe8dab6">
   - #### 2_3_3. Physical Design using SQL Server
-      - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
+    - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
 - Create Database and Tables
 - Develop Sign Up, Login
