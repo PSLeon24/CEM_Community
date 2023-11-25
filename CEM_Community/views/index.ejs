@@ -161,11 +161,15 @@
                                   onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
                                   <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>]</span>
 
-                                  <%= popularPosts[i].b_title %>
+                                  <% if (popularPosts[i].b_title.length> 7) { %>
+                                    <%= popularPosts[i].b_title.substring(0, 7) + '···' %>
+                                      <% } else { %>
+                                        <%= popularPosts[i].b_title %>
+                                          <% } %>
 
-                                    <span style="float: right;">👍<span style="color: red;">
-                                        <%= popularPosts[i].likes %>
-                                      </span></span>
+                                            <span style="float: right;">👍<span style="color: red;">
+                                                <%= popularPosts[i].likes %>
+                                              </span></span>
                                 </a>
                               </p>
                               <% } %>
@@ -177,12 +181,15 @@
                                         onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
                                         <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>
                                             ]</span>
+                                        <% if (popularPosts[i].b_title.length> 7) { %>
+                                          <%= popularPosts[i].b_title.substring(0, 7) + '···' %>
+                                            <% } else { %>
+                                              <%= popularPosts[i].b_title %>
+                                                <% } %>
 
-                                        <%= popularPosts[i].b_title %>
-
-                                          <span style="float: right;">👍<span style="color: red;">
-                                              <%= popularPosts[i].likes %>
-                                            </span></span>
+                                                  <span style="float: right;">👍<span style="color: red;">
+                                                      <%= popularPosts[i].likes %>
+                                                    </span></span>
                                       </a>
                                     </p>
                                     <% } %>
