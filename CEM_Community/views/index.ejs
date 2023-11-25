@@ -54,7 +54,11 @@
                               <a href="./read?g_no=<%= top3Titles_g1[i].g_no %>&b_no=<%= top3Titles_g1[i].b_no %>"
                                 style="color: black; text-decoration: none; transition: color 0.3s;"
                                 onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                <%= top3Titles_g1[i].b_title %>
+                                <% if (top3Titles_g1[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g1[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g1[i].b_title %>
+                                        <% } %>
                               </a>
                               <span style="color: black; text-align: right;">
                                 <%= top3Titles_g1[i].b_date %>
@@ -79,7 +83,11 @@
                                           style="color: black; text-decoration: none; transition: color 0.3s;"
                                           onmouseover="this.style.color='deeppink'"
                                           onmouseout="this.style.color='black'">
-                                          <%= top3Titles_g2[i].b_title %>
+                                          <% if (top3Titles_g2[i].b_title.length> 7) { %>
+                                            <%= top3Titles_g2[i].b_title.substring(0, 7) + '···' %>
+                                              <% } else { %>
+                                                <%= top3Titles_g2[i].b_title %>
+                                                  <% } %>
                                         </a>
                                         <span style="color: black; text-align: right;">
                                           <%= top3Titles_g2[i].b_date %>
@@ -105,7 +113,11 @@
                                                     style="color: black; text-decoration: none; transition: color 0.3s;"
                                                     onmouseover="this.style.color='deeppink'"
                                                     onmouseout="this.style.color='black'">
-                                                    <%= top3Titles_g3[i].b_title %>
+                                                    <% if (top3Titles_g3[i].b_title.length> 7) { %>
+                                                      <%= top3Titles_g3[i].b_title.substring(0, 7) + '···' %>
+                                                        <% } else { %>
+                                                          <%= top3Titles_g3[i].b_title %>
+                                                            <% } %>
                                                   </a>
                                                   <span style="color: black; text-align: right;">
                                                     <%= top3Titles_g3[i].b_date %>
@@ -131,7 +143,11 @@
                                                               style="color: black; text-decoration: none; transition: color 0.3s;"
                                                               onmouseover="this.style.color='deeppink'"
                                                               onmouseout="this.style.color='black'">
-                                                              <%= top3Titles_g4[i].b_title %>
+                                                              <% if (top3Titles_g4[i].b_title.length> 7) { %>
+                                                                <%= top3Titles_g4[i].b_title.substring(0, 7) + '···' %>
+                                                                  <% } else { %>
+                                                                    <%= top3Titles_g4[i].b_title %>
+                                                                      <% } %>
                                                             </a>
                                                             <span style="color: black; text-align: right;">
                                                               <%= top3Titles_g4[i].b_date %>
@@ -222,7 +238,11 @@
                               <a href="./read?g_no=<%= top3Titles_g5[i].g_no %>&b_no=<%= top3Titles_g5[i].b_no %>"
                                 style="color: black; text-decoration: none; transition: color 0.3s;"
                                 onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                <%= top3Titles_g5[i].b_title %>
+                                <% if (top3Titles_g5[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g5[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g5[i].b_title %>
+                                        <% } %>
                               </a>
                               <span style="color: black; text-align: right;">
                                 <%= top3Titles_g5[i].b_date %>
@@ -253,7 +273,11 @@
                               <a href="./read?g_no=<%= top3Titles_g6[i].g_no %>&b_no=<%= top3Titles_g6[i].b_no %>"
                                 style="color: black; text-decoration: none; transition: color 0.3s;"
                                 onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                <%= top3Titles_g6[i].b_title %>
+                                <% if (top3Titles_g6[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g6[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g6[i].b_title %>
+                                        <% } %>
                               </a>
                               <span style="color: black; text-align: right;">
                                 <%= top3Titles_g6[i].b_date %>
@@ -283,7 +307,11 @@
                               <a href="./read?g_no=<%= top3Titles_g7[i].g_no %>&b_no=<%= top3Titles_g7[i].b_no %>"
                                 style="color: black; text-decoration: none; transition: color 0.3s;"
                                 onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                <%= top3Titles_g7[i].b_title %>
+                                <% if (top3Titles_g7[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g7[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g7[i].b_title %>
+                                        <% } %>
                               </a>
                               <span style="color: black; text-align: right;">
                                 <%= top3Titles_g7[i].b_date %>
