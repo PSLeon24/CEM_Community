@@ -156,30 +156,34 @@
                           <% if (popularPosts.length> 9) { %>
                             <% for (let i=0; i < 10; i++) { %>
                               <p class="card-text">
-                                <%= popularPosts[i].b_date %>
-                                  <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
-                                    style="color: black; text-decoration: none; transition: color 0.3s;"
-                                    onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                    <%= popularPosts[i].b_title %>
-                                      👍<span style="color: red;">
+                                <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>]</span>
+
+                                  <%= popularPosts[i].b_title %>
+
+                                    <span style="float: right;">👍<span style="color: red;">
                                         <%= popularPosts[i].likes %>
-                                      </span>
-                                  </a>
+                                      </span></span>
+                                </a>
                               </p>
                               <% } %>
                                 <% } else { %>
                                   <% for (let i=0; i < popularPosts.length; i++) { %>
                                     <p class="card-text">
-                                      <%= popularPosts[i].b_date %>
-                                        <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
-                                          style="color: black; text-decoration: none; transition: color 0.3s;"
-                                          onmouseover="this.style.color='deeppink'"
-                                          onmouseout="this.style.color='black'">
-                                          <%= popularPosts[i].b_title %>
-                                            👍<span style="color: red;">
+                                      <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
+                                        style="color: black; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                        <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>
+                                            ]</span>
+
+                                        <%= popularPosts[i].b_title %>
+
+                                          <span style="float: right;">👍<span style="color: red;">
                                               <%= popularPosts[i].likes %>
-                                            </span>
-                                        </a>
+                                            </span></span>
+                                      </a>
                                     </p>
                                     <% } %>
                                       <% } %>
@@ -206,15 +210,18 @@
                       <% if (top3Titles_g5 && top3Titles_g5.length> 0) { %>
                         <div class="card-body">
                           <% for (let i=0; i < top3Titles_g5.length; i++) { %>
-                            <p class="card-text" style="height: 15px;">
-                              <%= top3Titles_g5[i].b_date %>
-                                <a href="./read?g_no=<%= top3Titles_g5[i].g_no %>&b_no=<%= top3Titles_g5[i].b_no %>"
-                                  style="color: black; text-decoration: none; transition: color 0.3s;"
-                                  onmouseover="this.style.color=' deeppink'" onmouseout="this.style.color='black'">
-                                  <%= top3Titles_g5[i].b_title %>
-                                </a>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g5[i].g_no %>&b_no=<%= top3Titles_g5[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <%= top3Titles_g5[i].b_title %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g5[i].b_date %>
+                              </span>
+                              <hr>
                             </p>
-                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>
@@ -234,15 +241,18 @@
                       <% if (top3Titles_g6 && top3Titles_g6.length> 0) { %>
                         <div class="card-body">
                           <% for (let i=0; i < top3Titles_g6.length; i++) { %>
-                            <p class="card-text" style="height: 15px;">
-                              <%= top3Titles_g6[i].b_date %>
-                                <a href="./read?g_no=<%= top3Titles_g6[i].g_no %>&b_no=<%= top3Titles_g6[i].b_no %>"
-                                  style="color: black; text-decoration: none; transition: color 0.3s;"
-                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                  <%= top3Titles_g6[i].b_title %>
-                                </a>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g6[i].g_no %>&b_no=<%= top3Titles_g6[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <%= top3Titles_g6[i].b_title %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g6[i].b_date %>
+                              </span>
+                              <hr>
                             </p>
-                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>
@@ -261,15 +271,18 @@
                       <% if (top3Titles_g7 && top3Titles_g7.length> 0) { %>
                         <div class="card-body">
                           <% for (let i=0; i < top3Titles_g7.length; i++) { %>
-                            <p class="card-text" style="height: 15px;">
-                              <%= top3Titles_g7[i].b_date %>
-                                <a href="./read?g_no=<%= top3Titles_g7[i].g_no %>&b_no=<%= top3Titles_g7[i].b_no %>"
-                                  style="color: black; text-decoration: none; transition: color 0.3s;"
-                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
-                                  <%= top3Titles_g7[i].b_title %>
-                                </a>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g7[i].g_no %>&b_no=<%= top3Titles_g7[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <%= top3Titles_g7[i].b_title %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g7[i].b_date %>
+                              </span>
+                              <hr>
                             </p>
-                            <hr>
                             <% } %>
                         </div>
                         <% } else { %>

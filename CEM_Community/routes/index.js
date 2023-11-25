@@ -55,8 +55,9 @@ router.get(['/', '/main'], async function(req, res, next) {
 
     // likes 수가 많은 순으로 조회하는 쿼리
     const popularPostsQuery = `
-    SELECT *
-    FROM Board
+    SELECT G.g_name, B.g_no, B.b_no, B.b_title, B.likes
+    FROM Board B, Board_Group G
+    WHERE B.g_no = G.g_no
     ORDER BY likes DESC;
     `;
     const popularPostsResult = await request.query(popularPostsQuery);
