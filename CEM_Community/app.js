@@ -146,16 +146,16 @@ app.post('/login', (req, res) => {
             if (hashedPassword === storedPassword) {
               // 로그인 성공 & 세션에 사용자 정보 저장
               req.session.user = result.recordset[0];
-              res.send('<script>alert("로그인 성공!"); window.location.href="/";</script>');
+              res.send('<script>alert("로그인 성공!"); window.location.href=document.referrer;</script>');
             } else {
               // 로그인 실패
-              res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다."); window.location.href="/";</script>');
+              res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다."); window.location.href=document.referrer;</script>');
             }
           }
         });
       } else {
         // 사용자가 없을 때 
-        res.send('<script>alert("일치하는 ID가 없습니다."); window.location.href="/";</script>');
+        res.send('<script>alert("일치하는 ID가 없습니다."); window.location.href=document.referrer;</script>');
       }
     }
   });

@@ -125,17 +125,18 @@
                                         <tbody>
                                             <% for (let i=0; i < posts.length; i++) { %>
                                                 <tr>
-                                                    <th scope="row">
-                                                        <%= i + 1 %>
+                                                    <th scope="row" id="b_no">
+                                                        <%= posts.length - i %>
                                                     </th>
-                                                    <td><a href="#" style="color: black;">
+                                                    <td><a href="#" onclick="readPost(<%= posts.length - i %>)"
+                                                            style="color: black;">
                                                             <%= posts[i].b_title %>
                                                         </a></td>
                                                     <td>
                                                         <%= posts[i].b_date %>
                                                     </td>
                                                     <td>
-                                                        <%= posts[i].id %>
+                                                        <%= posts[i].nickname %>
                                                     </td>
                                                 </tr>
                                                 <% } %>
@@ -166,7 +167,6 @@
                                     <br>
                                 </div>
 
-
                                 <script>
                                     // 페이지 로드 시 실행되는 함수
                                     window.onload = function () {
@@ -193,6 +193,12 @@
 
                                         // 페이지 이동
                                         window.location.href = `/write?g_no=${g_no}`;
+                                    }
+                                    function readPost(b_no) {
+                                        var g_no = document.getElementById('g_no').value;
+
+                                        // 페이지 이동
+                                        window.location.href = `/read?g_no=${g_no}&b_no=${b_no}`;
                                     }
                                 </script>
                                 <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->

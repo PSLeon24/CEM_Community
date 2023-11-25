@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mssql = require('mssql');
 
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+
 /* GET home page. */
 router.get(['/', '/main'], async function(req, res, next) {
   try {
@@ -81,8 +84,8 @@ router.get('/board', async function(req, res, next) {
   const request = new mssql.Request();
   request.query(query, function(error, result) {
     if (error) {
-      console.error('Error importing bulletin board data:', error);
-      return res.status(500).send('Internal Server Error');
+      console.error('게시판 데이터를 가져오는 중 오류가 발생했습니다.:', error);
+      return res.status(500).send('내부 서버 오류');
     }
 
     const g_name = result.recordset[0] ? result.recordset[0].g_name : null;
@@ -92,7 +95,7 @@ router.get('/board', async function(req, res, next) {
     }
 
     const postQuery = `
-      SELECT * FROM Board WHERE g_no = ${g_no}
+      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND B.id = M.id
       ORDER BY b_date DESC
       OFFSET ${startIndex} ROWS FETCH NEXT ${postsPerPage} ROWS ONLY;
     `;
@@ -179,14 +182,155 @@ router.post('/submit_post', async (req, res) => {
   }
 });
 
+// submit_comment 요청 라우트 추가
+router.post('/submit_comment', async (req, res) => {
+  const b_no = req.body.b_no || req.query.b_no;
+  const g_no = req.body.g_no || req.query.g_no;
+  const { c_content } = req.body
+  const id = req.session.user ? req.session.user.id : null;
+  // 만약 id가 null이라면 로그인을 유도하는 알림을 띄우고 로그인 페이지로 리다이렉션
+  if (!id) {
+    return res.send('<script>alert("댓글을 작성하려면 먼저 로그인하세요."); window.location.href=document.referrer;</script>');
+  }
+
+  try {
+    // 현재 날짜 생성
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    // Comment 테이블에 댓글 추가하는 SQL 쿼리
+    const insertQuery = `
+      INSERT INTO Comment (b_no, g_no, id, c_content, c_date)
+      VALUES (@b_no, @g_no, @id, @c_content, @c_date);
+    `;
+
+    const request = new mssql.Request();
+    request.input('b_no', mssql.Int, b_no);
+    request.input('g_no', mssql.Int, g_no);
+    request.input('id', mssql.NVarChar, id);
+    request.input('c_content', mssql.NVarChar, c_content);
+    request.input('c_date', mssql.Date, currentDate);
+    
+    console.log('b_no:', b_no);
+    console.log('g_no:', g_no);
+    console.log('c_content:', c_content);
+
+    request.query(insertQuery, (err) => {
+      if (err) {
+        console.error('댓글 등록 중 오류 발생:', err);
+        res.status(500).send('<script>alert("댓글 등록 중 오류가 발생했습니다."); window.location.href="/";</script>');
+      } else {
+        console.log('댓글이 성공적으로 등록되었습니다.');
+        res.send('<script>alert("댓글이 성공적으로 등록되었습니다."); window.location.href=document.referrer;</script>');
+      }
+    });
+  } catch (error) {
+    console.error('댓글 등록 중 오류 발생:', error);
+    res.status(500).send('<script>alert("댓글 등록 중 오류가 발생했습니다."); window.location.href="/";</script>');
+  }
+});
+
 /* modify 페이지 라우팅 */
-router.get('/modify', function(req, res, next) {
-  res.render('modify'); // modify.ejs 템플릿을 렌더링
+router.get('/modify', async function(req, res, next) {
+  const g_no = req.query.g_no;
+  const b_no = req.query.b_no;
+
+  try {
+    const request = new mssql.Request();
+
+    // 데이터베이스 쿼리 실행
+    const query = `
+      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND b_no = ${b_no} AND B.id = M.id;
+    `;
+    const result = await request.query(query);
+  
+    const post = result.recordset[0];
+    res.render('modify', { post }); // modify.ejs 템플릿을 렌더링
+  } catch (error) {
+    console.error('데이터베이스 오류:', error);
+    res.status(500).send('내부 서버 오류');
+  }
 });
 
 /* read 페이지 라우팅 */
-router.get('/read', function(req, res, next) {
-  res.render('read'); // read.ejs 템플릿을 렌더링
+router.get('/read', async function(req, res, next) {
+  const g_no = req.query.g_no;
+  const b_no = req.query.b_no;
+
+  try {
+    const request = new mssql.Request();
+
+    // 게시글 불러오기 데이터베이스 쿼리 실행
+    const query = `
+      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND b_no = ${b_no} AND B.id = M.id;
+    `;
+    const result = await request.query(query);
+
+    // 댓글 수 조회 쿼리 실행
+    const commentCountQuery = `
+      SELECT COUNT(*) AS commentCount
+      FROM Comment C
+      WHERE C.g_no = ${g_no} AND C.b_no = ${b_no};
+    `;
+    const commentCountResult = await request.query(commentCountQuery);
+    const commentCount = commentCountResult.recordset[0].commentCount;
+    
+    const commentsQuery = `
+      SELECT C.c_no, M.nickname, C.c_content, C.c_date
+      FROM Board B, Comment C, Member M
+      WHERE B.b_no = C.b_no AND B.g_no = C.g_no AND B.id = M.id
+        AND B.g_no = ${g_no} AND B.b_no = ${b_no}
+      ORDER BY b_date DESC;
+    `;
+    const commentsResult = await request.query(commentsQuery);
+
+    // 조회된 데이터의 날짜를 한국 시간대로 조정
+    const post = result.recordset[0];
+    if (post) {
+      const koreanDate = new Date(post.b_date).toLocaleDateString('ko-KR');
+      post.b_date = koreanDate;
+    }
+
+    const comments = commentsResult.recordset.map(comment => {
+      const koreanDate = new Date(comment.c_date).toLocaleDateString('ko-KR');
+      comment.c_date = koreanDate;
+      return comment;
+    });
+    console.log(comments);
+    // 조회된 데이터를 read.ejs 템플릿에 전달하여 렌더링
+    res.render('read', { post, commentCount, comments });
+  } catch (error) {
+    console.error('데이터베이스 오류:', error);
+    res.status(500).send('내부 서버 오류');
+  }
+});
+
+/* 좋아요 라우팅 */
+router.post('/increaseLike', async function(req, res) {
+  const g_no = req.body.g_no;
+  const b_no = req.body.b_no;
+
+  try {
+    // 좋아요 증가 로직
+    const increaseLikeQuery = `
+      UPDATE Board
+      SET likes = likes + 1
+      WHERE g_no = @g_no AND b_no = @b_no;
+    `;
+
+    // 쿼리 실행
+    const request = new mssql.Request();
+    request.input('g_no', mssql.Int, g_no);
+    request.input('b_no', mssql.Int, b_no);
+
+    const result = await request.query(increaseLikeQuery);
+
+    // 결과 확인 (실제로는 이 결과를 클라이언트에게 전송할 수 있음)
+    console.log('좋아요가 성공적으로 증가되었습니다.');
+    //res.json({ likes: result.rowsAffected.length > 0 ? result.recordset[0].likes : 0 });
+  } catch (error) {
+    console.error('좋아요 증가 중 오류 발생:', error);
+    res.status(500).send('좋아요 증가 중 오류가 발생했습니다.');
+  }
 });
 
 /* mypage 페이지 라우팅 */

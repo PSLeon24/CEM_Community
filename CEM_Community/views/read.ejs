@@ -76,54 +76,70 @@
             <br>
             <div class="card" style="width: 90%; margin: 0 4%;">
               <div class="card-body">
-                <h3 style="width: 90%; margin: 0 4%;">
-                  아니 오짱 수업 실화냐?? 시청각 자료만 띡 틀어주고 소감문 작성하라는거 에바지</h3>
+                <h3 style="width: 90%; margin: 0 4%;" id="b_title">
+                  <%= post.b_title %>
+                </h3>
 
                 <div style="margin: 0 4%;">
                   <ul style="list-style: none; padding: 0; margin-top: 1%">
-                    <li style="display: inline-block; margin-right: 10px;" id="id">멋쟁이 돼지 </li>
-                    <li style="display: inline-block; margin-right: 10px;" id="b_date">2023.11.20 </li>
-                    <li style="display: inline-block; margin-right: 10px;" id="cnt_likes">좋아요: 11</li>
-                    <li style="display: inline-block;" id="cnt_comment">댓글: 5</li>
+                    <li style="display: inline-block; margin-right: 10px;" id="id">
+                      <%= post.nickname%>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="b_date">
+                      <%= post.b_date %>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="likes">좋아요: <% if (post.likes===null) {
+                        %>
+                        0
+                        <% } else { %>
+                          <%= post.likes %>
+                            <% } %>
+                    </li>
+                    <li style="display: inline-block;" id="cnt_comment">댓글: <%= commentCount %>
+                    </li>
                   </ul>
 
                 </div>
                 <br>
-                <p class="card-text" style="margin: 0 4%;">내용적어봐라라아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
-                  아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아
+                <p class="card-text" style="margin: 0 4%;" id="b_content">
+                  <%= post.b_content %>
                 </p>
                 <br>
                 <div style="margin: 0 4%;">
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;"
+                    onclick="likePost(); location.reload();">
+                    <img src=" ./img/like.png" height="30px" width="30px" />좋아요
+                    <b id="likeCount">
+                      <% if (post.likes===null) { %>
+                        0
+                        <% } else { %>
+                          <%= post.likes %>
+                            <% } %>
+                    </b>
+                  </a>
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;"
+                    onclick="modifyPost()">
+                    <img src="./img/modify.png" height="30px" width="30px" />수정</a>
                   <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
-                    <img src="./img/like.png" height="30px" width="30px" />좋아요 <b>11</b>
-                    <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
-                      <img src="./img/modify.png" height="30px" width="30px" />수정</a>
-                    <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
-                      <img src="./img/del.png" height="30px" width="30px" />&nbsp;삭제</a>
+                    <img src="./img/del.png" height="30px" width="30px" />&nbsp;삭제</a>
                 </div>
               </div>
               <hr>
               <div class="container" style="margin: 3% 4%;">
-                <form name="commentInsertForm" method="post" enctype="multipart/form-data">
+                <form name="commentInsertForm" method="POST" action="/submit_comment"
+                  style="background-color: rgb(255, 255, 255);">
+                  <input type="hidden" name="g_no" value="<%= post.g_no %>">
+                  <input type="hidden" name="b_no" value="<%= post.b_no %>">
                   <div class="comtitle">
-                    <h3>댓글작성</h3>
+                    <h3>댓글 작성</h3>
                   </div>
 
                   <div class="cominput">
                     <div class="input-group">
-                      <input type="text" class="form-control commentbox" name="Com_Content" placeholder="댓글을 입력해주세요."
-                        style="max-width: 88%;"></ㅑ>
+                      <input type="text" class="form-control commentbox" name="c_content" id="c_content"
+                        placeholder="댓글을 입력해주세요." style="max-width: 100%;">
                       <div class="input-group-append">
-                        <button type="button" class="btn pink_btn" name="commentInsertBtn"
+                        <button type="submit" class="btn pink_btn" name="commentInsertBtn"
                           style="max-width: 100%;">작성</button>
                       </div>
                     </div>
@@ -131,57 +147,40 @@
                 </form>
               </div>
 
-
-
               <div class="table-container">
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>ID</th>
-                        <th>Comment</th>
+                        <th>닉네임</th>
+                        <th>댓글 내용</th>
                         <th>작성일</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>user1</td>
-                        <td>첫 번째 댓글입니다.</td>
-                        <td>2022-01-01</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>user2</td>
-                        <td>두 번째 댓글입니다.</td>
-                        <td>2022-01-02</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>user3</td>
-                        <td>세 번째 댓글입니다.</td>
-                        <td>2022-01-02</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>user3</td>
-                        <td>세 번째 댓글입니다.</td>
-                        <td>2022-01-02</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>user3</td>
-                        <td>세 번째 댓글입니다.</td>
-                        <td>2022-01-02</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>user3</td>
-                        <td>세 번째 댓글입니다.</td>
-                        <td>2022-01-02</td>
-                      </tr>
-                      <!-- Add more rows for additional comments -->
+                      <% if (comments.length> 0) { %>
+                        <% for (let i=0; i < comments.length; i++) { %>
+                          <tr>
+                            <td>
+                              <%= i + 1 %>
+                            </td>
+                            <td>
+                              <%= comments[i].nickname %>
+                            </td>
+                            <td>
+                              <%= comments[i].c_content %>
+                            </td>
+                            <td>
+                              <%= comments[i].c_date %>
+                            </td>
+                          </tr>
+                          <% } %>
+                            <% } else { %>
+                              <tr>
+                                <td colspan="4">작성된 댓글이 없습니다.</td>
+                              </tr>
+                              <% } %>
                     </tbody>
                   </table>
                 </div>
@@ -190,21 +189,45 @@
 
             </div>
 
-
-
             <br>
 
 
             </div>
             <br>
+            <script>
+              function modifyPost() {
+                // 현재 URL에서 g_no 값을 가져오기
+                var currentURL = window.location.href;
+                var g_no_match = currentURL.match(/[?&]g_no=([^&]+)/);
+                var b_no_match = currentURL.match(/[?&]b_no=([^&]+)/);
 
+                // Check if the values are present in the URL
+                var g_no = g_no_match ? g_no_match[1] : null;
+                var b_no = b_no_match ? b_no_match[1] : null;
 
+                // 페이지 이동
+                window.location.href = `/modify?g_no=${g_no}&b_no=${b_no}`;
+              }
+            </script>
 
+            <script>
+              function likePost() {
+                // 서버로 좋아요 요청 보내기
+                $.post('/increaseLike', { g_no: <%= post.g_no %>, b_no: <%= post.b_no %> })
+                  .done(function (response) {
+                    // 좋아요 증가 처리 후, 반환된 데이터로 화면 업데이트
 
-            <!— 부트스트랩 JS 및 jQuery 스크립트 추가 —>
-              <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    // 페이지 리다이렉션
+                    window.location.href = `/read?g_no=${response.g_no}&b_no=${response.b_no}`;
+                  })
+                  .fail(function (error) {
+                    console.error('좋아요 요청 실패:', error);
+                  });
+              }
+            </script>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
