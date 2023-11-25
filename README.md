@@ -3,8 +3,8 @@
 ## Introduction to Our Team
 |Selfie|Name|Position|Grade|Major|
 |:--:|:--:|:--:|:--:|:--:|
-|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA & Back-End Developer|3|Computer Egineering|
-|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|Back-End Developer & ER-Diagram|3|Computer Egineering|
+|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA & Full-Stack Developer|3|Computer Egineering|
+|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|Full-Stack Developer & ER-Diagram|3|Computer Egineering|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/b5e13f86-dbd8-4b1a-8395-fad3cd06ed0f">|Han-Gyul Choi|Back-End Developer & UI|3|Computer Egineering|
 
 ## 💻 Tech Stack
@@ -31,7 +31,7 @@
   ~ 11/07     O      System Design(Architecture Design and Detail Design) & Develop Front-end
   ~ 11/14     O      Database Design(by 2_3_2. E-R Diagram) and Prepare the mid-term presentation
   ~ 11/23     O      Mid-term presentation / Physical Design using SQL Server
-  ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
+  ~ 11/28     O      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/12     -      Final check and Prepare Final-term presentation
   ~ 12/19     -      Final-term presentation / Finish the project
@@ -71,6 +71,7 @@
 - 2023/10/31: We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
 - 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We plan to implement the frontend based on the UI design document.
 - 2023/11/19: We developed back-end using express. And We designed database schema again. implement progress: 60% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
+- 2023/11/25: We developed back-end section(read board, comments in a board, likes in a board).
 
 ## Work records for each members
 #### Yeong-Min Ko
@@ -85,12 +86,14 @@
 - 2023/11/19: Develop Back-End (main, sign up, login)
 - 2023/11/23: Develop Back-End (board list, board write, add encryption at sign up)
   - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
+- 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page).
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
-- 2023/11/12: Develop front-end & Re-Design ER-Diagram
-- 2023/11/21: Develop front-end(comment in a read page)
+- 2023/11/12: Develop Front-End & Re-Design ER-Diagram
+- 2023/11/21: Develop Front-End(comment in a read page), Develop Back-End (in progress: read board, comment)
+- 2023/11/25: Develop Front-End(academic calendar)
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
@@ -121,6 +124,7 @@
 - 2023/11/14: Update UI icon & Back-end status in Notion
 - 2023/11/16: Update Back-end Code
 - 2023/11/19: Develop Back-End (in progress: read board, comment)
+- 2023/11/25: Develop Back-End (finished: read board, comment), update board, delete board
 
 ---
 #### References
