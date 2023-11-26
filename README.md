@@ -80,6 +80,7 @@
 - 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We plan to implement the frontend based on the UI design document.
 - 2023/11/19: We developed back-end using express. And We designed database schema again. implement progress: 60% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 - 2023/11/25: We developed back-end section(read board, comments in a board, likes in a board).
+- 2023/11/26: We developed back-end section(modify board, delete board). implement progress: 90% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 
 ## Work records for each members
 #### Yeong-Min Ko
