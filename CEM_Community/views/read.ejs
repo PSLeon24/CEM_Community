@@ -223,29 +223,37 @@
                   });
               }
               function deletePost() {
-                $.ajax({
-                  url: '/deleteBoard',
-                  type: 'DELETE',
-                  data: { g_no: <%= post.g_no %>, b_no: <%= post.b_no %> },
-                  success: function (response) {
-                    console.log('삭제 성공');
-                    alert('게시물이 성공적으로 삭제되었습니다.');
-                    window.location.href = '/';
-                  },
-                  error: function (xhr, textStatus, errorThrown) {
-                    console.error('게시물 삭제 요청 실패:', xhr);
+                // 확인 창 표시
+                var isConfirmed = confirm('게시물을 삭제하시겠습니까?');
 
+                // 확인 창에서 "예"를 클릭한 경우에만 삭제 요청 전송
+                if (isConfirmed) {
+                  $.ajax({
+                    url: '/deleteBoard',
+                    type: 'DELETE',
+                    data: { g_no: <%= post.g_no %>, b_no: <%= post.b_no %> },
+                    success: function (response) {
+                      console.log('삭제 성공');
+                      alert('게시물이 성공적으로 삭제되었습니다.');
+                      window.location.href = '/';
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                      console.error('게시물 삭제 요청 실패:', xhr);
 
-                    if (xhr.status === 403) {
-                      alert('게시물 작성자가 아닙니다.');
-                    } else if (xhr.status === 500) {
-                      alert('서버 측에서 오류가 발생했습니다.');
-                    } else {
-                      alert('게시물 삭제 요청이 실패했습니다.');
+                      if (xhr.status === 403) {
+                        alert('게시물 작성자가 아닙니다.');
+                      } else if (xhr.status === 500) {
+                        alert('서버 측에서 오류가 발생했습니다.');
+                      } else {
+                        alert('게시물 삭제 요청이 실패했습니다.');
+                      }
+
+                      location.reload(); // 페이지 리로드
                     }
-                    location.reload(); // 페이지 리로드
-                  }
-                });
+                  });
+                } else {
+                  // "취소"를 클릭한 경우 아무 작업도 수행하지 않음
+                }
               }
             </script>
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
