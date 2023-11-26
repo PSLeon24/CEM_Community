@@ -155,7 +155,6 @@ router.get('/write', async function(req, res, next) {
     }
     //console.log(result.recordset);
 
-    console.log(g_name);
     res.render('write', { user, g_no: g_no, g_name }); // write.ejs 템플릿을 렌더링
   });
 });
@@ -379,7 +378,7 @@ router.get('/read', async function(req, res, next) {
       comment.c_date = koreanDate;
       return comment;
     });
-    console.log(comments);
+    // console.log(comments);
     // 조회된 데이터를 read.ejs 템플릿에 전달하여 렌더링
     res.render('read', { post, commentCount, comments });
   } catch (error) {
@@ -435,7 +434,7 @@ router.delete('/deleteBoard', async (req, res) => {
     const postAuthorId = result.recordset[0].id;
 
     if (id !== postAuthorId) {
-      return res.status(403).send('<script>alert("게시물 작성자가 아닙니다!"); window.location.href=document.referrer;</script>');
+      return res.status(403).send();
     }
 
     const deleteBoardQuery = `
@@ -449,17 +448,13 @@ router.delete('/deleteBoard', async (req, res) => {
 
     requestDelete.query(deleteBoardQuery, (err) => {
       if (err) {
-        console.error('게시물 삭제 중 오류 발생:', err);
         return res.status(500).send(err);
       }
-
-      console.log('게시물이 성공적으로 삭제되었습니다.');
-      res.status(200).send(`<script>alert("게시물이 성공적으로 삭제되었습니다."); window.location.href="./board?g_no=${g_no}";</script>`);
+      res.status(200).send(err);
     });
 
   } catch (error) {
-    console.error('게시물 삭제 중 오류 발생: ', error);
-    res.status(500).send('<script>alert("게시물 삭제 중 오류가 발생했습니다."); window.location.href="/";</script>');
+    res.status(500).send(error);
   }
 });
 
