@@ -41,9 +41,9 @@
 - ### 2_1. System Design
   - #### 2_1_1. Usecase Diagram
     <img height="300" src="https://github.com/PSLeon24/CEM_Community/assets/102220333/1c09d3da-a716-4a45-a740-fd7df1d646bb"><br>
-    - <a href="https://cool-mantis-03f.notion.site/Requirements-Analysis-d2eb768d403841d89a4ab4a276dc068d?pvs=4">read more</a>
+    - <a href="https://cool-mantis-03f.notion.site/Requirements-Analysis-d2eb768d403841d89a4ab4a276dc068d?pvs=4">Read More</a>
   - #### 2_1_2. Detail Design
-    - Decide categories and components: <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">read more</a>
+    - Decide categories and components: <a href="https://cool-mantis-03f.notion.site/2023-10-31-6e9e8a2b51564c0e83214eb277a21658?pvs=4">Read More</a>
 - ### 2_2. UI/UX Design
   - 2023/11/07: UI design: <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
 - ### 2_3. Database Design
@@ -66,6 +66,7 @@
 - Develop Comments
 - Develop Board Like
 - Develop Modify Board
+- Develop Delete Board
 
 ## 4. Testing
 - To be added.
@@ -93,7 +94,8 @@
 - 2023/11/19: Develop Back-End (main, sign up, login)
 - 2023/11/23: Develop Back-End (board list, board write, add encryption at sign up)
   - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
-- 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page).
+- 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page, modify board)
+- 2023/11/26: Develop delete board
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
@@ -131,7 +133,8 @@
 - 2023/11/14: Update UI icon & Back-end status in Notion
 - 2023/11/16: Update Back-end Code
 - 2023/11/19: Develop Back-End (in progress: read board, comment)
-- 2023/11/25: Develop Back-End (finished: read board, comment), modify board, delete board
+- 2023/11/25: Develop Back-End (finished: read board, comment), modify board
+- 2023/11/26: Develop delete board
 
 ---
 #### References
