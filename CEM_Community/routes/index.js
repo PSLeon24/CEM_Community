@@ -417,6 +417,52 @@ router.post('/increaseLike', async function(req, res) {
   }
 });
 
+// delete 라우팅
+router.delete('/deleteBoard', async (req, res) => {
+  const id = req.session.user ? req.session.user.id : null;
+  const g_no = req.body.g_no || req.query.g_no;
+  const b_no = req.body.b_no || req.query.b_no;
+  const selectIDQuery = `
+    SELECT id FROM Board
+    WHERE g_no = @g_no AND b_no = @b_no
+  `;
+  const requestSelect = new mssql.Request();
+  requestSelect.input('g_no', mssql.Int, g_no);
+  requestSelect.input('b_no', mssql.Int, b_no);
+
+  try {
+    const result = await requestSelect.query(selectIDQuery);
+    const postAuthorId = result.recordset[0].id;
+
+    if (id !== postAuthorId) {
+      return res.status(403).send('<script>alert("게시물 작성자가 아닙니다!"); window.location.href=document.referrer;</script>');
+    }
+
+    const deleteBoardQuery = `
+      DELETE FROM Board
+      WHERE g_no = @g_no AND b_no = @b_no
+    `;
+
+    const requestDelete = new mssql.Request();
+    requestDelete.input('g_no', mssql.Int, g_no);
+    requestDelete.input('b_no', mssql.Int, b_no);
+
+    requestDelete.query(deleteBoardQuery, (err) => {
+      if (err) {
+        console.error('게시물 삭제 중 오류 발생:', err);
+        return res.status(500).send(err);
+      }
+
+      console.log('게시물이 성공적으로 삭제되었습니다.');
+      res.status(200).send(`<script>alert("게시물이 성공적으로 삭제되었습니다."); window.location.href="./board?g_no=${g_no}";</script>`);
+    });
+
+  } catch (error) {
+    console.error('게시물 삭제 중 오류 발생: ', error);
+    res.status(500).send('<script>alert("게시물 삭제 중 오류가 발생했습니다."); window.location.href="/";</script>');
+  }
+});
+
 /* mypage 페이지 라우팅 */
 router.get('/mypage', function(req, res, next) {
   const user = req.session.user;
