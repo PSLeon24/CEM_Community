@@ -58,6 +58,8 @@
   - #### 2_3_3. Physical Design using SQL Server
     - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
+<img width="1440" alt="스크린샷 2023-11-26 오후 10 23 42" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9edb3c3d-4c51-4f83-9afe-0e53d348e9ed">
+
 - Create Database and Tables
 - Develop Sign Up, Login
 - Develop Board List and Write Board
