@@ -15,209 +15,219 @@
     .modal.bottom-up.show .modal-dialog {
       transform: translate(0, 0);
     }
+
+    .commentbox {
+      width: 70%;
+      /* 현재 너비의 2배로 조정, 필요에 따라 조절 가능 */
+    }
+
+    .pink_btn {
+      background-color: pink;
+    }
+
+    .table-container {
+      margin: 0 5%;
+      background-color: white;
+      border-radius: 10px;
+      margin-bottom: 2%;
+      overflow: hidden;
+    }
+
+    .table-responsive {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+    }
   </style>
 
 </head>
 
 <body>
-  <div id="loginheader"></div>
+  <% if (user) { %>
+    <!-- 세션이 있는 경우 -->
+    <%- include('loginheader.ejs') %>
+      <% } else { %>
+        <!-- 세션이 없는 경우 -->
+        <%- include('header.ejs') %>
+          <% } %>
 
-<<<<<<< Updated upstream
-  <br>
-  <br>
-  <div style="margin: 0 5%; background-color: rgb(211, 211, 211); height: 500px; border-radius: 10px;">
-    <div>
-      <br>
-    </div>
-    <div style="width: 90%; margin: 0 5%;">
-      <h3 style="width: 1000px;">
-        제목ㅁ루언ㅁ렁니마;러아니;멀;미ㅏㅇ너라ㅣㅇ넘라ㅣ이ㅓㄴㅁ러ㅏㅇ널ㅇㅁ너암ㄹ넝라미너;ㄹㅁㄹㅇ;ㅓㅏㅁㄹ어ㅏㅣ;ㅁㄹ어ㅏ;ㅣㅁㄹ아ㅓ;ㅣㅁㄹ아ㅓㅣㅁㅇ러ㅏㅣㅁ러ㅏ아ㅓㄹ이너ㅏㅣ어;미ㅏㅇ</h3>
-    </div>
-    <div>
-      <br>
-    </div>
-    <div style="width: 90%; margin: 0 5%;">
-      <h5 style="width: 1000px;">내용ㅓ아ㅣㅁ널이ㅏㄴ머리ㅏ미ㅁ러ㅣㅏㅓ이남렁미러이마러얼이ㅏㄴ머라ㅣㅇㄴ머리ㅏㅇ먼리ㅏ어ㅏㅣㄹ엄니ㅏ렁니ㅏㅁ러이ㅏㄴ멀ㅏㅇㄴ머리만</h5>
-    </div>
-
-
-    <div
-      style="position: fixed; bottom: 50px; width:90%; background-color: rgb(211, 211, 211); padding: 10px; border-radius: 10px;">
-      <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px;"><img
-          src="./img/like.png" height="30px" width="30px" />좋아요</button>
-      <button type="button" class="btn" data-toggle="modal" data-target="#comment" href="#"
-        style="background-color: pink; display: inline-block; width: 150px; height: 40px;"><img src="./img/comment.png"
-          height="30px" width="30px" /> 댓글</button>
-      <button type="button" class="btn"
-        style="background-color: pink; display: inline-block; width: 150px; height: 40px;"><img src="./img/modify.png"
-          height="30px" width="30px" /><a href="./modify.html" style="color: black;"> 수정 </a> </button>
-      <br>
-    </div>
-
-  </div>
-
-  <div class="modal fade bottom-up" id="comment" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content"
-        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <div class="modal-header" style="text-align: center;">
-          <h3 class="modal-title" id="loginModalLabel">
-            댓글
-          </h3>
-        </div>
-        <br>
-        <div style="width: 70%;">
-          <table class="table" style="width: 100%;">
-            <thead>
-              <tr>
-                <th scope="col" style="text-align: center">#학번</th>
-                <th scope="col" style="text-align: center">내용</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" style="text-align: center;">1</th>
-                <td style="text-align: center;">Mark</td>
-
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: center;">2</th>
-                <td style="text-align: center;">Jacob</td>
-
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: center;">3</th>
-                <td style="text-align: center;">Larry the Bird</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="form-group" style="width: 100%;">
-            <textarea class="form-control" id="content" name="content" rows="5" placeholder="댓글을 입력하세요.." required
-              style="margin: 0 5%;"></textarea>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="text-center">
-            <button type="submit" class="btn" style="background-color: pink;">
-              댓글 작성</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-=======
             <br>
             <br>
-            <div
-              style="margin: 0 5%; background-color: white; height: 500px; border-radius: 10px; border: 1px solid #000;">
-              <div>
+            <div class="card" style="width: 90%; margin: 0 4%;">
+              <div class="card-body">
+                <h3 style="width: 90%; margin: 0 4%;" id="b_title">
+                  <%= post.b_title %>
+                </h3>
+
+                <div style="margin: 0 4%;">
+                  <ul style="list-style: none; padding: 0; margin-top: 1%">
+                    <li style="display: inline-block; margin-right: 10px;" id="id">
+                      <%= post.nickname%>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="b_date">
+                      <%= post.b_date %>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;" id="likes">좋아요: <% if (post.likes===null) {
+                        %>
+                        0
+                        <% } else { %>
+                          <%= post.likes %>
+                            <% } %>
+                    </li>
+                    <li style="display: inline-block;" id="cnt_comment">댓글: <%= commentCount %>
+                    </li>
+                  </ul>
+
+                </div>
                 <br>
-              </div>
-              <div style="width: 90%; margin: 0 5%;">
-                <h3 style="width: 1150px;">
-                  제목 작성란이다. 제목 적어라</h3>
+                <p class="card-text" style="margin: 0 4%;" id="b_content">
+                  <%= post.b_content %>
+                </p>
+                <br>
+                <div style="margin: 0 4%;">
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;"
+                    onclick="likePost(); location.reload();">
+                    <img src=" ./img/like.png" height="30px" width="30px" />좋아요
+                    <b id="likeCount">
+                      <% if (post.likes===null) { %>
+                        0
+                        <% } else { %>
+                          <%= post.likes %>
+                            <% } %>
+                    </b>
+                  </a>
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;"
+                    onclick="modifyPost()">
+                    <img src="./img/modify.png" height="30px" width="30px" />수정</a>
+                  <a href="#" class="btn pink_btn" style="width: 150px; height: 40px; margin-right: 10px;">
+                    <img src="./img/del.png" height="30px" width="30px" />&nbsp;삭제</a>
+                </div>
               </div>
               <hr>
-              <div>
-                <br>
+              <div class="container" style="margin: 3% 4%;">
+                <form name="commentInsertForm" method="POST" action="/submit_comment"
+                  style="background-color: rgb(255, 255, 255);">
+                  <input type="hidden" name="g_no" value="<%= post.g_no %>">
+                  <input type="hidden" name="b_no" value="<%= post.b_no %>">
+                  <div class="comtitle">
+                    <h3>댓글 작성</h3>
+                  </div>
+
+                  <div class="cominput">
+                    <div class="input-group">
+                      <input type="text" class="form-control commentbox" name="c_content" id="c_content"
+                        placeholder="댓글을 입력해주세요." style="max-width: 100%;">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn pink_btn" name="commentInsertBtn"
+                          style="max-width: 100%;">작성</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div style="width: 90%; margin: 0 5%;">
-                <h5 style="width: 1150px;">내용적어봐라라아아아ㅏ아아아아아아아아아아아</h5>
-              </div>
-              <br>
-              <div>
-                <div style="position: absolute; bottom: 20px; left: 7%;">
-                  <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px; margin-right: 10px;">
-                      <img src="./img/like.png" height="30px" width="30px" />
-                      좋아요
-                  </button>
-                  <button type="button" class="btn" style="background-color: pink; width: 150px; height: 40px;">
-                      <img src="./img/modify.png" height="30px" width="30px" />
-                      <a href="./modify" style="color: black;">수정</a>
-                  </button>
+
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>닉네임</th>
+                        <th>댓글 내용</th>
+                        <th>작성일</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if (comments.length> 0) { %>
+                        <% for (let i=0; i < comments.length; i++) { %>
+                          <tr>
+                            <td>
+                              <%= i + 1 %>
+                            </td>
+                            <td>
+                              <%= comments[i].nickname %>
+                            </td>
+                            <td>
+                              <%= comments[i].c_content %>
+                            </td>
+                            <td>
+                              <%= comments[i].c_date %>
+                            </td>
+                          </tr>
+                          <% } %>
+                            <% } else { %>
+                              <tr>
+                                <td colspan="4">작성된 댓글이 없습니다.</td>
+                              </tr>
+                              <% } %>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-             
+
+            </div>
+
+            <br>
 
 
             </div>
             <br>
+            <script>
+              function modifyPost() {
+                // 현재 URL에서 g_no 값을 가져오기
+                var currentURL = window.location.href;
+                var g_no_match = currentURL.match(/[?&]g_no=([^&]+)/);
+                var b_no_match = currentURL.match(/[?&]b_no=([^&]+)/);
 
-            <div style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000;">
-              <div class="container">
-                <form name="commentInsertForm" method="post" enctype="multipart/form-data">
-                    <div class="comtitle"><h3>댓  글</h3></div>
-                
-                    <div class="cominput">
-                    <textarea class="commentbox" name="Com_Content" placeholder="댓글을 입력해주세요."></textarea>
-                           
-                    <div class="com2">
-                           
-                    <div class="com_btn">
-                    <button type="button" class="button3">취소</button>
-                    <button type="button" name="commentInsertBtn" class="button1">등록</button>
-                                  
-                    <button type="button" class="button2">
-                    <i class="fas fa-images fa-lg" ></i></button>
-                    </div>
+                // Check if the values are present in the URL
+                var g_no = g_no_match ? g_no_match[1] : null;
+                var b_no = b_no_match ? b_no_match[1] : null;
 
-                              
-                    </div>  
-                    </div>
-                </form>
-              </div> 
-            </div>
-            <br>
-            <div>
-              <div style="margin: 0 5%; background-color: white; border-radius: 10px; border: 1px solid #000;">
+                // 페이지 이동
+                window.location.href = `/modify?g_no=${g_no}&b_no=${b_no}`;
+              }
+            </script>
 
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>ID</th>
-                      <th>Comment</th>
-                      <th>작성일</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>user1</td>
-                      <td>첫 번째 댓글입니다.</td>
-                      <td>2022-01-01</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>user2</td>
-                      <td>두 번째 댓글입니다.</td>
-                      <td>2022-01-02</td>
-                    </tr>
-                    <!-- Add more rows for additional comments -->
-                  </tbody>
-                </table>
-              </div>
-          
-          </div>
-          <br>
-            
->>>>>>> Stashed changes
+            <script>
+              function likePost() {
+                // 서버로 좋아요 요청 보내기
+                $.post('/increaseLike', { g_no: <%= post.g_no %>, b_no: <%= post.b_no %> })
+                  .done(function (response) {
+                    // 좋아요 증가 처리 후, 반환된 데이터로 화면 업데이트
 
-
-
-  <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    $(function () {
-      $("#loginheader").load("loginheader.html");
-    });
-  </script>
+                    // 페이지 리다이렉션
+                    window.location.href = `/read?g_no=${response.g_no}&b_no=${response.b_no}`;
+                  })
+                  .fail(function (error) {
+                    console.error('좋아요 요청 실패:', error);
+                  });
+              }
+            </script>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

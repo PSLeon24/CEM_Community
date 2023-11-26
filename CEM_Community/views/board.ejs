@@ -8,154 +8,205 @@
 
     <style>
         .pagination {
-          display: inline-block;
+            display: inline-block;
         }
-        
+
         .pagination a {
-          color: black;
-          float: left;
-          padding: 8px 16px;
-          text-decoration: none;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
         }
-        
+
         .pagination a.active {
-          background-color: #f98fa1;
-          color: rgb(248, 216, 216);
+            background-color: #f98fa1;
+            color: rgb(248, 216, 216);
         }
-        
-        .pagination a:hover:not(.active) {background-color: #ddd;}
-        </style>
 
-</head>
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
 
-<body>
-  <div id="header"></div>
+    </head>
 
-    <br>
+    <body>
+        <% if (user) { %>
+            <!-- 세션이 있는 경우 -->
+            <%- include('loginheader.ejs') %>
+                <% } else { %>
+                    <!-- 세션이 없는 경우 -->
+                    <%- include('header.ejs') %>
+                        <% } %>
 
-  <div>
+                            <br>
+                            <div>
+                                <h4 style="text-align: center;">
+                                    <%= g_name %>
+                                </h4>
 
+                                <div
+                                    style="margin: 0 10%; display: flex; justify-content: space-between; align-items: center;">
+                                    <form>
+                                        <select class="form-control" id="g_no" name="g_no"
+                                            onchange="redirectToBoard(this.value)">
+                                            <% if (user && user.grade) { %>
+                                                <% if (user.grade===1) { %>
+                                                    <option value="1" <% if (g_no==='1' ) { %>selected<% } %>>1학년 게시판
+                                                    </option>
+                                                    <% } else if (user.grade===2) { %>
+                                                        <option value="2" <% if (g_no==='2' ) { %>selected<% } %>>2학년
+                                                                게시판
+                                                        </option>
+                                                        <% } else if (user.grade===3) { %>
+                                                            <option value="3" <% if (g_no==='3' ) { %>selected<% } %>
+                                                                    >3학년
+                                                                    게시판
+                                                            </option>
+                                                            <% } else { %>
+                                                                <option value="4" <% if (g_no==='4' ) { %>selected<% }
+                                                                        %>
+                                                                        >4학년
+                                                                        게시판
+                                                                </option>
+                                                                <% } %>
+                                                                    <option value="5" <% if (g_no==='5' ) { %>selected<%
+                                                                            } %>>랩
+                                                                            소개
+                                                                            게시판
+                                                                    </option>
+                                                                    <option value="6" <% if (g_no==='6' ) { %>selected<%
+                                                                            } %>>졸업
+                                                                            논문
+                                                                            게시판
+                                                                    </option>
+                                                                    <option value="7" <% if (g_no==='7' ) { %>selected<%
+                                                                            } %>>과목
+                                                                            소개
+                                                                            게시판
+                                                                    </option>
+                                                                    <% } else { %>
+                                                                        <!-- user 객체가 정의되지 않았거나 grade 속성이 없는 경우에 대한 처리 -->
+                                                                        <option value="5" <% if (g_no==='5' ) { %>
+                                                                            selected<% } %>>랩
+                                                                                소개
+                                                                                게시판
+                                                                        </option>
+                                                                        <option value="6" <% if (g_no==='6' ) { %>
+                                                                            selected<% } %>>졸업
+                                                                                논문
+                                                                                게시판
+                                                                        </option>
+                                                                        <option value="7" <% if (g_no==='7' ) { %>
+                                                                            selected<% } %>>과목
+                                                                                소개
+                                                                                게시판
+                                                                        </option>
+                                                                        <% } %>
 
-  </div>
-  <div>
-      <h4 style="text-align: center;">
-          학과 소식
-      </h4>
-  </div>
+                                        </select>
+                                    </form>
 
-  <br>
-  
-  <div style="margin: 0 10%;">
-      <div style="width: 10%;"></div>
-      <table class="table table-striped-columns">
-          <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col" style="width: 60%;">제목</th>
-                  <th scope="col">날짜</th>
-                  <th scope="col">게시자</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th scope="row">1</th>
-                  <td><a href="#" style="color: black;">조교 모집 안내</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">2</th>
-                  <td><a href="#" style="color: black;">컴공인의 날 안내</a></td>
-                  <td>2023.11.07</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">3</th>
-                  <td><a href="#" style="color: black;">학과 시설 안내</a></td>
-                  <td>2023.11.07</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">4</th>
-                  <td><a href="#" style="color: black;">참사람 인재 장학금 안내</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">5</th>
-                  <td><a href="#" style="color: black;">랩 신청 안내</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">6</th>
-                  <td><a href="#" style="color: black;">멋쟁이 돼지들아</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">7</th>
-                  <td><a href="#" style="color: black;">환영한다</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">8</th>
-                  <td><a href="#" style="color: black;">빨리 안 들어오고 머하냐</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">9</th>
-                  <td><a href="#" style="color: black;">주글래</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              <tr>
-                  <th scope="row">10</th>
-                  <td><a href="#" style="color: black;">살 좀 빼라 고영민</a></td>
-                  <td>2023.01.01</td>
-                  <td>관리자</td>
-              </tr>
-              
-          </tbody>
-      </table>
-  </div>
-  
-  <br>
+                                    <button type="button" class="btn btn-outline-dark" onclick="writePost()">게시글
+                                        작성</button>
+                                </div>
+                                <br>
+                                <div style="margin: 0 10%;">
+                                    <div style="width: 10%;"></div>
+                                    <table class="table table-striped-columns">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col" style="width: 60%;">제목</th>
+                                                <th scope="col">날짜</th>
+                                                <th scope="col">작성자</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (let i=0; i < posts.length; i++) { %>
+                                                <tr>
+                                                    <th scope="row" id="b_no">
+                                                        <%= posts.length - i %>
+                                                    </th>
+                                                    <td><a href="#" onclick="readPost(<%= posts.length - i %>)"
+                                                            style="color: black;">
+                                                            <%= posts[i].b_title %>
+                                                        </a></td>
+                                                    <td>
+                                                        <%= posts[i].b_date %>
+                                                    </td>
+                                                    <td>
+                                                        <%= posts[i].nickname %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-  <div class="text-center">
-      <div class="pagination">
-          <a href="#">&laquo;</a>
-          <a class="active" href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#">7</a>
-          <a href="#">8</a>
-          <a href="#">9</a>
-          <a href="#">10</a>
-          <a href="#">&raquo;</a>
-        </div>
-  </div>
-  
-  <div>
-      <br>
-  </div>
-    
+                                <br>
 
+                                <div class="text-center">
+                                    <div class="pagination">
+                                        <a href="#">&laquo;</a>
+                                        <a class="active" href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <a href="#">5</a>
+                                        <a href="#">6</a>
+                                        <a href="#">7</a>
+                                        <a href="#">8</a>
+                                        <a href="#">9</a>
+                                        <a href="#">10</a>
+                                        <a href="#">&raquo;</a>
+                                    </div>
+                                </div>
 
-    <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    $(function (){
-      $("#header").load("header.html");
-    });
-  </script>
-</body>
+                                <div>
+                                    <br>
+                                </div>
+
+                                <script>
+                                    // 페이지 로드 시 실행되는 함수
+                                    window.onload = function () {
+                                        // g_no 값을 가져오기
+                                        var g_no = document.getElementById('g_no').value;
+
+                                        // 현재 URL에서 g_no 값을 가져오기
+                                        var currentURL = window.location.href;
+                                        var currentGNo = currentURL.match(/[?&]g_no=([^&]+)/);
+
+                                        // 만약 g_no 값이 존재하고 현재 URL의 g_no와 다르다면 리다이렉션
+                                        if (g_no && currentGNo && g_no !== currentGNo[1]) {
+                                            redirectToBoard(g_no);
+                                        }
+                                    };
+
+                                    // 게시판으로 리다이렉트하는 함수
+                                    function redirectToBoard(selectedValue) {
+                                        window.location.href = `./board?g_no=${selectedValue}`;
+                                    }
+
+                                    function writePost() {
+                                        var g_no = document.getElementById('g_no').value; // g_no 값을 select 요소에서 가져오는 것
+
+                                        // 페이지 이동
+                                        window.location.href = `/write?g_no=${g_no}`;
+                                    }
+                                    function readPost(b_no) {
+                                        var g_no = document.getElementById('g_no').value;
+
+                                        // 페이지 이동
+                                        window.location.href = `/read?g_no=${g_no}&b_no=${b_no}`;
+                                    }
+                                </script>
+                                <!-- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
+                                <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+                                <script
+                                    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
 
 </html>

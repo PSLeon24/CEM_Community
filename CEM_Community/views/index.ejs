@@ -10,123 +10,331 @@
 
 
 <body>
-  <div id="header"></div>
+  <% if (user) { %>
+    <!-- 세션이 있는 경우 -->
+    <%- include('loginheader.ejs') %>
+      <% } else { %>
+        <!-- 세션이 없는 경우 -->
+        <%- include('header.ejs') %>
+          <% } %>
+            <div id="header"></div>
 
-  <!-- 커뮤니티 메뉴 -->
-  <!-- 큰 그룹 1: 학과 소식과 게시판 -->
-  <div class="container mt-4 d-flex">
+            <!-- 커뮤니티 메뉴 -->
+            <!-- 큰 그룹 1: 학과 소식과 게시판 -->
+            <div class="container mt-4 d-flex">
 
-    <!-- 좌우 여백 5% -->
-    <div style="width: 5%;"></div>
+              <!-- 좌우 여백 5% -->
+              <div style="width: 5%;"></div>
 
-    <!-- 좌측 그룹: 학과 소식 -->
-    <div style="width: 60%;">
+              <!-- 좌측 그룹: 학과 소식 -->
+              <div style="width: 60%;">
 
-      <h5 style="text-align: center;">학과 소식</h5>
-      <div class="list-group list-group-horizontal">
-        <a href="#" class="list-group-item list-group-item-action">조교 모집 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">시설 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">시험 일정 안내</a>
-        <a href="#" class="list-group-item list-group-item-action">참사람</a>
-        <!-- 다른 학과 소식 항목 추가 -->
-      </div>
-      <br>
-      <div class="d-flex" style="align-items: stretch;">
-        <div style="width: 300px; height: 400px; margin-right: 30px;">
-          <h5 style="text-align: center;">학년별 게시판</h5>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a href="#" style="color: pink;">1학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">2학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">3학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <h5 class="card-title"><a href="#" style="color: pink;">4학년</a></h5>
-              <p class="card-text">최근 게시글 가져오기</p>
+                <h5 style="text-align: center;">컴공 소식</h5>
+                <div class="list-group list-group-horizontal">
+                  <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">행사 안내</a>
+                  <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">학과 일정</a>
+                  <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">시험 일정</a>
+                  <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">채용 공고</a>
+                  <!-- 다른 학과 소식 항목 추가 -->
+                </div>
+                <br>
+                <div class="d-flex" style="align-items: stretch;">
+                  <div style="width: 300px; height: 400px; margin-right: 30px;">
+                    <h5 style="text-align: center;">학년별 게시판</h5>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="./board?g_no=1"
+                            style="color: hotpink; text-align: center;">1학년</a>
+                        </h5>
+                        <% if (top3Titles_g1 && top3Titles_g1.length> 0) { %>
+
+                          <% for (let i=0; i < top3Titles_g1.length; i++) { %>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g1[i].g_no %>&b_no=<%= top3Titles_g1[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <% if (top3Titles_g1[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g1[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g1[i].b_title %>
+                                        <% } %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g1[i].b_date %>
+                              </span>
+                            </p>
+                            <% } %>
+
+                              <% } else { %>
+                                <!-- top3Titles_g1의 값이 없을 때의 처리 -->
+                                <p class="card-text">게시글이 없습니다.</p>
+                                <% } %>
+                                  <hr>
+                                  <h5 class="card-title"><a href="./board?g_no=2"
+                                      style="color: hotpink; text-align: center;">2학년</a></h5>
+                                  <% if (top3Titles_g2 && top3Titles_g2.length> 0) { %>
+
+                                    <% for (let i=0; i < top3Titles_g2.length; i++) { %>
+                                      <p class="card-text"
+                                        style="height: 15px; display: flex; justify-content: space-between;">
+                                        <span style="color: red;">New</span>
+                                        <a href="./read?g_no=<%= top3Titles_g2[i].g_no %>&b_no=<%= top3Titles_g2[i].b_no %>"
+                                          style="color: black; text-decoration: none; transition: color 0.3s;"
+                                          onmouseover="this.style.color='deeppink'"
+                                          onmouseout="this.style.color='black'">
+                                          <% if (top3Titles_g2[i].b_title.length> 7) { %>
+                                            <%= top3Titles_g2[i].b_title.substring(0, 7) + '···' %>
+                                              <% } else { %>
+                                                <%= top3Titles_g2[i].b_title %>
+                                                  <% } %>
+                                        </a>
+                                        <span style="color: black; text-align: right;">
+                                          <%= top3Titles_g2[i].b_date %>
+                                        </span>
+                                      </p>
+                                      <% } %>
+
+                                        <% } else { %>
+                                          <!-- top3Titles_g5가 정의되지 않았을 때의 처리 -->
+                                          <p class="card-text">게시글이 없습니다.</p>
+                                          <% } %>
+
+                                            <hr>
+                                            <h5 class="card-title"><a href="./board?g_no=3"
+                                                style="color: hotpink; text-align: center;">3학년</a></h5>
+                                            <% if (top3Titles_g3 && top3Titles_g3.length> 0) { %>
+
+                                              <% for (let i=0; i < top3Titles_g3.length; i++) { %>
+                                                <p class="card-text"
+                                                  style="height: 15px; display: flex; justify-content: space-between;">
+                                                  <span style="color: red;">New</span>
+                                                  <a href="./read?g_no=<%= top3Titles_g3[i].g_no %>&b_no=<%= top3Titles_g3[i].b_no %>"
+                                                    style="color: black; text-decoration: none; transition: color 0.3s;"
+                                                    onmouseover="this.style.color='deeppink'"
+                                                    onmouseout="this.style.color='black'">
+                                                    <% if (top3Titles_g3[i].b_title.length> 7) { %>
+                                                      <%= top3Titles_g3[i].b_title.substring(0, 7) + '···' %>
+                                                        <% } else { %>
+                                                          <%= top3Titles_g3[i].b_title %>
+                                                            <% } %>
+                                                  </a>
+                                                  <span style="color: black; text-align: right;">
+                                                    <%= top3Titles_g3[i].b_date %>
+                                                  </span>
+                                                </p>
+                                                <% } %>
+
+                                                  <% } else { %>
+
+                                                    <p class="card-text">게시글이 없습니다.</p>
+                                                    <% } %>
+
+                                                      <hr>
+                                                      <h5 class="card-title"><a href="./board?g_no=4"
+                                                          style="color: hotpink; text-align: center;">4학년</a></h5>
+                                                      <% if (top3Titles_g4 && top3Titles_g4.length> 0) { %>
+
+                                                        <% for (let i=0; i < top3Titles_g4.length; i++) { %>
+                                                          <p class="card-text"
+                                                            style="height: 15px; display: flex; justify-content: space-between;">
+                                                            <span style="color: red;">New</span>
+                                                            <a href="./read?g_no=<%= top3Titles_g4[i].g_no %>&b_no=<%= top3Titles_g4[i].b_no %>"
+                                                              style="color: black; text-decoration: none; transition: color 0.3s;"
+                                                              onmouseover="this.style.color='deeppink'"
+                                                              onmouseout="this.style.color='black'">
+                                                              <% if (top3Titles_g4[i].b_title.length> 7) { %>
+                                                                <%= top3Titles_g4[i].b_title.substring(0, 7) + '···' %>
+                                                                  <% } else { %>
+                                                                    <%= top3Titles_g4[i].b_title %>
+                                                                      <% } %>
+                                                            </a>
+                                                            <span style="color: black; text-align: right;">
+                                                              <%= top3Titles_g4[i].b_date %>
+                                                            </span>
+                                                          </p>
+                                                          <% } %>
+
+                                                            <% } else { %>
+                                                              <p class="card-text">게시글이 없습니다.</p>
+                                                              <% } %>
+
+                      </div>
+                      <!-- 다른 학과 소식 항목 추가 -->
+                    </div>
+                  </div>
+
+                  <div style="width: 300px; height: 400px;">
+                    <h5 style="text-align: center;">인기 게시판</h5>
+                    <div class="card">
+                      <div class="card-body" style="height: 420px;">
+                        <% if (popularPosts && popularPosts.length> 0) { %>
+                          <% if (popularPosts.length> 9) { %>
+                            <% for (let i=0; i < 10; i++) { %>
+                              <p class="card-text">
+                                <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
+                                  style="color: black; text-decoration: none; transition: color 0.3s;"
+                                  onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                  <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>]</span>
+
+                                  <% if (popularPosts[i].b_title.length> 7) { %>
+                                    <%= popularPosts[i].b_title.substring(0, 7) + '···' %>
+                                      <% } else { %>
+                                        <%= popularPosts[i].b_title %>
+                                          <% } %>
+
+                                            <span style="float: right;">👍<span style="color: red;">
+                                                <%= popularPosts[i].likes %>
+                                              </span>
+                                </a>
+                              </p>
+                              <% } %>
+                                <% } else { %>
+                                  <% for (let i=0; i < popularPosts.length; i++) { %>
+                                    <p class="card-text">
+                                      <a href="./read?g_no=<%= popularPosts[i].g_no %>&b_no=<%= popularPosts[i].b_no %>"
+                                        style="color: black; text-decoration: none; transition: color 0.3s;"
+                                        onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                        <span style="float: left; margin-right: 10px;">[<%= popularPosts[i].g_name %>
+                                            ]</span>
+                                        <% if (popularPosts[i].b_title.length> 7) { %>
+                                          <%= popularPosts[i].b_title.substring(0, 7) + '···' %>
+                                            <% } else { %>
+                                              <%= popularPosts[i].b_title %>
+                                                <% } %>
+
+                                                  <span style="float: right;">👍<span style="color: red;">
+                                                      <%= popularPosts[i].likes %>
+                                                    </span>
+                                      </a>
+                                    </p>
+                                    <% } %>
+                                      <% } %>
+                                        <% } else { %>
+                                          <p class="card-text">게시글이 없습니다.</p>
+                                          <% } %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 가운데 여백 10% -->
+              <div style="width: 5%;"></div>
+
+              <!-- 우측 그룹: 게시판 -->
+              <div style="width: 30%;">
+                <h5 style="text-align: center;"><a href="./board?g_no=5"
+                    style="text-decoration: none; color: inherit;">랩
+                    소개 게시판</a></h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <% if (top3Titles_g5 && top3Titles_g5.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g5.length; i++) { %>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g5[i].g_no %>&b_no=<%= top3Titles_g5[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <% if (top3Titles_g5[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g5[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g5[i].b_title %>
+                                        <% } %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g5[i].b_date %>
+                              </span>
+                              <hr>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <!-- top3Titles_g5가 정의되지 않았을 때의 처리 -->
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <h5 style="text-align: center;"><a href="./board?g_no=6"
+                    style="text-decoration: none; color: inherit;">졸업
+                    논문 게시판</a></h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <% if (top3Titles_g6 && top3Titles_g6.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g6.length; i++) { %>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g6[i].g_no %>&b_no=<%= top3Titles_g6[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <% if (top3Titles_g6[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g6[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g6[i].b_title %>
+                                        <% } %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g6[i].b_date %>
+                              </span>
+                              <hr>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <h5 style="text-align: center;"><a href="./board?g_no=7"
+                    style="text-decoration: none; color: inherit;">과목
+                    소개 게시판</a></h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <% if (top3Titles_g7 && top3Titles_g7.length> 0) { %>
+                        <div class="card-body">
+                          <% for (let i=0; i < top3Titles_g7.length; i++) { %>
+                            <p class="card-text" style="height: 15px; display: flex; justify-content: space-between;">
+                              <span style="color: red;">New</span>
+                              <a href="./read?g_no=<%= top3Titles_g7[i].g_no %>&b_no=<%= top3Titles_g7[i].b_no %>"
+                                style="color: black; text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='deeppink'" onmouseout="this.style.color='black'">
+                                <% if (top3Titles_g7[i].b_title.length> 7) { %>
+                                  <%= top3Titles_g7[i].b_title.substring(0, 7) + '···' %>
+                                    <% } else { %>
+                                      <%= top3Titles_g7[i].b_title %>
+                                        <% } %>
+                              </a>
+                              <span style="color: black; text-align: right;">
+                                <%= top3Titles_g7[i].b_date %>
+                              </span>
+                              <hr>
+                            </p>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                          <p class="card-text">게시글이 없습니다.</p>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div style="width: 5%;"></div>
             </div>
-            <!-- 다른 학과 소식 항목 추가 -->
-          </div>
-        </div>
 
-        <div style="width: 300px; height: 400px;">
-          <h5 style="text-align: center;">인기 게시판</h5>
-          <div class="card">
-            <div class="card-body" style="height: 328px;">
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-              <p class="card-text">최근 게시글 가져오기</p>
-            </div>
-            <!-- 다른 학과 소식 항목 추가 -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 가운데 여백 10% -->
-    <div style="width: 5%;"></div>
-
-    <!-- 우측 그룹: 게시판 -->
-    <div style="width: 30%;">
-      <h5 style="text-align: center;">랩 소개 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 1</h5>
-              <p class="card-text" style="height: 38px;">게시판 1에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <h5 style="text-align: center;">졸업 논문 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 2</h5>
-              <p class="card-text" style="height: 38px;">게시판 2에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <h5 style="text-align: center;">과목 소개 게시판</h5>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">게시판 3</h5>
-              <p class="card-text" style="height: 38px;">게시판 3에 대한 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-— 좌우 여백 5% —->
-      <div style="width: 5%;"></div>
-  </div>
-
-
-
-
-
-  <!—- 부트스트랩 JS 및 jQuery 스크립트 추가 -->
-    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      $(function () {
-        $("#header").load("header.html");
-      });
-    </script>
+            <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

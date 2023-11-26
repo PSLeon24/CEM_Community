@@ -1,10 +1,10 @@
 # Computer Engineering Major Community Homepage.
 
-## Introduction of Our Team
+## Introduction to Our Team
 |Selfie|Name|Position|Grade|Major|
 |:--:|:--:|:--:|:--:|:--:|
-|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA|3|Computer Egineering|
-|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|Back-End Developer & ER-Diagram|3|Computer Egineering|
+|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA & Full-Stack Developer|3|Computer Egineering|
+|<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|Full-Stack Developer & ER-Diagram|3|Computer Egineering|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/b5e13f86-dbd8-4b1a-8395-fad3cd06ed0f">|Han-Gyul Choi|Back-End Developer & UI|3|Computer Egineering|
 
 ## 💻 Tech Stack
@@ -30,8 +30,8 @@
   ~ 10/31     O      Collect resources related the project and Write a Usecase Diagram & UI/UX
   ~ 11/07     O      System Design(Architecture Design and Detail Design) & Develop Front-end
   ~ 11/14     O      Database Design(by 2_3_2. E-R Diagram) and Prepare the mid-term presentation
-  ~ 11/21     -      Mid-term presentation / Physical Design using SQL Server
-  ~ 11/28     -      Develop Back-end / Front-end maintenance / System testing
+  ~ 11/23     O      Mid-term presentation / Physical Design using SQL Server
+  ~ 11/28     O      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
   ~ 12/12     -      Final check and Prepare Final-term presentation
   ~ 12/19     -      Final-term presentation / Finish the project
@@ -49,14 +49,23 @@
 - ### 2_3. Database Design
   - #### 2_3_1. Conceptual Design
     - ##### Extract entities, attributes and relationship
-      <img width="500" alt="스크린샷 2023-11-07 오후 8 13 21" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/945cb43c-717e-43ae-a2e5-0a2e2e4df4be">
+      <img width="500" alt="스크린샷 2023-11-21 오전 10 07 29" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/72451589-df53-478b-ab36-425640f21a48">
   - #### 2_3_2. Logical Design
-    - ##### Schema Design & E-R Diagram
-      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/45e7374e-cc11-488a-8a79-188c7211c43e">
+    - ##### E-R Diagram
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/cf95bdce-9f9c-4ba3-8346-8798c51c9d40">
+    - ##### Schema Design
+      <img width="500" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/620b78b7-e3a1-4080-90b5-63ea0fe8dab6">
   - #### 2_3_3. Physical Design using SQL Server
-
+    - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 ## 3. Implementation
-- To be added.
+- Create Database and Tables
+- Develop Sign Up, Login
+- Develop Board List and Write Board
+- Develop Read Board
+- Develop Popular Board
+- Develop Comments
+- Develop Board Like
+- Develop Modify Board
 
 ## 4. Testing
 - To be added.
@@ -68,28 +77,37 @@
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
 - 2023/10/31: We have wrote usecase diagram after we collect requirements, extracted components and decided categories.
 - 2023/11/07: We shared our UI/UX feedback and drew a ER-Diagram. We plan to implement the frontend based on the UI design document.
+- 2023/11/19: We developed back-end using express. And We designed database schema again. implement progress: 60% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
+- 2023/11/25: We developed back-end section(read board, comments in a board, likes in a board).
 
 ## Work records for each members
 #### Yeong-Min Ko
 - 2023/10/29: Develop a prototype page with Node.js
 
-|Main|Sign in|Sign up|
+|Main|Login|Sign up|
 |:--:|:--:|:--:|
 |<img width="1440" alt="스크린샷 2023-10-29 오전 1 33 23" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/7ae07c2d-b352-4b02-8ac5-d114919730d4">|<img width="1439" alt="스크린샷 2023-10-29 오전 1 33 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c9e57801-f764-4fd6-8c1a-d858244c1a37">|<img width="1438" alt="스크린샷 2023-10-29 오전 1 35 20" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/e39ffbf0-07d3-4867-83c4-32aab3b5a837">|
 
 - 2023/11/07: Database Design(Extract entities, attributes and relationship) and Draw a ER-Diagram with Hyun-Soo Choi / Make Midterm PPT
 - 2023/11/12: Manage routers between pages.
+- 2023/11/19: Develop Back-End (main, sign up, login)
+- 2023/11/23: Develop Back-End (board list, board write, add encryption at sign up)
+  - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
+- 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page).
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
-- 2023/11/12: Develop front-end
+- 2023/11/12: Develop Front-End & Re-Design ER-Diagram
+- 2023/11/21: Develop Front-End(comment in a read page), Develop Back-End (in progress: read board, comment)
+- 2023/11/25: Develop Front-End(academic calendar)
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
 |<img width="1437" alt="스크린샷 2023-11-14 오전 8 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/9560884e-2916-4c8a-afc6-a271cc762031">|<img width="1439" alt="스크린샷 2023-11-14 오후 3 55 30" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/c214d56c-7bc8-4759-a5e8-bce222ee4d83">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 57 45" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/52ca4d57-8de8-4208-aecc-bc00beeb60db">|
 |<b>Board</b>|<b>Write</b>|<b>Modify</b>|
 |<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/fa151efa-79e6-426f-8d80-72765076fe6b">|
+- 2023/11/19: Develop Back-End (in progress: read board, comment)
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
@@ -108,8 +126,13 @@
 <a href="https://kanari1569.tistory.com/38"> 4</a>
 <a href="https://kanari1569.tistory.com/39"> 5</a>
 <a href="https://kanari1569.tistory.com/40"> 6</a>
-- 2023/11/07: Draw UI design: <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Read More</a>
+- UI Design & Back-end <a href="https://uncovered-corn-690.notion.site/9ef98f2f12114555ad16b62896fdf508?pvs=4">Notion Link</a>
+- 2023/11/07: Draw UI design
 - 2023/11/14: Update UI icon & Back-end status in Notion
+- 2023/11/16: Update Back-end Code
+- 2023/11/19: Develop Back-End (in progress: read board, comment)
+- 2023/11/25: Develop Back-End (finished: read board, comment), modify board, delete board
+
 ---
 #### References
 1) Bootstrap v5.3, docs, https://getbootstrap.kr/docs/5.3/getting-started/introduction/
