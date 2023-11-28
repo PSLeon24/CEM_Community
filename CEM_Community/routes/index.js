@@ -464,6 +464,61 @@ router.get('/mypage', function(req, res, next) {
   res.render('mypage',  { user }); // mypage.ejs 템플릿을 렌더링
 });
 
+/* schedule 페이지 라우팅 */
+router.get('/schedule', function(req, res, next) {
+  const user = req.session.user;
+  res.render('schedule',  { user }); // mypage.ejs 템플릿을 렌더링
+});
+
+// submitCalendar를 처리하는 라우트
+router.post('/submitCalendar', (req, res) => {
+  const formData = req.body;
+  const { ac_title, ac_start_date, ac_end_date } = req.body;
+  const id = req.session.user ? req.session.user.id : null;
+  const ac_category = 1;
+
+  // 사용자가 로그인되어 있지 않다면 거부
+  // if (!id) {
+  //   return res.status(403).send('<script>alert("Only administrators can submit schedules!"); window.location.href=document.referrer;</script>');
+  // }
+
+  // 폼 데이터 처리 로직 추가
+  console.log(formData);
+  console.log(ac_title, ac_start_date, ac_end_date);
+
+  try {
+    // SQL 쿼리를 사용하여 Academic_Calendar 테이블에 일정 추가
+    const insertQuery = `
+      INSERT INTO Academic_Calendar (id, ac_title, ac_start_date, ac_end_date, ac_category)
+      VALUES (@id, @ac_title, @ac_start_date, @ac_end_date, @ac_category);
+    `;
+
+    const request = new mssql.Request();
+
+    // SQL 쿼리에 매개변수 입력
+    request.input('id', mssql.NVarChar, id);
+    request.input('ac_title', mssql.NVarChar, ac_title);
+    request.input('ac_start_date', mssql.Date, ac_start_date);
+    request.input('ac_end_date', mssql.Date, ac_end_date);
+    request.input('ac_category', mssql.Int, ac_category);
+
+    // SQL 쿼리 실행
+    request.query(insertQuery, (err) => {
+      if (err) {
+        console.error('일정 등록 중 오류 발생:', err);
+        res.status(500).send('<script>alert("일정 등록 중 오류가 발생했습니다."); window.location.href="/";</script>');
+      } else {
+        console.log('일정이 성공적으로 등록되었습니다.');
+        res.send('<script>alert("일정이 성공적으로 등록되었습니다."); window.location.href="/main";</script>');
+      }
+    });
+  } catch (error) {
+    console.error('일정 등록 중 오류 발생:', error);
+    res.status(500).send('<script>alert("일정 등록 중 오류가 발생했습니다."); window.location.href="/";</script>');
+  }
+});
+
+
 // 로그아웃 라우터
 router.get('/logout', (req, res) => {
   // 세션 삭제
