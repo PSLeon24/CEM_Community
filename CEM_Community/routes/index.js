@@ -407,8 +407,6 @@ router.post('/increaseLike', async function(req, res) {
 
     const result = await request.query(increaseLikeQuery);
 
-    // 결과 확인 (실제로는 이 결과를 클라이언트에게 전송할 수 있음)
-    console.log('좋아요가 성공적으로 증가되었습니다.');
     //res.json({ likes: result.rowsAffected.length > 0 ? result.recordset[0].likes : 0 });
   } catch (error) {
     console.error('좋아요 증가 중 오류 발생:', error);
@@ -465,9 +463,31 @@ router.get('/mypage', function(req, res, next) {
 });
 
 /* schedule 페이지 라우팅 */
-router.get('/schedule', function(req, res, next) {
-  const user = req.session.user;
-  res.render('schedule',  { user }); // mypage.ejs 템플릿을 렌더링
+router.get('/schedule', async function(req, res, next) {
+  try {
+    const user = req.session.user;
+
+    // Academic_Calendar에서 일정 데이터를 가져오는 로직
+    const request = new mssql.Request();
+    const query = `SELECT * FROM Academic_Calendar`;
+    const result = await request.query(query);
+    const schedules = result.recordset;
+
+    // 서버에서 받은 데이터를 FullCalendar에서 사용 가능한 형식으로 변환
+    const formattedSchedules = schedules.map(schedule => ({
+      ac_no: schedule.ac_no,
+      id: schedule.id,
+      ac_category: schedule.ac_category,
+      ac_title: schedule.ac_title,
+      ac_start_date: new Date(schedule.ac_start_date), // Date 객체로 변환
+      ac_end_date: new Date(schedule.ac_end_date) // Date 객체로 변환
+    }));
+    
+    res.render('schedule', { user, schedules: formattedSchedules });
+  } catch (error) {
+    console.error('일정 데이터 로딩 중 오류가 발생했습니다:', error);
+    res.status(500).send('<script>alert("일정 데이터 로딩 중 오류가 발생했습니다."); window.location.href="/";</script>');
+  }
 });
 
 // submitCalendar를 처리하는 라우트
@@ -477,15 +497,7 @@ router.post('/submitCalendar', (req, res) => {
   const id = req.session.user ? req.session.user.id : null;
   const ac_category = 1;
 
-  // 사용자가 로그인되어 있지 않다면 거부
-  // if (!id) {
-  //   return res.status(403).send('<script>alert("Only administrators can submit schedules!"); window.location.href=document.referrer;</script>');
-  // }
-
   // 폼 데이터 처리 로직 추가
-  console.log(formData);
-  console.log(ac_title, ac_start_date, ac_end_date);
-
   try {
     // SQL 쿼리를 사용하여 Academic_Calendar 테이블에 일정 추가
     const insertQuery = `
@@ -517,7 +529,6 @@ router.post('/submitCalendar', (req, res) => {
     res.status(500).send('<script>alert("일정 등록 중 오류가 발생했습니다."); window.location.href="/";</script>');
   }
 });
-
 
 // 로그아웃 라우터
 router.get('/logout', (req, res) => {

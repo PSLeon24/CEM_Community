@@ -25,47 +25,50 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 timeZone: 'UTC',
-                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
-                events: [ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-                    {
-                        title: '일정',
-                        start: '2023-11-26 00:00:00',
-                        end: '2023-11-27 24:00:00'
-                        // color 값을 추가해 색상도 변경 가능 자세한 내용은 하단의 사이트 참조
-                    },
-                    {
-                        title: '일정',
-                        start: '2023-11-26 00:00:00',
-                        end: '2023-11-27 24:00:00'
-                        // color 값을 추가해 색상도 변경 가능 자세한 내용은 하단의 사이트 참조
-                    }
+                initialView: 'dayGridMonth',
+                events: [
+        <% for(var i = 0; i<schedules.length; i++) { %>
+            {
+                title: '<%= schedules[i].ac_title %>',
+                start: '<%= schedules[i].ac_start_date.toISOString() %>',
+                end: '<%= schedules[i].ac_end_date.toISOString() %>'
+            } <%= i < schedules.length - 1 ? ',' : '' %>
+        <% } %>
+      ],
+            headerToolbar: {
+            center: 'addEventButton', // user의 role이 1일 때(관리자)만 버튼 표시
+        }, customButtons: {
+            addEventButton: { // 추가한 버튼 설정
+                text: "일정 추가",  // 버튼 내용
+                click: function () { // 버튼 클릭 시 이벤트 추가
+                    $("#calendarModal").modal("show"); // modal 나타내기
 
-                ], headerToolbar: {
-                    center: 'addEventButton' // headerToolbar에 버튼을 추가
-                }, customButtons: {
-                    addEventButton: { // 추가한 버튼 설정
-                        text: "일정 추가",  // 버튼 내용
-                        click: function () { // 버튼 클릭 시 이벤트 추가
-                            $("#calendarModal").modal("show"); // modal 나타내기
+                    $("#addCalendar").on("click", function () {  // modal의 추가 버튼 클릭 시
+                        var title = $("#ac_title").val();
+                        var start_date = $("#ac_start_date").val();
+                        var end_date = $("#ac_end_date").val();
+                    });
+                }
+            },
 
-                            $("#addCalendar").on("click", function () {  // modal의 추가 버튼 클릭 시
-                                var title = $("#ac_title").val();
-                                var start_date = $("#ac_start_date").val();
-                                var end_date = $("#ac_end_date").val();
-                            });
-                        }
-                    }
-                },
-                editable: true, // false로 변경 시 draggable 작동 x 
-                displayEventTime: false // 시간 표시 x
+            deleteEventButton: {
+                text: "일정 삭제",  // 버튼 내용
+                click: function () { // 버튼 클릭 시 이벤트 추가
+                    console.log('clicked deleteEventButton');
+                }
+            },
+        },
+            editable: true, // false로 변경 시 draggable 작동 x 
+            displayEventTime: false // 시간 표시 x
             });
-            calendar.render();
+        calendar.render();
+        
         });
     </script>
     <style>
         #calendarBox {
-            width: 70%;
-            padding-left: 15%;
+            width: 80%;
+            padding-left: 20%;
         }
     </style>
 </head>
@@ -114,7 +117,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <!-- form 전송을 위한 버튼 -->
-                                            <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                                            <button type="button" class="btn btn-success" id="addCalendar">추가</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                                 id="sprintSettingModalClose">취소</button>
                                         </div>
@@ -125,7 +128,6 @@
 
                         <script>
                             $(document).ready(function () {
-                                // 폼이 제출될 때
                                 $('#addCalendar').click(function () {
                                     // 폼 데이터 가져오기
                                     var title = $('#ac_title').val();
