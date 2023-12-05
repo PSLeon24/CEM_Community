@@ -32,8 +32,8 @@
   ~ 11/14     O      Database Design(by 2_3_2. E-R Diagram) and Prepare the mid-term presentation
   ~ 11/23     O      Mid-term presentation / Physical Design using SQL Server
   ~ 11/28     O      Develop Back-end / Front-end maintenance / System testing
-  ~ 12/05     -      Develop Back-end / Front-end maintenance / System testing
-  ~ 12/12     -      Final check and Prepare Final-term presentation
+  ~ 12/05     O      Develop Back-end / Front-end maintenance / System testing
+  ~ 12/12     -      View, Indexing, Regularizaiton & Final check and Prepare Final-term presentation
   ~ 12/19     -      Final-term presentation / Finish the project
   </pre>
 
@@ -69,6 +69,7 @@
 - Develop Board Like
 - Develop Modify Board
 - Develop Delete Board
+- Develop Academic Schedule
 
 ## 4. Testing
 - To be added.
@@ -83,6 +84,7 @@
 - 2023/11/19: We developed back-end using express. And We designed database schema again. implement progress: 60% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
 - 2023/11/25: We developed back-end section(read board, comments in a board, likes in a board).
 - 2023/11/26: We developed back-end section(modify board, delete board). implement progress: 90% - <a href="https://cool-mantis-03f.notion.site/11-19-db7277d68b3946b7a1f4d23f4e4266a5?pvs=4">Read More</a>
+- 2023/12/05: We finished this project's development.
 
 ## Work records for each members
 #### Yeong-Min Ko
@@ -99,13 +101,12 @@
   - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
 - 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page, modify board)
 - 2023/11/26: Develop delete board
+- 2013/11/28: Develop academic schedule
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
 - 2023/11/07: Write database application field and Draw a ER-Diagram using diagrams.net
 - 2023/11/12: Develop Front-End & Re-Design ER-Diagram
-- 2023/11/21: Develop Front-End(comment in a read page), Develop Back-End (in progress: read board, comment)
-- 2023/11/25: Develop Front-End(academic calendar)
 
 |Main|Sign in|Sign up|
 |:--:|:--:|:--:|
@@ -113,6 +114,8 @@
 |<b>Board</b>|<b>Write</b>|<b>Modify</b>|
 |<img width="1439" alt="스크린샷 2023-11-14 오전 8 56 43" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/99b4eeeb-77aa-4b33-83d0-b012f3f8de2c">|<img width="1436" alt="스크린샷 2023-11-14 오전 8 56 58" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/11939177-aca6-40be-be7c-31e7da22cb9e">|<img width="1440" alt="스크린샷 2023-11-14 오후 3 55 47" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/fa151efa-79e6-426f-8d80-72765076fe6b">|
 - 2023/11/19: Develop Back-End (in progress: read board, comment)
+- 2023/11/21: Develop Front-End(comment in a read page), Develop Back-End (in progress: read board, comment)
+- 2023/11/25: Develop Front-End(academic calendar)
 
 #### Han-Gyul Choi
 - 2023/10/31: Conduct a survey to collect user needs: <a href="https://docs.google.com/forms/d/1GR1TKiiJjvH85kxkTO_HOnUt6hKx6fm_2CuDDYCK8dY">Survey link</a>
