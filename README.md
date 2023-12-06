@@ -75,7 +75,26 @@
 ## 4. Testing
 - <a href="https://youtu.be/3TyP5igcTAU">Black Box Test</a>
   - When reading a post, I found an issue where all comments in the bulletin board group were read.
+  Test Case
 
+  |TC id|Precondition|Expected Result|Pass/Fail|Remark|
+  |--|--|--|--|--|
+  |1|Sign up|good operation|Pass|-|
+  |2|Login (junior: 3grade)|good operation|Pass|-|
+  |3|Enter the junior board|good operation|Pass|-|
+  |4|Write a post on the lab introduction board|good operation|Pass|-|
+  |5|Click Like Button on what I wrote|good operation|Pass|-|
+  |6|Go to the lab introduction board|good operation|Pass|-|
+  |7|Write a post on the lab introduction board|good operation|Pass|-|
+  |8|Write a comment on what I wrote|good operation|Fail|-|
+  |9|Edit a post I wrote in introduction board post|good operation|Pass|-|
+  |10|View my page|good operation|Pass|-|
+  |11|Log out|good operation|Pass|-|
+  |12|Enter the freshman board with non-member status|good operation|Pass|-|
+  |13|Try writing a post with non-member status|does not work|Pass|-|
+  |14|Try writing a comment with mon-member status|does not work|Pass|-|
+  |15|Click ‘Like’ Button|good operation with non-member status|Pass|-|
+  
 ## 5. Maintanance
 - To be added.
 
