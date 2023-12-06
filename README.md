@@ -1,7 +1,7 @@
 # Computer Engineering Major Community Homepage.
 
 ## Introduction to Our Team
-|Selfie|Name|Position|Grade|Major|
+|Selfie|Name|Duty|Grade|Major|
 |:--:|:--:|:--:|:--:|:--:|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/1c4a75a2-fa44-4bde-ba6f-1b9b6868de0b">|Yeong-Min Ko|Director & DBA<br>Full-Stack Developer|3|Computer Egineering|
 |<img height="180" src="https://github.com/PSLeon24/CEM_Community/assets/59058869/86cca87e-09b1-40af-b82a-e63509253dd7">|Hyun-Soo Choi|ER-Diagram<br>Full-Stack Developer|3|Computer Egineering|
@@ -70,9 +70,11 @@
 - Develop Modify Board
 - Develop Delete Board
 - Develop Academic Schedule
+- Testing
 
 ## 4. Testing
-- To be added.
+- <a href="https://youtu.be/3TyP5igcTAU">Black Box Test</a>
+  - When reading a post, I found an issue where all comments in the bulletin board group were read.
 
 ## 5. Maintanance
 - To be added.
@@ -101,7 +103,8 @@
   - When signing up for membership, SHA-512 encryption is applied to the information stored in plain text using the crypto module.
 - 2023/11/25: Develop Front-End & Back-End (read board, like and comment in board, popular board in main page, modify board)
 - 2023/11/26: Develop delete board
-- 2013/11/28: Develop academic schedule
+- 2023/11/28: Develop academic schedule
+- 2023/12/06: Testing Our Project with black box methods.
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
