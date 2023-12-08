@@ -22,7 +22,11 @@ router.get(['/', '/main'], async function(req, res, next) {
 
     // 게시판 그룹별 최신 게시물 3개씩 가져오기
     async function getPostsByGroup(g_no) {
-      const postQuery = `SELECT TOP 3 g_no, b_no, b_title, b_date FROM Board WHERE g_no = ${g_no} ORDER BY b_no DESC;`;
+      const postQuery = `
+        SELECT TOP 3 g_no, b_no, b_title, b_date
+        FROM Board
+        WHERE g_no = ${g_no}
+      `;
       const postResult = await request.query(postQuery);
       return postResult.recordset.map(post => ({
         g_no: post.g_no,
@@ -55,10 +59,26 @@ router.get(['/', '/main'], async function(req, res, next) {
 
     // likes 수가 많은 순으로 조회하는 쿼리
     const popularPostsQuery = `
-    SELECT G.g_name, B.g_no, B.b_no, B.b_title, B.likes
-    FROM Board B, Board_Group G
-    WHERE B.g_no = G.g_no
-    ORDER BY likes DESC;
+      SELECT TOP 10
+        G.g_name,
+        B.g_no,
+        B.b_no,
+        B.b_title,
+        B.likes,
+        B.b_date
+      FROM
+        Board B, Board_Group G
+      WHERE 
+        B.g_no = G.g_no
+      GROUP BY
+        G.g_name,
+        B.g_no,
+        B.b_no,
+        B.b_title,
+        B.likes,
+        B.b_date
+      ORDER BY
+        likes DESC, b_date DESC;
     `;
     const popularPostsResult = await request.query(popularPostsQuery);
     const popularPosts = popularPostsResult.recordset.map(post => ({
@@ -95,7 +115,7 @@ router.get('/board', async function(req, res, next) {
   const startIndex = (page - 1) * postsPerPage;
 
   const query = `
-    SELECT g_name FROM Board_Group WHERE g_no = ${g_no};
+    SELECT DISTINCT g_name FROM Board_Group WHERE g_no = ${g_no};
   `;
 
   const request = new mssql.Request();
@@ -112,7 +132,10 @@ router.get('/board', async function(req, res, next) {
     }
 
     const postQuery = `
-      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND B.id = M.id
+      SELECT *
+      FROM Board B, Member M
+      WHERE g_no = ${g_no}
+        AND B.id = M.id
       ORDER BY b_date DESC
       OFFSET ${startIndex} ROWS FETCH NEXT ${postsPerPage} ROWS ONLY;
     `;
@@ -205,8 +228,10 @@ router.post('/submit_modify', async (req, res) => {
   const g_no = req.body.g_no || req.query.g_no;
   const b_no = req.body.b_no || req.query.b_no;
   const selectIDQuery = `
-      SELECT id FROM Board
-      WHERE g_no = @g_no AND b_no = @b_no
+      SELECT id
+      FROM Board
+      WHERE g_no = @g_no
+        AND b_no = @b_no
     `;
   const request = new mssql.Request();
   request.input('g_no', mssql.Int, g_no);
@@ -227,7 +252,8 @@ router.post('/submit_modify', async (req, res) => {
     // SQL 쿼리를 사용하여 Board 테이블에 게시물 수정
     const updateQuery = `
       UPDATE Board SET b_title = @b_title, b_content = @b_content
-      WHERE g_no = @g_no AND b_no = @b_no
+      WHERE g_no = @g_no
+        AND b_no = @b_no
     `;
 
     const request = new mssql.Request();
@@ -321,7 +347,12 @@ router.get('/modify', async function(req, res, next) {
 
     // 데이터베이스 쿼리 실행
     const query = `
-      SELECT B.b_title, B.b_no, B.g_no, B.b_content, G.g_name FROM Board_Group G, Board B, Member M WHERE B.g_no = ${g_no} AND B.b_no = ${b_no} AND B.id = M.id AND B.g_no = G.g_no;
+      SELECT B.b_title, B.b_no, B.g_no, B.b_content, G.g_name
+      FROM Board_Group G, Board B, Member M
+      WHERE B.g_no = ${g_no}
+        AND B.b_no = ${b_no}
+        AND B.id = M.id
+        AND B.g_no = G.g_no;
     `;
     const result = await request.query(query);
   
@@ -343,7 +374,11 @@ router.get('/read', async function(req, res, next) {
 
     // 게시글 불러오기 데이터베이스 쿼리 실행
     const query = `
-      SELECT * FROM Board B, Member M WHERE g_no = ${g_no} AND b_no = ${b_no} AND B.id = M.id;
+      SELECT *
+      FROM Board B, Member M
+      WHERE g_no = ${g_no} 
+        AND b_no = ${b_no}
+        AND B.id = M.id;
     `;
     const result = await request.query(query);
 
@@ -355,14 +390,14 @@ router.get('/read', async function(req, res, next) {
     `;
     const commentCountResult = await request.query(commentCountQuery);
     const commentCount = commentCountResult.recordset[0].commentCount;
-    
+
+    // 댓글 조회 쿼리 실행(중복 제거)
     const commentsQuery = `
       SELECT C.c_no, M.nickname, C.c_content, C.c_date
-      FROM Board B, Comment C, Member M
-      WHERE B.b_no = C.b_no
-        AND B.g_no = C.g_no
-        AND B.id = M.id
-      ORDER BY b_date DESC;
+      FROM Comment C, Member M
+      WHERE C.id = M.id
+        AND C.g_no = ${g_no}
+        AND C.b_no = ${b_no}
     `;
     const commentsResult = await request.query(commentsQuery);
 
@@ -397,7 +432,8 @@ router.post('/increaseLike', async function(req, res) {
     const increaseLikeQuery = `
       UPDATE Board
       SET likes = likes + 1
-      WHERE g_no = @g_no AND b_no = @b_no;
+      WHERE g_no = @g_no
+        AND b_no = @b_no;
     `;
 
     // 쿼리 실행
@@ -421,7 +457,8 @@ router.delete('/deleteBoard', async (req, res) => {
   const b_no = req.body.b_no || req.query.b_no;
   const selectIDQuery = `
     SELECT id FROM Board
-    WHERE g_no = @g_no AND b_no = @b_no
+    WHERE g_no = @g_no
+      AND b_no = @b_no
   `;
   const requestSelect = new mssql.Request();
   requestSelect.input('g_no', mssql.Int, g_no);
@@ -437,7 +474,8 @@ router.delete('/deleteBoard', async (req, res) => {
 
     const deleteBoardQuery = `
       DELETE FROM Board
-      WHERE g_no = @g_no AND b_no = @b_no
+      WHERE g_no = @g_no
+        AND b_no = @b_no
     `;
 
     const requestDelete = new mssql.Request();
