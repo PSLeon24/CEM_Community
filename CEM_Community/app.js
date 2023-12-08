@@ -53,7 +53,7 @@ app.post('/signup', (req, res) => {
 
   // 아이디 중복 검사
   const checkDuplicateQuery = `
-    SELECT COUNT(*) AS count FROM Member WHERE @id IN (SELECT id FROM Member);
+    SELECT COUNT(*) AS count FROM Member WHERE @id = (SELECT id FROM Member);
   `;
   const checkDuplicateRequest = new mssql.Request();
   checkDuplicateRequest.input('id', mssql.NVarChar, id);
