@@ -124,6 +124,7 @@
 - 2023/11/26: Develop delete board
 - 2023/11/28: Develop academic schedule
 - 2023/12/06: Testing Our Project with black box methods.
+- 2023/12/08: Error resolution (post comments), Query Refactoring(Popular Board)
 
 #### Hyun-Soo Choi
 - 2023/10/31: Create a Usecase Diagram
