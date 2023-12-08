@@ -96,7 +96,7 @@
   |15|Click ‘Like’ Button|good operation with non-member status|Pass|-|
   
 ## 5. Maintanance
-- To be added.
+1. Error resolution (post comments), Query Refactoring(Popular Board)
 
 ## Meeting records
 - 2023/10/13: We have decided a project subject to develop a community homepage about our major. Because There is little communication although they are same major at our college.
