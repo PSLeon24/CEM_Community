@@ -26,6 +26,7 @@ router.get(['/', '/main'], async function(req, res, next) {
         SELECT TOP 3 g_no, b_no, b_title, b_date
         FROM Board
         WHERE g_no = ${g_no}
+        ORDER BY b_no DESC;
       `;
       const postResult = await request.query(postQuery);
       return postResult.recordset.map(post => ({
@@ -136,7 +137,7 @@ router.get('/board', async function(req, res, next) {
       FROM Board B, Member M
       WHERE g_no = ${g_no}
         AND B.id = M.id
-      ORDER BY b_date DESC
+      ORDER BY b_no DESC
       OFFSET ${startIndex} ROWS FETCH NEXT ${postsPerPage} ROWS ONLY;
     `;
 
@@ -192,7 +193,7 @@ router.post('/submit_post', async (req, res) => {
     // 현재 날짜 생성
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // SQL 쿼리를 사용하여 Board 테이블에 게시물 추가
+    // Board 테이블에 게시물 추가
     const insertQuery = `
       INSERT INTO Board (b_no, g_no, id, b_title, b_content, b_date)
       VALUES ((SELECT ISNULL(MAX(b_no), 0) + 1 FROM Board WHERE g_no = @g_no),@g_no, @id, @b_title, @b_content, @b_date);
@@ -495,9 +496,40 @@ router.delete('/deleteBoard', async (req, res) => {
 });
 
 /* mypage 페이지 라우팅 */
-router.get('/mypage', function(req, res, next) {
+router.get('/mypage', async function(req, res, next) {
+  const request = new mssql.Request();
   const user = req.session.user;
-  res.render('mypage',  { user }); // mypage.ejs 템플릿을 렌더링
+  try {
+    // 회원 정보를 뷰에서 조회
+      // 게시글 불러오기 데이터베이스 쿼리 실행
+      const myInfo = `
+      SELECT *
+      FROM View_Member M
+      WHERE M.id = '${user.id}';
+    `;
+    const minfo = await request.query(myInfo);
+
+    // 내가 쓴 글 조회
+    const query = `
+    SELECT G.g_name, B.id, B.b_title, B.b_date
+    FROM Board B, Board_Group G
+    WHERE B.id = '${user.id}'
+      AND B.g_no = G.g_no
+    GROUP BY G.g_name, B.id, B.b_title, B.b_date
+      `;
+    const result = await request.query(query);
+    const mypost = result.recordset.map(mypost => {
+      const koreanDate = new Date(mypost.b_date).toLocaleDateString('ko-KR');
+      mypost.b_date = koreanDate;
+      return mypost;
+    });
+
+    // 조회된 데이터를 read.ejs 템플릿에 전달하여 렌더링
+    res.render('mypage', { user, minfo, mypost });
+  } catch (error) {
+    console.error('데이터베이스 오류:', error);
+    res.status(500).send('내부 서버 오류');
+  }
 });
 
 /* schedule 페이지 라우팅 */

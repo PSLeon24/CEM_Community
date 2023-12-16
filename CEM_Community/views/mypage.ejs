@@ -85,7 +85,43 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="table-container">
+                        <h2 style="text-align: center;">내가 쓴 글</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>카테고리</th>
+                                        <th>제목</th>
+                                        <th>작성일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% mypost.forEach((post, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td>
+                                                <%= post.g_name %>
+                                            </td>
+                                            <td>
+                                                <%= post.b_title %>
+                                            </td>
+                                            <td>
+                                                <%= post.b_date %>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
+
                 <br>
                 <div class="row" style="text-align: center;">
                     <div class="col-md-12">

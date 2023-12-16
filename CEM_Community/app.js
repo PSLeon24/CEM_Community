@@ -53,7 +53,7 @@ app.post('/signup', (req, res) => {
 
   // 아이디 중복 검사
   const checkDuplicateQuery = `
-    SELECT COUNT(*) AS count FROM Member WHERE @id = (SELECT id FROM Member);
+    SELECT COUNT(*) AS count FROM Member WHERE @id IN (SELECT id FROM Member);
   `;
   const checkDuplicateRequest = new mssql.Request();
   checkDuplicateRequest.input('id', mssql.NVarChar, id);
@@ -102,6 +102,13 @@ app.post('/signup', (req, res) => {
                 console.error('회원가입 오류:', signUpErr);
                 res.send('<script>alert("회원가입 중 오류가 발생했습니다!"); window.location.href="/";</script>');
               } else {
+                const updateViewQuery = `
+                CREATE OR REPLACE VIEW View_Member AS (
+                  SELECT id, name, std_no, grade, nickname, role
+                  FROM Member);
+              `;
+  
+                const updateViewRequest = new mssql.Request();
                 console.log(id, '님 회원가입 성공');
                 res.send('<script>alert("회원가입을 성공적으로 완료했습니다!"); window.location.href="/";</script>');
               }
@@ -119,7 +126,7 @@ app.post('/login', (req, res) => {
   const query = `
     SELECT * FROM Member
     WHERE id = @id;
-  `;
+  `; // 입력받은 id를 가진 사용자를 찾는 쿼리
 
   const request = new mssql.Request();
 
