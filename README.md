@@ -33,8 +33,8 @@
   ~ 11/23     O      Mid-term presentation / Physical Design using SQL Server
   ~ 11/28     O      Develop Back-end / Front-end maintenance / System testing
   ~ 12/05     O      Develop Back-end / Front-end maintenance / System testing
-  ~ 12/12     -      View, Indexing, Regularizaiton & Final check and Prepare Final-term presentation
-  ~ 12/19     -      Final-term presentation / Finish the project
+  ~ 12/12     O      View, Indexing, Regularizaiton & Final check and Prepare Final-term presentation
+  ~ 12/19     O      Final-term presentation / Finish the project
   </pre>
 
 ## 2. Design
