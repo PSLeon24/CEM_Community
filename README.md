@@ -95,7 +95,7 @@
   |14|Try writing a comment with mon-member status|does not work|Pass|-|
   |15|Click ‘Like’ Button|good operation with non-member status|Pass|-|
   
-## 5. Maintanance
+## 5. Maintenance
 1. Error resolution (post comments), Query Refactoring(Popular Board)
 
 ## Meeting records
